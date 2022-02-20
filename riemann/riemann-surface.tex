@@ -1,0 +1,680 @@
+
+%Don't forget to delete
+%showkeys
+%overfullrule
+%\date \ber \er \cmt
+
+
+
+%\documentclass[12pt,leqno]{amsart}
+\documentclass[11pt, a4paper, dvipdfmx, draft]{jsarticle}
+
+
+% ------------------------
+% usepackage
+% ------------------------
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amscd}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[psamsfonts]{amssymb}
+\usepackage{amsthm}
+\usepackage{ascmac}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{fancybox}
+\usepackage[stable]{footmisc}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{otf}
+\usepackage{pifont}
+\usepackage{proof}
+\usepackage{subfigure}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage[all]{xy}
+
+\usetikzlibrary{cd}
+
+
+
+% ================================
+% パッケージを追加する場合のスペース 
+\usepackage{latexsym}
+\usepackage{wrapfig}
+\usepackage{layout}
+%=================================
+
+
+% --------------------------
+% theoremstyle
+% --------------------------
+\theoremstyle{definition}
+
+
+% --------------------------
+% newtheoem
+% --------------------------
+
+% 日本語で定理, 命題, 証明などを番号付きで用いるためのコマンドです. 
+% If you want to use theorem environment in Japanece, 
+% you can use these code. 
+% Attention!
+% All theorem enivironment numbers depend on 
+% only section numbers.
+\newtheorem{Axiom}{公理}[section]
+\newtheorem{Definition}[Axiom]{定義}
+\newtheorem{Theorem}[Axiom]{定理}
+\newtheorem{Proposition}[Axiom]{命題}
+\newtheorem{Lemma}[Axiom]{補題}
+\newtheorem{Corollary}[Axiom]{系}
+\newtheorem{Example}[Axiom]{例}
+\newtheorem{Claim}[Axiom]{主張}
+\newtheorem{Property}[Axiom]{性質}
+\newtheorem{Attention}[Axiom]{注意}
+\newtheorem{Question}[Axiom]{問}
+\newtheorem{Problem}[Axiom]{問題}
+\newtheorem{Consideration}[Axiom]{考察}
+\newtheorem{Alert}[Axiom]{警告}
+\newtheorem{Fact}[Axiom]{事実}
+
+
+% 日本語で定理, 命題, 証明などを番号なしで用いるためのコマンドです. 
+% If you want to use theorem environment with no number in Japanese, You can use these code.
+\newtheorem*{Axiom*}{公理}
+\newtheorem*{Definition*}{定義}
+\newtheorem*{Theorem*}{定理}
+\newtheorem*{Proposition*}{命題}
+\newtheorem*{Lemma*}{補題}
+\newtheorem*{Example*}{例}
+\newtheorem*{Corollary*}{系}
+\newtheorem*{Claim*}{主張}
+\newtheorem*{Property*}{性質}
+\newtheorem*{Attention*}{注意}
+\newtheorem*{Question*}{問}
+\newtheorem*{Problem*}{問題}
+\newtheorem*{Consideration*}{考察}
+\newtheorem*{Alert*}{警告}
+\newtheorem{Fact*}{事実}
+
+
+% 英語で定理, 命題, 証明などを番号付きで用いるためのコマンドです. 
+%　If you want to use theorem environment in English, You can use these code.
+%all theorem enivironment number depend on only section number.
+\newtheorem{Axiom+}{Axiom}[section]
+\newtheorem{Definition+}[Axiom+]{Definition}
+\newtheorem{Theorem+}[Axiom+]{Theorem}
+\newtheorem{Proposition+}[Axiom+]{Proposition}
+\newtheorem{Lemma+}[Axiom+]{Lemma}
+\newtheorem{Example+}[Axiom+]{Example}
+\newtheorem{Corollary+}[Axiom+]{Corollary}
+\newtheorem{Claim+}[Axiom+]{Claim}
+\newtheorem{Property+}[Axiom+]{Property}
+\newtheorem{Attention+}[Axiom+]{Attention}
+\newtheorem{Question+}[Axiom+]{Question}
+\newtheorem{Problem+}[Axiom+]{Problem}
+\newtheorem{Consideration+}[Axiom+]{Consideration}
+\newtheorem{Alert+}{Alert}
+\newtheorem{Fact+}[Axiom+]{Fact}
+\newtheorem{Remark+}[Axiom+]{Remark}
+
+% ----------------------------
+% commmand
+% ----------------------------
+% 執筆に便利なコマンド集です. 
+% コマンドを追加する場合は下のスペースへ. 
+
+% 集合の記号 (黒板文字)
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\KK}{\mathbb{K}}
+
+
+% 集合の記号 (太文字)
+\newcommand{\nn}{\mathbf{N}}
+\newcommand{\zz}{\mathbf{Z}}
+\newcommand{\qq}{\mathbf{Q}}
+\newcommand{\rr}{\mathbf{R}}
+\newcommand{\cc}{\mathbf{C}}
+\newcommand{\pp}{\mathbf{P}}
+\newcommand{\kk}{\mathbf{K}}
+
+% 特殊な写像の記号
+\newcommand{\ev}{\mathop{\mathrm{ev}}\nolimits} % 値写像
+\newcommand{\pr}{\mathop{\mathrm{pr}}\nolimits} % 射影
+
+% スクリプト体にするコマンド
+%   例えば　{\mcal C} のように用いる
+\newcommand{\mcal}{\mathcal}
+
+% 花文字にするコマンド 
+%   例えば　{\h C} のように用いる
+\newcommand{\h}{\mathscr}
+
+% ヒルベルト空間などの記号
+\newcommand{\F}{\mcal{F}}
+\newcommand{\X}{\mcal{X}}
+\newcommand{\Y}{\mcal{Y}}
+\newcommand{\Hil}{\mcal{H}}
+\newcommand{\RKHS}{\Hil_{k}}
+\newcommand{\Loss}{\mcal{L}_{D}}
+\newcommand{\MLsp}{(\X, \Y, D, \Hil, \Loss)}
+
+% 偏微分作用素の記号
+\newcommand{\p}{\partial}
+
+% 角カッコの記号 (内積は下にマクロがあります)
+\newcommand{\lan}{\langle}
+\newcommand{\ran}{\rangle}
+
+
+
+% 圏の記号など
+\newcommand{\Set}{{\bf Set}}
+\newcommand{\Vect}{{\bf Vect}}
+\newcommand{\FDVect}{{\bf FDVect}}
+\newcommand{\Ring}{{\bf Ring}}
+\newcommand{\Ab}{{\bf Ab}}
+\newcommand{\Mod}{\mathop{\mathrm{Mod}}\nolimits}
+\newcommand{\CGA}{{\bf CGA}}
+\newcommand{\GVect}{{\bf GVect}}
+\newcommand{\Lie}{{\bf Lie}}
+\newcommand{\dLie}{{\bf Liec}}
+
+
+
+% 射の集合など
+\newcommand{\Map}{\mathop{\mathrm{Map}}\nolimits}
+\newcommand{\Hom}{\mathop{\mathrm{Hom}}\nolimits}
+\newcommand{\End}{\mathop{\mathrm{End}}\nolimits}
+\newcommand{\Aut}{\mathop{\mathrm{Aut}}\nolimits}
+\newcommand{\Mor}{\mathop{\mathrm{Mor}}\nolimits}
+
+% その他便利なコマンド
+\newcommand{\dip}{\displaystyle} % 本文中で数式モード
+\newcommand{\e}{\varepsilon} % イプシロン
+\newcommand{\dl}{\delta} % デルタ
+\newcommand{\pphi}{\varphi} % ファイ
+\newcommand{\ti}{\tilde} % チルダ
+\newcommand{\pal}{\parallel} % 平行
+\newcommand{\op}{{\rm op}} % 双対を取る記号
+\newcommand{\lcm}{\mathop{\mathrm{lcm}}\nolimits} % 最小公倍数の記号
+\newcommand{\Probsp}{(\Omega, \F, \P)} 
+\newcommand{\argmax}{\mathop{\rm arg~max}\limits}
+\newcommand{\argmin}{\mathop{\rm arg~min}\limits}
+
+
+
+
+
+% ================================
+% コマンドを追加する場合のスペース 
+\newcommand{\UU}{\mcal{U}}
+\newcommand{\OO}{\mcal{O}}
+\newcommand{\emp}{\varnothing}
+\newcommand{\ceq}{\coloneqq}
+\newcommand{\sbs}{\subset}
+\newcommand{\mapres}[2]{\left. #1 \right|{#2}}
+\newcommand{\ded}{\hfill $\blacksquare$}
+
+% 自前の定理環境
+%   https://mathlandscape.com/latex-amsthm/
+% を参考にした
+\newtheoremstyle{mystyle}%   % スタイル名
+    {5pt}%                   % 上部スペース
+    {5pt}%                   % 下部スペース
+    {}%              % 本文フォント
+    {}%                  % 1行目のインデント量
+    {\bfseries}%                      % 見出しフォント
+    {.}%                     % 見出し後の句読点
+    {12pt}%                     % 見出し後のスペース
+    {\thmname{#1}\thmnumber{ #2 }\thmnote{{\normalfont (#3)}}}% % 見出しの書式
+
+\theoremstyle{mystyle}
+\newtheorem{AXM}{公理}[section]
+\newtheorem{DFN}[Axiom]{定義}
+\newtheorem{THM}[Axiom]{定理}
+\newtheorem{PRP}[Axiom]{命題}
+\newtheorem{LMM}[Axiom]{補題}
+\newtheorem{CRL}[Axiom]{系}
+\newtheorem{EG}[Axiom]{例}
+
+%\newtheorem{}{Axiom}[]
+
+% =================================
+
+
+
+
+
+% ---------------------------
+% new definition macro
+% ---------------------------
+% 便利なマクロ集です
+
+% 内積のマクロ
+%   例えば \inner<\pphi | \psi> のように用いる
+\def\inner<#1>{\langle #1 \rangle}
+
+% ================================
+% マクロを追加する場合のスペース 
+
+%=================================
+
+
+
+
+
+% ----------------------------
+% documenet 
+% ----------------------------
+% 以下, 本文の執筆スペースです. 
+% Your main code must be written between 
+% begin document and end document.
+% ---------------------------
+
+
+\begin{document}
+
+\title{代数曲線論}
+\author{Toshi2019}
+
+\date{Feb 20, 2022}
+
+\maketitle
+\begin{abstract}
+    報告者は，21年度の秋セメスターに\cite{ogs}を用いてセミナーを行った．
+    本稿では，このセミナーで勉強した内容を報告する．
+    まず複素関数論について復習してからリーマン球面について述べる．
+    その後，本稿ではほとんど1次元の場合，すなわちリーマン面の場合
+    しか扱わないが，一般の次元に対して複素多様体を
+    定義する．セミナーで学んだ事実のうち興味あるものとして，
+    リーマン・ロッホの定理をリーマン球面に対して適用したものと
+    代数学の基本定理がある．これらの証明が本稿の目標である．
+    最後に，特異点のない代数曲線について，
+    方程式の解としての構造と複素多様体としての構造の間の
+    対応について述べる．
+\end{abstract}
+
+\section*{凡例}
+本稿では，次の記号について断りなく用いる．
+
+\begin{itemize}
+    \item $\zz,\rr,\cc$は整数，実数，複素数全体の集合を表す．
+    \item 何らかの族$(x_i)_{i\in I}$について，添字集合が
+    明らかな場合は$(x_i)_{i}$のように表すことがある．
+    \item $X$を集合とする．たんに$X$の関数というときには，
+    $X$上の複素数に値を取る写像とする．
+    \item 差集合：集合$X$の元のうち$A$に属さないもの全体を$X-A$で表す．
+    \item 球面：$S^{n-1}\coloneqq \{x\in \rr^{n}; \left\|x\right\|=1\}$
+    \item 射影：直積集合に対し第$i$成分を対応させる写像を$\pr_i\colon\prod_{i} X_i\to X_i$とかく．
+\end{itemize}
+\section{複素関数論}
+
+$f$を複素数平面全体で定義された複素数に値を取る関数とする．
+
+\section{リーマン面}
+
+\subsection{リーマン球面}
+
+$\cc^{2}$から原点$0=(0,0)$を除いた集合$\cc^{2}-\{0\}$
+の点$(a_{0},a_{1}), (b_{0},b_{1})$に対し次の関係を考える．
+\begin{align}\label{eq:sim1}
+    (a_{0},a_{1})\sim (b_{0},b_{1})
+    \Longleftrightarrow
+    (a_{0},a_{1})= c\cdot(b_{0},b_{1})
+    \text{となる複素数}c\neq0\text{が存在する．}
+\end{align}
+これは同値関係である．
+$(a_0,a_1)$の同値類$\{c\cdot(a_0,a_1); c\in\cc-\{0\}\}$を
+$[a_0\colon a_1]$とかく．
+\begin{proof}[\eqref{eq:sim1}\textbf{が同値関係になることのチェック}]
+    
+    （反射律）
+    $c=1$は$(a_{0},a_{1})= 1\cdot(a_{0},a_{1})$をみたす．
+
+    （対称律）
+    複素数$c\neq0$を$(a_{0},a_{1})= c \cdot (b_{0},b_{1})$
+    をみたすものとすると，複素数$c^{-1}\neq0$は
+    $(b_{0},b_{1})=c^{-1} \cdot(a_{0},a_{1})$
+    をみたす．
+
+    （推移律）
+    複素数$c,c'\neq0$をそれぞれ
+    $(a_{0},a_{1})= c \cdot (b_{0},b_{1})$，
+    $(b_{0},b_{1})= c' \cdot (c_{0},c_{1})$
+    をみたすものとする．このとき複素数$cc'\neq0$は
+    \begin{align*}
+        (a_{0},a_{1})
+        = c \cdot (b_{0},b_{1})
+        =cc' \cdot (c_{0},c_{1})
+    \end{align*}
+    をみたす．
+\end{proof}
+
+同値関係${\sim}$の定める商写像を用いて次の集合を定義する．
+
+\begin{Definition}
+    $\pp^{1}(\cc) = \left(\cc^{2}-\{0\}\right)/{\sim}$
+    を\textbf{リーマン球面}(Riemann sphere) という．
+    $\pp^{1}(\cc)$を$\pp^{1}_{\cc}$とか$\pp^{1}$ともかく．
+\end{Definition}
+
+$\pp^1$の任意の点$P$は$[a_0\colon a_1]$の形に表せる．
+実際，$P$を$\pp^1$の点とすると，$\pp^1$の
+定義より，$(a_{0},a_{1})\in \cc^{2}-\{0\}$で
+$P=\pi(a_{0},a_{1})=[a_0\colon a_1]$となるものが存在する．
+
+また，$[a_0\colon a_1]=[b_0\colon b_1]$となるのは，
+$a_0\colon a_1=b_0\colon b_1$となるときである．
+実際，
+\begin{align*}
+    [a_0\colon a_1]=[b_0\colon b_1]
+    &\Longleftrightarrow
+    (a_0, a_1)\in[b_0\colon b_1]\\
+    &\Longleftrightarrow
+    (a_0, a_1)\sim(b_0, b_1)\\
+    &\Longleftrightarrow
+    (a_0, a_1)=c(b_0, b_1) \text{ for some }c\neq0\\
+    &\Longleftrightarrow
+    a_0=cb_0, a_1=cb_1 \text{ for some }c\neq0\\    
+    &\Longleftrightarrow
+    a_0\colon b_0 = a_1 \colon b_1\\
+    &\Longleftrightarrow
+    a_0 b_1 = a_1 b_0\\
+    &\Longleftrightarrow
+    a_0\colon b_1 = b_0 \colon b_1
+\end{align*}
+である．
+
+\begin{Definition}
+    次の写像の組を考える．
+    $\begin{tikzcd}
+      {\cc^{2}-\{0\}}
+        \arrow[r, shift left ,"\pr_1=X_0"]
+        \arrow[r, shift right,"\pr_2=X_1"']
+      & {\cc}
+    \end{tikzcd}; (a_0,a_1)\mapsto a_0,a_1.$
+    この組を$\cc^{2}-\{0\}$の標準座標，$\pp^1$の同次座標という．
+\end{Definition}
+$P\in\pp^1$を代表する$\cc^{2}-\{0\}$の点$\tilde{P}$の
+標準座標の値$(a_0,a_1)$が$P$の同次座標の値である．
+なお，$P$に対する$\tilde{P}$の取り方，
+すなわち$(a_0,a_1)$の取り方には
+任意性がある．
+
+$\pp^{1}$は商写像$\pi \colon \cc^{2}-\{0\}
+\longrightarrow\left(\cc^{2}-\{0\}\right)/{\sim}$
+による商位相により位相空間になる．この定義から$\pi$の連続性が従う．
+
+$\pp^1$の位相空間としての性質を調べるために，次の部分集合を定義する．
+\begin{align*}
+    U_0=\{[a_0\colon a_1]\in\pp^1; a_0\neq0\},\\
+    U_1=\{[a_0\colon a_1]\in\pp^1; a_1\neq0\}.
+\end{align*}
+このとき次が成り立つ．
+\begin{align*}
+    U_0\cup U_1 &= \pp^1,\\
+    U_0\cap U_1 
+    &= \{[a_0\colon a_1]\in\pp^1; a_0, a_1\neq0\}\\
+    &= U_0 - \{[1\colon 0]\}\\
+    &= U_1 - \{[0\colon 1]\}.
+\end{align*}
+
+\begin{Lemma}\label{mnf:p1}
+    1. 
+    商写像$\pi \colon \cc^{2}-\{0\}
+    \longrightarrow\left(\cc^{2}-\{0\}\right)/{\sim}$
+    は開写像である．
+
+    2. 
+    $U_0$と$U_1$は$\pp^1$の開集合であり，
+    \begin{align*}
+        \pphi_0\colon U_0\overset{{\sim}}{\longrightarrow}\cc; [a_0\colon a_1]\mapsto a_1/a_0,
+        \pphi_1\colon U_1\overset{{\sim}}{\longrightarrow}\cc; [a_0\colon a_1]\mapsto a_0/a_1,
+    \end{align*}
+    はともに同相写像である．
+
+    3. 
+    任意の$\dip A = \begin{bmatrix}
+        a&b\\c&d
+    \end{bmatrix}\in GL(2,\cc)$に対し，自己同相写像
+    \begin{align*}
+        p_A\colon \pp^1\overset{{\sim}}{\longrightarrow}\pp^1;
+        \begin{bmatrix}
+            a_0\\a_1
+        \end{bmatrix}
+        \mapsto
+        \begin{bmatrix}
+            a&b\\c&d
+        \end{bmatrix}
+        \begin{bmatrix}
+            a_0\\a_1
+        \end{bmatrix}
+    \end{align*}
+    が存在する．
+
+    4. 
+    $\pp^1$は第2可算公理をみたす連結なコンパクトハウスドルフ空間である．
+\end{Lemma}
+
+\begin{proof}[\textbf{証明}]
+    1. 
+    $U$を$\cc^2-\{0\}$の開集合とする．$\pi(U)$が$\pp^1$の
+    開集合であること，すなわち$\pi^{-1}(\pi(U))$が$\cc^2-\{0\}$の
+    開集合であることを示す．
+    いま，任意の開集合$U\subset\cc^2-\{0\}$に対し，
+    複素数$c\neq0$を用いて
+    \begin{align*}
+        cU = \left\{(ca_0,ca_1); (a_0,a_1)\in\cc^2-\{0\}\right\}
+    \end{align*}
+    とおくと，$cU$は$\cc^2-\{0\}$の開集合であり，
+    \begin{align}\label{eq:proj}
+        \pi^{-1}(\pi(U)) = \bigcup_{c\in\cc-\{0\}} cU \tag{$\ast$}
+    \end{align}
+    なので，$\pi^{-1}(\pi(U))$は$\cc^2-\{0\}$の
+    開集合である．
+\end{proof}
+
+\begin{Attention}[{\eqref{eq:proj}}について]
+    この等式については次の図\ref{fig:prj1}を見ると理解しやすい．
+    \begin{figure}[h]
+        \centering
+        \begin{tikzpicture}
+            \draw[>=stealth,semithick] (-2,0)--(3,0); %x軸
+            \draw[>=stealth,semithick] (0,-2)--(0,4); %y軸
+            \draw (0,0)node[below right]{O}; %原点
+            \draw[thick, domain=-2:3] plot(\x,{0.5*\x});
+            \draw[thick, domain=-1.:2] plot(\x,2*\x);
+            \draw[line width=1pt] (1.5,3) rectangle (2.5,1.25); %四角
+            \draw (2.5,1.25)node[below]{$2U$}; %点(2.5,1.25)
+            \draw[line width=1pt] (0.75,1.5) rectangle (1.25,0.625); %四角
+            \draw (0.75,1.5)node[left]{$U$}; %点(2.5,1.25)\draw[line width=1pt] (0.75,1.5) rectangle (1.25,0.625); %四角
+            \draw[line width=1pt] (-0.75,-1.5) rectangle (-1.25,-0.625); %四角
+            \draw (-0.75,-1.5)node[right]{$-U$}; %点(2.5,1.25)
+            \draw[line width=1pt] (0.375,0.75) rectangle (0.625,0.3125); %四角
+            \draw (0.625,0.2)node[right]{$(1/2)U$}; %点(2.5,1.25)
+            \draw[very thick, domain=-2.:3] plot(\x,{0.8*\x});
+            \draw (1.8,3.6)node[right]{$U$を通る直線の上端};
+            \draw (3,2.4)node[right]{$U$を通る直線};
+            \draw (3,1.5)node[right]{$U$を通る直線の下端};
+        \end{tikzpicture}
+        \caption{商写像の逆像1}
+        \label{fig:prj1}
+    \end{figure}
+    いま，簡単のため$\rr^2$の部分集合$U$について考える．
+    $\pi(U)$は$U$を通る直線たちの集合である．像が$\pi(U)$となる
+    ようなもの，つまり$\pi^{-1}\left(\pi(U)\right)$は$U$を$c$倍に
+    拡大・縮小したもの全体である．したがって\eqref{eq:proj}が成り立つ．
+
+    次のような場合も見ておくと複素トーラスの導入のときなどに役立つ．
+    \begin{align*}
+        \pi\colon \rr \twoheadrightarrow \rr/\zz; x\mapsto x\mod{\zz}
+    \end{align*}
+    を考える．これは図\ref{fig:prj2}の上の直線を丸めて$1$次元トーラス
+    にしたものである．
+
+    \begin{figure}[h]
+        \centering
+        \begin{tikzpicture}[x=1cm]
+            \fill[black!40] (0.7,0.1) rectangle (1.3,-0.1);
+            \draw (1.3,-0.1) node[below]{$U$};
+            \draw[->,>=stealth,semithick] (-5,0)--(5,0)node[below]{$\rr$}; %x軸
+            \foreach \x in {-5, -4,...,4} \draw (\x,-0.2)--(\x,0.2);
+            
+            \draw[->,>=stealth,semithick] (0,-1)--(0,-2); %射影
+
+            \draw[black!40,line width=5pt] (0,-5) arc (270:330: 3 and 1);
+            \draw (0,-1.5) node[right]{$\pi$};
+            \draw (0,-4) ellipse (3 and 1);
+            \draw (1,-5.2)--(1,-4.8);
+            \draw (1.3,-5.2) node[right]{$\pi(U)$};
+            \draw[->,>=stealth,semithick] (0,-5.5)--(0,-6.5); %射影
+            \draw (0,-6) node[right]{$\pi(U)$に来るものを集める};
+
+            \foreach \x in {-4,-3,...,4} \fill[black!40] ({\x-0.3},-6.9) rectangle ({\x+0.3},-7.1);
+            \draw (1.3,-7.1) node[below]{$U$};
+            \draw (2.3,-7.1) node[below]{$U+1$};
+            \draw (3.3,-7.1) node[below]{$U+2$};
+            \draw (4.3,-7.1) node[below]{$U+3$};
+            \draw (0.3,-7.1) node[below]{$U-1$};
+            \draw (-1.3,-7.1) node[below]{$U-2$};
+            \draw (-2.3,-7.1) node[below]{$U-3$};
+            \draw (-3.3,-7.1) node[below]{$U-4$};
+            \draw (-4.3,-7.1) node[below]{$U-5$};
+
+            \draw[->,>=stealth,semithick] (-5,-7)--(5,-7)node[below]{$\rr$}; %x軸
+            \foreach \x in {-5, -4,...,4} \draw (\x,-6.8)--(\x,-7.2);
+        \end{tikzpicture}
+        \caption{商写像の逆像2}
+        \label{fig:prj2}
+    \end{figure}
+    この場合は次のようになる．
+    \begin{align*}
+        \pi^{-1}\left(\pi(U)\right) 
+        &= (U\text{を射影したものと同じところに行くもの})\\
+        &= (U\text{を整数分だけずらしたもの全て})\\
+        &= \bigcup_{n\in\zz}(U+n).
+    \end{align*}
+\end{Attention}
+
+
+
+
+
+
+
+
+
+
+
+\clearpage
+
+
+$\cc^{n}$での座標が$z=(z_{1},\dots,z_{n})$であるとき
+複素数空間$\cc^{n}$を
+$\cc^{n}_{z}$とか$\cc^{n}_{(z_{1},\dots,z_{n})}$とかく．
+
+\begin{Definition}[$n$次元複素多様体]
+    $X$を位相空間とする．
+    $(\pphi_{i}\colon U_{i}\to \UU_{i})_{i\in I}$を
+    写像の族とする．このとき，対$(X,(\pphi_{i})_{i})$が
+    次の条件(1)--(4)をみたすとき，$X$を台集合とし$(\pphi_{i})_i$を
+    座標近傍系とする\textbf{$n$次元複素多様体} ($n$-dimensional complex manifold) という．
+
+    (1) 
+    $X$は空集合でなく，第2可算公理を満たす連結なハウスドルフ空間である．
+
+    (2) 
+    すべての$i\in I$に対して$U_i$は$X$の空でない開集合であり，
+    $(U_i)_i$は$X$の開披覆である．
+
+    (3) 
+    すべての$i\in I$に対して，
+    $\UU_i$は$\cc^{n}_{(z_{1},\dots,z_{n})}$の
+    空でない開集合であり$\pphi_{i}\colon U_i\to\UU_i$は同相である．
+
+    (4) 
+    任意の$i\neq j \in I$で$U_i\cap U_j \neq \emp$をみたすもの
+    に対して$\UU_{ij}\ceq \pphi_j(U_i\cap U_j)\sbs \UU_j$と
+    おくとき，$\pphi_{ij}\ceq 
+    \mapres{\pphi_{i}\circ\pphi_{j}^{-1}}{\UU_{ij}}
+    \colon 
+    \UU_{ij}\to\UU_{ji}$は正則である．
+\end{Definition}
+
+1次元複素多様体を\textbf{リーマン面} (Riemann surface) という．
+
+\section{1次元における諸結果}
+
+% $\pp^{1}$の定義
+% 有理形関数　と　極の位数
+
+次はリーマンロッホの定理の特殊な場合である．
+
+\begin{Theorem}[{\cite[命題1.14]{ogs}}]
+    $P_{1},\dots,P_{m}$を$\pp^{1}$の互いに相異なる点とする．
+    $\pp^{1}$上の有理形関数で各$P_i$のみで高々$n_i$の極をもつもの全体
+    \begin{align*}
+        \Gamma\left(\pp^{1}, \OO_{\pp^{1}}\left(\sum_{i=1}^{m}n_{i}P_{i}\right)\right)
+    \end{align*}
+    は関数の和とスカラー倍によって$\cc$ベクトル空間を成す．
+    さらにその空間の次元は次で与えられる．
+    \begin{align*}
+        \dim\Gamma\left(
+            \pp^{1}, \OO_{\pp^{1}}\left(
+                \sum_{i=1}^{m}n_{i}P_{i}
+                \right)
+            \right)
+        = 1+\sum_{i=1}^{m}n_{i}.
+    \end{align*}
+\end{Theorem}
+
+
+\section{コンパクトリーマン面}
+
+\begin{Theorem}[代数学の基本定理{\cite[系2.24]{ogs}}]
+    $n\geqq1$とする．複素数を係数とする$n$次方程式
+    \begin{align*}
+        a_{0}z^{n}+a_{1}z^{n-1}+\dots +a_{n}=0,\quad a_{0}\neq 0
+    \end{align*}
+    に対し，複素数解$\alpha$が存在する．
+\end{Theorem}
+
+\section{それから}
+
+\begin{thebibliography}{15}
+
+    \bibitem{ueno} 上野健爾, 代数幾何, 岩波書店, 2005.
+
+    \bibitem{umemura} 梅村浩, 楕円関数論 楕円曲線の解析学 [増補新装版], 東京大学出版会, 2020.
+
+    \bibitem{ogs} 小木曽啓示, 代数曲線論, 朝倉書店, 2002.
+
+    \bibitem{kaneko} 金子晃, 関数論講義 (ライブラリ数理・情報系の数学講義, 5), サイエンス社, 2021.
+
+    \bibitem{kobayashi1} 小林昭七, 複素幾何1 (岩波講座現代数学の基礎, 29), 岩波書店, 1997.
+
+    \bibitem{kobayashi2} 小林昭七, 複素幾何2 (岩波講座現代数学の基礎, 30), 岩波書店, 1998.
+
+    \bibitem{jimbo} 神保道夫, 複素関数論 (岩波講座現代数学への入門, 4), 岩波書店, 1995.
+
+    \bibitem{takebe} 武部尚志, 楕円積分と楕円関数 おとぎの国の歩き方, 日本評論社, 2019.
+
+    \bibitem{fuji} 藤本坦孝, 複素解析 (岩波講座現代数学の基礎, 3), 岩波書店, 1996.
+
+    \bibitem{yoshida} 吉田洋一, 函数論 第2版 (岩波全書, 141), 岩波書店, 1973.
+
+    \bibitem{tmp} 著者, 書名 (シリーズ名, 巻数), 発行所, 発行都市名, 年号
+\end{thebibliography}
+
+\end{document}
+
+
