@@ -46,6 +46,7 @@
 \usepackage{latexsym}
 \usepackage{wrapfig}
 \usepackage{layout}
+\usepackage{url}
 %=================================
 
 
@@ -224,6 +225,7 @@
 \newcommand{\mapres}[2]{\left. #1 \right|_{#2}}
 \newcommand{\ded}{\hfill $\blacksquare$}
 \newcommand{\id}{\mathrm{id}}
+\newcommand{\isom}{\overset{\sim}{\longrightarrow}}
 
 % 自前の定理環境
 %   https://mathlandscape.com/latex-amsthm/
@@ -248,6 +250,7 @@
 \newtheorem{EG}[Axiom]{例}
 
 %\newtheorem{}{Axiom}[]
+\numberwithin{equation}{section} % 式番号を「(3.5)」のように印刷
 
 % =================================
 
@@ -291,8 +294,8 @@
 
 \maketitle
 \begin{abstract}
-    報告者は，21年度の秋セメスターに\cite{ogs}を用いてセミナーを行った．
-    本稿では，このセミナーで勉強した内容を報告する．
+    本稿の目的は，21年度の秋セメスターに\cite{ogs}を用いて
+    行ったセミナーの内容を報告することである．
     まず複素関数論について復習してからリーマン球面について述べる．
     その後，本稿ではほとんど1次元の場合，すなわちリーマン面の場合
     しか扱わないが，一般の次元に対して複素多様体を
@@ -310,19 +313,22 @@
 \begin{itemize}
     \item $\zz,\qq,\rr,\cc$は整数，有理数，実数，複素数全体の集合を表す．
     \item 何らかの族$(x_i)_{i\in I}$について，添字集合が
-    明らかな場合は$(x_i)_{i}$のように表すことがある．
+    明らかな場合は$(x_i)_{i}$や$(x_i)$のように略記することがある．
     \item $X$を集合とする．たんに$X$の関数というときには，
     $X$上の複素数に値を取る写像とする．
     \item 差集合：集合$X$の元のうち$A$に属さないもの全体を$X-A$で表す．
     \item 球面：$S^{n-1}\coloneqq \{x\in \rr^{n}; \left\|x\right\|=1\}$
     \item 射影：直積集合に対し第$i$成分を対応させる写像を$\pr_i\colon\prod_{i} X_i\to X_i$とかく．
     \item 開近傍：距離$d$の定まっている空間$X$の点$a$に対して$U_r(a)=\{x\in X; d(x,a)<r\}$とかく．
+    \item ワイもや：$X$と$Y$を位相空間とし$f\colon X\to Y$を
+    連続写像とする．$X$の部分集合$A$が連結（コンパクト）ならば$f$による
+    像$f(A)$も連結（コンパクト）である．この性質を `ワイもや' と呼ぶ．
 \end{itemize}
 \section{複素関数論}
 
 複素関数論について復習する
 \footnote{複素関数論については例えば\cite{jimbo,yoshida,kaneko,fuji}を参照．}．
-$c$を複素数とし$f$を複素数平面の開集合$\varOmega$で
+$c$を複素数とし$f$をガウス平面の開集合$\varOmega$で
 定義された複素数に値を取る関数とする．
 $f$が$z=c$で解析的であるとは，
 何らかの実数$r>0$に対しては，$U_r(c)$で
@@ -330,7 +336,7 @@ $f$が$z=c$で解析的であるとは，
 $\dip f(z)=\sum_{n=0}^{\infty}a_{n}(z-c)^{n}$と表せる
 ことをいう．
 \begin{Definition}
-    $f$を複素数平面の開集合$\varOmega$で
+    $f$をガウス平面の開集合$\varOmega$で
     定義された関数とし，$z=x+iy$を$\varOmega$に属する複素数とする．
     コーシー・リーマンの方程式
     \begin{align}
@@ -417,7 +423,7 @@ $a_0\colon a_1=b_0\colon b_1$となるときである．
 \end{align*}
 である．
 
-\begin{Definition}
+\begin{Definition}\label{def:coord1}
     次の写像の組を考える．
     $\begin{tikzcd}
       {\cc^{2}-\{0\}}
@@ -443,13 +449,13 @@ $\pp^1$の位相空間としての性質を調べるために，次の部分集�
     U_1=\{[a_0\colon a_1]\in\pp^1; a_1\neq0\}.
 \end{align*}
 このとき次が成り立つ．
-\begin{align*}
-    U_0\cup U_1 &= \pp^1,\\
+\begin{align}
+    U_0\cup U_1 &= \pp^1, \label{eq:cov1}\\
     U_0\cap U_1 
-    &= \{[a_0\colon a_1]\in\pp^1; a_0, a_1\neq0\}\\
-    &= U_0 - \{[1\colon 0]\}\\
-    &= U_1 - \{[0\colon 1]\}.
-\end{align*}
+    &= \{[a_0\colon a_1]\in\pp^1; a_0, a_1\neq0\} \label{eq:inter-p1}\\
+    &= U_0 - \{[1\colon 0]\}  \notag\\
+    &= U_1 - \{[0\colon 1]\}. \notag
+\end{align}
 
 \begin{Lemma}\label{mnf:p1}
     1. 
@@ -460,8 +466,8 @@ $\pp^1$の位相空間としての性質を調べるために，次の部分集�
     2. 
     $U_0$と$U_1$は$\pp^1$の開集合であり，
     \begin{align*}
-        \pphi_0\colon U_0\overset{{\sim}}{\longrightarrow}\cc; [a_0\colon a_1]\mapsto a_1/a_0,
-        \pphi_1\colon U_1\overset{{\sim}}{\longrightarrow}\cc; [a_0\colon a_1]\mapsto a_0/a_1,
+        \pphi_0&\colon U_0\overset{{\sim}}{\longrightarrow}\cc;\ [a_0\colon a_1]\mapsto a_1/a_0,\\
+        \pphi_1&\colon U_1\overset{{\sim}}{\longrightarrow}\cc;\ [a_0\colon a_1]\mapsto a_0/a_1
     \end{align*}
     はともに同相写像である．
 
@@ -586,14 +592,43 @@ $\pp^1$の位相空間としての性質を調べるために，次の部分集�
     直積集合$\cc^2$も第2可算であるから，1点を除いた$\cc^2-\{0\}$もそうであり，
     これに全射$\pi$を適用した$\pp^1$も第2可算公理をみたす．
 
-    連結であること：
+    連結かつコンパクトであること：
     $S^3=\{P=(a_0,a_1)\in\cc^2;|a_0|^2+|a_1|^2=1\}\subset\cc^2-\{0\}$
+    であり，$\cc-\{0\}$の相対位相により，$S^3$は有界閉集合
+    つまりコンパクト集合であり，連結である．
+    全射連続写像$\mapres{\pi}{S^3}\colon S^3\to\pp^1$により 
+    `ワイもや' で$\pp^1$は連結かつコンパクト．
+    $\mapres{\pi}{S^3}$が全射であることは
+    \begin{align*}
+        [a_0\colon a_1]
+        =
+        \left[
+            \frac{a_0}{\sqrt{a_0^2+a_1^2}}\colon \frac{a_1}{\sqrt{a_0^2+a_1^2}}
+        \right]
+    \end{align*}
+    であることからしたがう．
+
+    ハウスドルフであること：
+    $P\neq Q$を$\pp^1$の点とする．
+    $p\colon GL(2,\cc)\to \Aut(\pp^1)$は
+    全射．したがって，$U_0\subset \pp^1$から，任意の
+    $p_{A}\in \Aut(U_0)$に対し$A\in GL(2,\cc)$が存在する．
+    つまり$p_A(P),p_A(Q)\in U_0$となる$A\in GL(2,\cc)$が存在する．
+    $U_0\cong \cc$であり$\cc$はハウスドルフなので，$p_A(P)$の
+    開近傍$U_P$と$p_A(Q)$の開近傍$U_Q$で$U_P\cap U_Q=\emp$を
+    みたすものが存在する．
+    $U_P$と$U_Q$は$U_0\subset\pp^1$の開集合であり，$p_{A}$が
+    同相なので$p_A^{-1}(U_P)$, $p_A^{-1}(U_Q)$は$\pp^1$に
+    おける$P$, $Q$の開近傍で
+    $p_A^{-1}(U_P)\cap p_A^{-1}(U_Q)=\emp$
+    をみたす．よって$\pp^1$はハウスドルフである．
 \end{proof}
 
-\begin{Attention}[{\eqref{eq:proj}}について]
+\begin{Attention}[{\eqref{eq:proj}}の幾何的イメージ]
     この等式については次の図\ref{fig:prj1}を見ると理解しやすい．
-    \begin{figure}[h]
+    \begin{figure}[ht]
         \centering
+        \scalebox{0.8}{
         \begin{tikzpicture}
             \draw[>=stealth,semithick] (-2,0)--(3,0); %x軸
             \draw[>=stealth,semithick] (0,-2)--(0,4); %y軸
@@ -621,7 +656,7 @@ $\pp^1$の位相空間としての性質を調べるために，次の部分集�
             \draw (1.8,3.6)node[right]{$U$を通る直線の上端};
             \draw (3,2.4)node[right]{$U$を通る直線};
             \draw (3,1.5)node[right]{$U$を通る直線の下端};
-        \end{tikzpicture}
+        \end{tikzpicture}}
         \caption{商写像の逆像1}
         \label{fig:prj1}
     \end{figure}
@@ -644,9 +679,9 @@ $\pp^1$の位相空間としての性質を調べるために，次の部分集�
     を考える．これは図\ref{fig:prj2}の上の直線を螺旋状に巻いて潰し，1次元トーラス
     にしたものである．
 
-    \begin{figure}[h]
+    \begin{figure}[hb]
         \centering
-        \begin{tikzpicture}[x=1cm]
+        \scalebox{0.8}{\begin{tikzpicture}[x=1cm]
             \fill[black!40] (0.7,0.1) rectangle (1.3,-0.1);
             \draw (1.3,-0.1) node[below]{$U$};
             \draw[->,>=stealth,semithick] (-5,0)--(5,0)node[below]{$\rr$}; %x軸
@@ -675,7 +710,7 @@ $\pp^1$の位相空間としての性質を調べるために，次の部分集�
 
             \draw[->,>=stealth,semithick] (-5,-7)--(5,-7)node[below]{$\rr$}; %x軸
             \foreach \x in {-5, -4,...,4} \draw (\x,-6.8)--(\x,-7.2);
-        \end{tikzpicture}
+        \end{tikzpicture}}
         \caption{商写像の逆像2}
         \label{fig:prj2}
     \end{figure}
@@ -688,18 +723,94 @@ $\pp^1$の位相空間としての性質を調べるために，次の部分集�
     \end{align*}
 \end{Attention}
 
+\subsection{貼りあわせ関数}\label{ssec:patch}
 
+補題\ref{mnf:p1}.2 から
+$\pphi_0 \colon U_0\isom\cc$, $\pphi_1\colon {U_1} \isom\cc$
+である．
+ここで，$\pphi_0(U_0)$の標準座標を$w$, 
+$\pphi_1(U_1)$の標準座標を$z$で表すことにする．
+定義\ref{def:coord1}のようにかくと
+\begin{align*}
+    z&\colon \pphi_1(U_1)= \cc \to \cc; (a)\mapsto a\\
+    w&\colon \pphi_0(U_0)= \cc \to \cc; (b)\mapsto b
+\end{align*}
+のようになる．複素数の一つ組に対し第一成分を対応させるということである．
+これによって点$(a)$と座標値$z(a)$を同一視し，点を単に$z$と書いたりする．
+ガウス平面$\cc$に，そこでの標準座標をつけて$\cc_z$, $\cc_w$のように表すと，
+$\cc_w\subset\pp^1$, $\cc_z\subset\pp^1$とみなせる．
+例えば$\cc_z$の点$1+\sqrt{-1}$は$\pp^1$では
+\begin{align*}
+    \pphi_1^{-1}\left(1+\sqrt{-1}\right)=\left[1+\sqrt{-1}\colon 1\right]    
+\end{align*}
+であり
+$\cc_w$の点$1/(1+\sqrt{-1})$は$\pp^1$では
+\begin{align*}
+    \pphi_0^{-1}\left(\frac{1}{1+\sqrt{-1}}\right)
+    =\left[1\colon \frac{1}{1+\sqrt{-1}}\right]
+    =\left[1+\sqrt{-1}\colon 1\right]        
+\end{align*}
+である．
+本節では，$\cc_z$と$\cc_w$の間の関係を調べる．
 
+いまの$1+\sqrt{-1}$の例を見ると
+\begin{align}\label{eq:patch1}
+    z=\frac{1}{w}
+\end{align}
+の関係が成り立っているようである．
+他の例も見る．
+例えば
+点$[2\colon 1]$と点$[1\colon 1/2]$は$\pp^1$では同じものである．
+これらをそれぞれ
+$\pphi_1$, $\pphi_0$で$\cc_z$, $\cc_w$の点とみなすと
+座標値は$z=2$と$w=1/2$である．
+したがって$z=1/w$が成り立つ．
 
+$z=0$のときはうまくいかない．
+$[z\colon 1] = [1\colon 1/z] = [1\colon w]$
+のようにして$w=1/z$となるものを見つけたいが$w=1/0$と
+なってしまい不合理である．
+$w=0$のときも同様である．
+そもそも$\pphi_0$は$U_0$上で定義されており，
+$z=0$となる$[0\colon 1]$のような点に対しては$w$の値は定まっていない．
+つまり，関係式\eqref{eq:patch1}が成り立つためには
+$z$も$w$も0でないことが必要である．
+逆に$z$と$w$のどちらも0でなければ，
+関係式\eqref{eq:patch1}が成り立つ．
 
+$z,w\ne 0$は\eqref{eq:inter-p1}より
+$[z\colon w]\in U_0\cap U_1$ということである．
+$[z\colon w]\in U_0\cap U_1$のとき$z$は$w$の正則関数になっている．
+$\pphi_0 (U_0\cap U_1) = \cc_w-\{0\} 
+= \cc_w \cap \cc_z 
+= \cc_z-\{0\} 
+= \pphi_1 (U_0\cap U_1)$
+なので，
+この正則関数を
+$\pphi_{10}\colon \cc_w-\{0\}=\pphi_0 (U_0\cap U_1) 
+\to \cc_z-\{0\} = \pphi_1 (U_0\cap U_1)$
+とかくことにすると，次の図式が可換になる．
+\begin{equation*}
+    \vcenter{\xymatrix@C=35pt@R=35pt{
+    {U_0\cap U_1} 
+        \ar@{<-{}}[d]^{\pphi_0^{-1}} 
+        \ar@{{}=}[r]^-{}
+    & {U_0 \cap U_1} 
+        %
+        \\
+    \cc_w -\{0\}
+        \ar[r]_{\pphi_{10}}
+    & \cc_z -\{0\}
+        \ar@{<-{}}[u]_{\pphi_1}
+        %\ar@{}[lu]
+    }}
+\end{equation*}
+つまり，$\pphi_{10} = \pphi_1\circ \pphi_0^{-1}$である．
+この正則関数を貼りあわせ関数と呼ぶ．
+また，$\pphi_{01} = \pphi_0\circ \pphi_1^{-1}\colon \pphi_1 (U_0\cap U_1) \to \pphi_0 (U_0\cap U_1)$
+も$w=1/z$として同様に定まる．これは正則であり$\pphi_{10}$の逆関数でもある．
 
-
-
-
-
-
-%\clearpage
-
+\subsection{複素多様体とリーマン面}
 
 $\cc^{n}$での座標が$z=(z_{1},\dots,z_{n})$であるとき
 複素数空間$\cc^{n}$を
@@ -713,7 +824,8 @@ $\cc^{n}_{z}$とか$\cc^{n}_{(z_{1},\dots,z_{n})}$とかく．
     座標近傍系とする\textbf{$n$次元複素多様体} ($n$-dimensional complex manifold) という．
 
     (1) 
-    $X$は空集合でなく，第2可算公理を満たす連結なハウスドルフ空間である．
+    $X$は空集合でなく，第2可算公理を満たす連結なハウスドルフ空間である\footnote{
+        条件 (1) のうち第2可算と連結を課さないことも多い (\cite{kobayashi1}など)．}．
 
     (2) 
     すべての$i\in I$に対して$U_i$は$X$の空でない開集合であり，
@@ -734,6 +846,24 @@ $\cc^{n}_{z}$とか$\cc^{n}_{(z_{1},\dots,z_{n})}$とかく．
 \end{Definition}
 
 1次元複素多様体を\textbf{リーマン面} (Riemann surface) という．
+
+\begin{Proposition}
+    リーマン球面$\pp^1$はリーマン面である．    
+\end{Proposition}
+
+\begin{proof}[\bf{証明}]
+    (1) 
+    補題\ref{mnf:p1}.4 からしたがう．
+
+    (2) 
+    \eqref{eq:cov1}と\eqref{eq:inter-p1} からしたがう．
+
+    (3) 
+    補題\ref{mnf:p1}.2 からしたがう．
+
+    (4) 
+    \ref{ssec:patch}節で説明した．
+\end{proof}
 
 \section{1次元における諸結果}
 
@@ -773,6 +903,29 @@ $\cc^{n}_{z}$とか$\cc^{n}_{(z_{1},\dots,z_{n})}$とかく．
 
 \section{それから}
 
+\section{結語}
+本稿はセミナーの予習ノートと板書（後述）を元に書いた．
+この辺りの経緯について述べる．
+2021年度は対面での課外活動が制限されていた．
+そのため，Zoom を用いた遠隔でのセミナーを行うことが主であった．
+板書には Microsoft OneNote を利用した．
+%Microsoft 365 Apps for Enterprise で提供されており，
+%立命館の学生は無料で利用できる(\cite{IT}参照)．
+Whiteboard Fox と異なり，14日間で板書が削除されることもないので
+便利である．
+ただし，時々動作が重くなることがあったので，
+発表者の画面共有もしながらセミナーを行った．
+この発表の際に書いた板書と予習ノートが本稿の下書きに当たる．
+清書するにあたって行ったのは，
+一般的な事柄を述べてから特殊なものが演繹されるように
+叙述の順序を変更したことと，
+セミナー中に気付いたことなどのコメントを加えたことである．
+%セミナーは筆者と谷川遼太郎君の２名で行った．
+%本稿で述べた事柄には谷川君のアイデアも取り入れられていることを注意しておく．
+
+
+
+
 \begin{thebibliography}{15}
 
     \bibitem{ueno} 上野健爾, 代数幾何, 岩波書店, 2005.
@@ -785,8 +938,6 @@ $\cc^{n}_{z}$とか$\cc^{n}_{(z_{1},\dots,z_{n})}$とかく．
 
     \bibitem{kobayashi1} 小林昭七, 複素幾何1 (岩波講座現代数学の基礎, 29), 岩波書店, 1997.
 
-    \bibitem{kobayashi2} 小林昭七, 複素幾何2 (岩波講座現代数学の基礎, 30), 岩波書店, 1998.
-
     \bibitem{jimbo} 神保道夫, 複素関数論 (岩波講座現代数学への入門, 4), 岩波書店, 1995.
 
     \bibitem{takebe} 武部尚志, 楕円積分と楕円関数 おとぎの国の歩き方, 日本評論社, 2019.
@@ -795,9 +946,9 @@ $\cc^{n}_{z}$とか$\cc^{n}_{(z_{1},\dots,z_{n})}$とかく．
 
     \bibitem{yoshida} 吉田洋一, 函数論 第2版 (岩波全書, 141), 岩波書店, 1973.
 
+    \bibitem{IT} 個人のOfficeの利用について（Microsoft 365 Apps for Enterprise）\url{https://it.support.ritsumei.ac.jp/hc/ja/articles/900006824883}, 2022年3月5日 最終閲覧.
+
     \bibitem{tmp} 著者, 書名 (シリーズ名, 巻数), 発行所, 発行都市名, 年号
 \end{thebibliography}
 
 \end{document}
-
-
