@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2018.7.14)  6 MAR 2022 16:02
+This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2018.7.14)  6 MAR 2022 16:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -843,12 +843,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 20718 strings out of 493273
- 371556 string characters out of 6144919
- 481961 words of memory out of 5000000
- 24208 multiletter control sequences out of 15000+600000
- 25544 words of font info for 129 fonts, out of 8000000 for 9000
+ 20714 strings out of 493273
+ 371526 string characters out of 6144919
+ 481953 words of memory out of 5000000
+ 24205 multiletter control sequences out of 15000+600000
+ 25376 words of font info for 128 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  55i,18n,82p,3261b,991s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on riemann-surface.dvi (10 pages, 68360 bytes).
+Output written on riemann-surface.dvi (10 pages, 67832 bytes).
