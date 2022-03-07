@@ -252,6 +252,8 @@
 %\newtheorem{}{Axiom}[]
 \numberwithin{equation}{section} % 式番号を「(3.5)」のように印刷
 
+\newcommand{\MM}{\mcal{M}}
+
 % =================================
 
 
@@ -875,6 +877,16 @@ $\cc^{n}_{z}$とか$\cc^{n}_{(z_{1},\dots,z_{n})}$とかく．
 
 % $\pp^{1}$の定義
 % 有理形関数　と　極の位数
+% 有理関数を延ばせること
+\subsection{リーマン球面の等質性}
+
+\colorbox{green}{有理形関数と有理関数体の一対一対応}
+
+\begin{Lemma}
+    $z$の有理関数$t=g(z)$は$\pp^1$上の正則関数    
+\end{Lemma}
+
+\subsection{リーマンロッホの定理}
 
 次はリーマンロッホの定理の特殊な場合である．
 
@@ -895,6 +907,62 @@ $\cc^{n}_{z}$とか$\cc^{n}_{(z_{1},\dots,z_{n})}$とかく．
         = 1+\sum_{i=1}^{m}n_{i}.
     \end{align*}
 \end{Theorem}
+
+\newcommand{\rrsp}{\Gamma\left(\pp^{1}, \OO_{\pp^{1}}\left(\sum_{i=1}^{m}n_{i}P_{i}\right)\right)}
+
+\begin{proof}[\bf{証明}]
+    関数の和は局所的に
+    $\sum_j a_j(z-p_i)^j + \sum_j b_j(z-p_i)^j 
+    = \sum_j (a_j + b_j)(z-p_i)^j$
+    と表示すればよく，スカラー倍も
+    $c\left(\sum_j a_j(z-p_i)^j\right) = \sum_j ca_j(z-p_i)^j$
+    とすればよい．零元は恒等的に$0$である関数である．
+
+    次元についての等式を示す．
+    $N = \sum_{i=1}^{m} n_{i}$とおく．
+    $\pp^1$の等質性から，どの$i=1,\dots,m$に対しても
+    $P_i \in\cc_z$であるとしてよい．
+    このとき$P_i$を$z$座標を用いて$a_i=z(P_i)$と表示する．
+    $f\in \rrsp-\{0\}$とすると$f$は$z$の有理関数$f(z)\in\cc(z)$を
+    延長したものである．$\left(\rrsp -\{0\}\subset \MM_{\pp^1}(\pp^1)\cong \cc(z).\right)$ 
+    $f$は$a_i$で高々$n_i$の極しか持たないから
+    $g(z)\coloneqq(z-a_1)^{n_1}\dots(z-a_m)^{n_m}f(z)$
+    は$\cc_z$で正則である．
+    $g$は有理関数$f$の分数を払ったものなので多項式関数である．
+    したがって，
+    \begin{align}
+        f(z) = \frac{b_0z^l+\dots+b_l}{(z-a_1)^{n_1}\dots(z-a_m)^{n_m}},\quad b_0\ne0 \label{eq:rrthm}
+    \end{align}
+    とかける．$P_i\in\cc_z$としたので，$z=\infty$で$f$は極を持たない．
+    よって$w=0$で
+    \begin{align*}
+        f_{w}(w) = f\left(\frac{1}{w}\right) 
+        &= \frac{b_0/w^l+\dots+b_l}{(1/w-a_1)^{n_1}\dots(1/w-a_m)^{n_m}}\\
+        &= \frac{b_0w^{N-l}+\dots+b_lw^{N}}{(1-a_1w)^{n_1}\dots(1-a_mw)^{n_m}}\\
+        &= w^{N-l}\frac{b_0+\dots+b_lw^l}{(1-a_1w)^{n_1}\dots(1-a_mw)^{n_m}}
+    \end{align*}
+    となる．右の分数は$w=0$で正則であり$b_0\ne 0$なので，
+    $w=0$で$f_w(w)\ne0$. 
+    $f$が$w=0$で極でないのは$l\leqq N$のときである．
+
+    逆に$l\leqq N$のとき，
+    $f$で\eqref{eq:rrthm}の形になるものは$\rrsp$の元で$w=0$で
+    極でないものである．
+    よって，$\rrsp$の元は
+    \begin{align*}
+    f_k(z)=\frac{z^k}{(z-a_1)^{n_1}\dots(z-a_m)^{n_m}}
+    \end{align*}
+    の1次結合でかける．$f_0,\dots f_m$は1次独立であるから
+    \begin{align*}
+        \dim\Gamma\left(
+            \pp^{1}, \OO_{\pp^{1}}\left(
+                \sum_{i=1}^{m}n_{i}P_{i}
+                \right)
+            \right)
+        = 1 + N 
+        = 1+\sum_{i=1}^{m}n_{i}.
+    \end{align*}
+\end{proof}
 
 \section{コンパクトリーマン面}
 
