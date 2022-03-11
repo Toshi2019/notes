@@ -47,6 +47,8 @@
 \usepackage{wrapfig}
 \usepackage{layout}
 \usepackage{url}
+
+\usepackage{okumacro}
 %=================================
 
 
@@ -329,27 +331,63 @@
 \section{複素関数論}
 
 複素関数論について復習する
-\footnote{複素関数論については例えば\cite{jimbo,yoshida,kaneko,fuji}を参照．}．
-$c$を複素数とし$f$をガウス平面の開集合$\varOmega$で
-定義された複素数に値を取る関数とする．
-$f$が$z=c$で解析的であるとは，
-何らかの実数$r>0$に対しては，$U_r(c)$で
-巾級数$\dip \sum_{n=0}^{\infty}a_{n}(z-c)^{n}$を用いて
-$\dip f(z)=\sum_{n=0}^{\infty}a_{n}(z-c)^{n}$と表せる
-ことをいう．
-\begin{Definition}
-    $f$をガウス平面の開集合$\varOmega$で
-    定義された関数とし，$z=x+iy$を$\varOmega$に属する複素数とする．
-    コーシー・リーマンの方程式
-    \begin{align}
-        \frac{1}{2}\left(\frac{\p}{\p x}+i\frac{\p}{\p y}\right)f(z)=0
-    \end{align}
-    をみたす$C^1$級の関数を正則関数という．
-\end{Definition}
-$f$が$z=c$で解析的となるのは，$z=c$で（複素）微分可能となるときである．
-またこのとき$f$はコーシー・リーマンの方程式をみたす
-\footnote{正則関数の特徴づけについては，例えば\cite[4.3節]{kaneko}を参照．}．
+\footnote{
+    複素関数論については
+    例えば\cite{jimbo,yoshida,kaneko,fuji}を
+    参照．
+}．
 
+
+\begin{Proposition}[{\cite[定義--命題1.5]{ogs}}]
+    $U$をガウス平面の領域（連結開集合）とする．$\pphi(z)$を$U$上の
+    複素数値関数とする．このとき，次の条件 (1)--(3) は同値である
+    \footnote{
+        正則関数の特徴づけについては，
+        例えば\cite[4.3節]{kaneko}を参照．
+    }．
+
+    (1) 
+    $\pphi(z)$は$U$の各点で\textbf{正則} (regular, holomorphic) すなわち，$U$の各点で極限値\begin{align*}
+        \lim_{h\to a}\frac{f(a+h)-f(a)}{h}
+    \end{align*}が存在する．
+
+    (2) 
+    $\pphi(z)$は$U$の各点$a$の近傍でテイラー展開できる．
+    \begin{align*}
+        \pphi(z)=\sum_{n=0}^{\infty}\frac{\pphi^{(n)}(a)}{n!}(z-a)^{n}
+    \end{align*}
+
+    (3) 
+    $U$の各点$a$と$a$を中心とし$U$に含まれる
+    任意の開円盤$\Delta$に対して，$\pphi(z)$と$\pphi(z)$の$a$を
+    中心とするテイラー展開は$\Delta$で一致する．
+\end{Proposition}
+
+\begin{Proposition}[{\cite[定義--命題1.6]{ogs}}]
+    $U$をガウス平面の領域（連結開集合）とする．
+    $a$を$U$の点とする．
+    $\pphi(z)$を$a$を中心とするある開円盤$\Delta_a$から$a$を
+    除いた集合$\Delta_a-\{a\}$上の正則関数とする．
+    このとき，次の条件 (1), (2) は同値である．
+
+    (1) 
+    $\pphi(z)$は$a$において高々極しかもたない．
+
+    (2) 
+    $\pphi(z)$は$a$においてローラン展開できる．
+    つまり，$a$の適当な近傍$W$及び適当な整数$k\geqq0$と
+    複素数列$(a_n)_{n=-k}^{\infty}$で，$W-\{a\}$で
+    次が成り立つものが存在する．
+    \begin{align}
+        \pphi(z)=\sum_{m=1}^{k}\frac{a_{-m}}{(z-a)^{m}}
+        +\sum_{n=0}^{\infty}a_n(z-a)^{n}. \label{eq:laurent}
+    \end{align}
+    \eqref{eq:laurent}の右辺第2項は正則である．
+    $k=0$のときは右辺第1項は$0$であり，
+    $k>0$のときは$a_{-k}\ne0$であるとする．
+    $U$の各点で高々極しかもたない$U-R$上の
+    正則関数$\pphi$を$U$上の\textbf{\ruby{有理形}{ゆうりけい}関数} (meromorphic function) という．
+\end{Proposition}
 
 \section{リーマン面}
 
@@ -820,9 +858,26 @@ $\pphi_{10}\colon \cc_w-\{0\}=\pphi_0 (U_0\cap U_1)
 
 \subsection{複素多様体とリーマン面}
 
-$\cc^{n}$での座標が$z=(z_{1},\dots,z_{n})$であるとき
+$\cc^{n}$での座標が$z=(z^{1},\dots,z^{n})$であるとき
 複素数空間$\cc^{n}$を
-$\cc^{n}_{z}$とか$\cc^{n}_{(z_{1},\dots,z_{n})}$とかく．
+$\cc^{n}_{z}$とか$\cc^{n}_{(z^{1},\dots,z^{n})}$とかく．
+$\UU$を$\cc^n$の空でない開集合とする．このとき，$\UU$で定義された
+複素数値関数$f$は標準座標を用いて$f(z)=f(z^{1},\dots,z^{n})$とかける．
+
+$f$が$\UU$で\textbf{正則}であるとは，次の条件 (1), (2) のどちらかをみたすことをいう．（これらは同値．）
+
+(1) 
+$f(z)$は$\UU$で連続であり，
+各変数$z^{j}\ (j=1,\dots,n)$について正則である．
+
+(2) 
+$\UU$の各点$a=(a^1,\dots,a^n)$に対して，
+関数$f(z)$は$a$の近傍で収束巾級数
+\begin{align*}
+    f(z)=\sum_{|\alpha|=0}^{\infty}c_{\alpha_1\dots\alpha_n}(z^1-a^1)^{\alpha_1}\dots(z^n-a^n)^{\alpha_n}
+\end{align*}
+で表される．
+
 
 \begin{Definition}[$n$次元複素多様体 {\cite[定義4.1]{ogs}}]
     $X$を位相空間とする．
@@ -841,7 +896,7 @@ $\cc^{n}_{z}$とか$\cc^{n}_{(z_{1},\dots,z_{n})}$とかく．
 
     (3) 
     すべての$i\in I$に対して，
-    $\UU_i$は$\cc^{n}_{(z_{1},\dots,z_{n})}$の
+    $\UU_i$は$\cc^{n}_{(z^{1},\dots,z^{n})}$の
     空でない開集合であり$\pphi_{i}\colon U_i\to\UU_i$は同相である．
 
     (4) 
@@ -852,6 +907,15 @@ $\cc^{n}_{z}$とか$\cc^{n}_{(z_{1},\dots,z_{n})}$とかく．
     \colon 
     \UU_{ij}\to\UU_{ji}$は正則である．
 \end{Definition}
+
+\begin{Example}\label{ex:openR}
+    $X=(X, (\pphi_{i}\colon U_{i}\to \UU_{i})_{i\in I})$を
+    $n$次元複素多様体とし，$U$を$X$の領域とする．
+    $J\coloneqq\{i\in I; U\cap U_i \neq \emp\}$とおく．
+    $U$は$(\mapres{\pphi_{j}}{U\cap U_{j}})_{j\in J}$を
+    座標近傍系とする$n$次元複素多様体になる．
+    この多様体$U$を開部分（複素）多様体という．
+\end{Example}
 
 1次元複素多様体を\textbf{リーマン面} (Riemann surface) という．
 
@@ -873,6 +937,48 @@ $\cc^{n}_{z}$とか$\cc^{n}_{(z_{1},\dots,z_{n})}$とかく．
     \ref{ssec:patch}節で説明した．
 \end{proof}
 
+$\pp^1$のような，台空間がコンパクトなリーマン面を
+とくにコンパクトリーマン面という．
+例\ref{ex:openR}のように，リーマン面$X$の領域$U$は
+リーマン面になる．この$U$を$X$開リーマン面という．
+
+\begin{Definition}
+    $X$を$n$次元複素多様体, $Y$を$m$次元複素多様体とする．
+    $f\colon X\to Y$を$X$から$Y$への連続写像とする．
+    
+    1. 
+    $P$を$X$の点とする．$P, f(P)$の近傍での$f$のある座標表示
+    $w_j=f_{ij}(z_i)$, きちんと書くと
+    $(w_{j}^{1},\dots,w_{j}^{m})
+    =\left(f_{ij}^{1}(z_{i}^{1},\dots,z_{i}^{n}),\dots,f_{ij}^{m}(z_{i}^{1},\dots,z_{i}^{n})\right)$
+    が$z_i(P)=(z_{i}^{1}(P),\dots,z_{i}^{n}(P))$で
+    正則であるとき，$f$は$P$で\textbf{正則}であるという．
+    
+    2. 
+    $f$がすべての点$\in X$で正則であるとき
+    $f$を\textbf{正則写像} (holomorphic mapping) とか
+    \textbf{正則射} (holomorphism) という．
+    また$\cc$への正則写像を\textbf{正則関数} (holomorphic 
+    function) という．
+
+    3. 
+    $U$を$X$の空でない開集合とする．
+    $U$上の関数$f$は$U$の各連結成分上正則であるとき$U$上の
+    正則関数という．ここで，複素多様体の領域は例\ref{ex:openR}の方法で
+    複素多様体とみなしている．
+\end{Definition}
+
+\begin{Definition}
+    $X$と$Y$を$n$次元複素多様体とする．$f\colon X\to Y$を正則写像とする．
+    正則写像$g\colon Y\to X$で$g\circ f=\id_X$
+    かつ$f\circ g=\id_Y$をみたすものが存在するとき，
+    $f$を\textbf{双正則写像} (biholomorphic mapping) とか\textbf{双正則射} (biholomorphism) という．
+    $X$から$Y$への双正則写像が存在するとき，
+    $X$と$Y$は\textbf{同形} (isomorphic) とか 
+    \textbf{双正則同値} (biholomorphically equivalent), 
+    またはたんに\textbf{双正則} (biholomorhic) であるという．
+\end{Definition}
+
 \section{1次元における諸結果}
 
 % $\pp^{1}$の定義
@@ -880,7 +986,7 @@ $\cc^{n}_{z}$とか$\cc^{n}_{(z_{1},\dots,z_{n})}$とかく．
 % 有理関数を延ばせること
 \subsection{リーマン球面の等質性}
 
-\colorbox{green}{有理形関数と有理関数体の一対一対応}
+\colorbox{brown}{有理形関数と有理関数体の一対一対応}
 
 \begin{Lemma}
     $z$の有理関数$t=g(z)$は$\pp^1$上の正則関数    
