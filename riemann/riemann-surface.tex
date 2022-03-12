@@ -228,6 +228,8 @@
 \newcommand{\ded}{\hfill $\blacksquare$}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\isom}{\overset{\sim}{\longrightarrow}}
+\newcommand{\tTop}{\textsf{Top}}
+
 
 % 自前の定理環境
 %   https://mathlandscape.com/latex-amsthm/
@@ -304,16 +306,15 @@
     その後，本稿ではほとんど1次元の場合，すなわちリーマン面の場合
     しか扱わないが，一般の次元に対して複素多様体を
     定義する．セミナーで学んだ事実のうち興味あるものとして，
-    リーマン・ロッホの定理をリーマン球面に対して適用したものと
-    代数学の基本定理がある．これらの証明が本稿の目標である．
-    最後に，特異点のない代数曲線について，
-    方程式の解としての構造と複素多様体としての構造の間の
-    対応について述べる．
+    リーマン・ロッホの定理をリーマン球面に対して適用したもの
+    と代数学の基本定理がある．これらの証明が本稿の目標である．
+    %最後に，特異点のない代数曲線について，
+    %方程式の解としての構造と複素多様体としての構造の間の
+    %対応について述べる．
 \end{abstract}
 
 \section*{凡例}
 本稿では，次の記号について断りなく用いる．
-
 \begin{itemize}
     \item $\zz,\qq,\rr,\cc$は整数，有理数，実数，複素数全体の集合を表す．
     \item 何らかの族$(x_i)_{i\in I}$について，添字集合が
@@ -322,11 +323,12 @@
     $X$上の複素数に値を取る写像とする．
     \item 差集合：集合$X$の元のうち$A$に属さないもの全体を$X-A$で表す．
     \item 球面：$S^{n-1}\coloneqq \{x\in \rr^{n}; \left\|x\right\|=1\}$
-    \item 射影：直積集合に対し第$i$成分を対応させる写像を$\pr_i\colon\prod_{i} X_i\to X_i$とかく．
+    \item 第$i$射影：直積集合に対し第$i$成分を対応させる写像を$\pr_i\colon\prod_{i} X_i\to X_i$とかく．
     \item 開近傍：距離$d$の定まっている空間$X$の点$a$に対して$U_r(a)=\{x\in X; d(x,a)<r\}$とかく．
     \item ワイもや：$X$と$Y$を位相空間とし$f\colon X\to Y$を
     連続写像とする．$X$の部分集合$A$が連結（コンパクト）ならば$f$による
     像$f(A)$も連結（コンパクト）である．この性質を `ワイもや' と呼ぶ．
+    \item 自己同形：$\Aut_{\mcal{C}}(X)$で$X$の$\mcal{C}$の射としての自己同形の集合を表す．
 \end{itemize}
 \section{複素関数論}
 
@@ -650,9 +652,9 @@ $\pp^1$の位相空間としての性質を調べるために，次の部分集�
 
     ハウスドルフであること：
     $P\neq Q$を$\pp^1$の点とする．
-    $p\colon GL(2,\cc)\to \Aut(\pp^1)$は
+    $p\colon GL(2,\cc)\to \Aut_{\tTop}(\pp^1)$は
     全射．したがって，$U_0\subset \pp^1$から，任意の
-    $p_{A}\in \Aut(U_0)$に対し$A\in GL(2,\cc)$が存在する．
+    $p_{A}\in \Aut_{\tTop}(U_0)$に対し$A\in GL(2,\cc)$が存在する．
     つまり$p_A(P),p_A(Q)\in U_0$となる$A\in GL(2,\cc)$が存在する．
     $U_0\cong \cc$であり$\cc$はハウスドルフなので，$p_A(P)$の
     開近傍$U_P$と$p_A(Q)$の開近傍$U_Q$で$U_P\cap U_Q=\emp$を
@@ -719,7 +721,7 @@ $\pp^1$の位相空間としての性質を調べるために，次の部分集�
     を考える．これは図\ref{fig:prj2}の上の直線を螺旋状に巻いて潰し，1次元トーラス
     にしたものである．
 
-    \begin{figure}[hb]
+    \begin{figure}[htb]
         \centering
         \scalebox{0.8}{\begin{tikzpicture}[x=1cm]
             \fill[black!40] (0.7,0.1) rectangle (1.3,-0.1);
@@ -774,6 +776,8 @@ $\pphi_1(U_1)$の標準座標を$z$で表すことにする\footnote{
     2つとも並べておく．
     $w$が `ダブリュー' で，
     $\omega$が `オメガ' である．
+    関係あるのかどうかは不明だが，
+    $w$はドイツ語で `値' を意味する `Wert' の頭文字である．
     ちなみに$\varpi$は `オメガバー' ではなく `パイ' である
     （\TeX では\texttt{$\backslash$varpi}と入力する）．}．
 定義\ref{def:coord1}のようにかくと
@@ -909,6 +913,11 @@ $\UU$の各点$a=(a^1,\dots,a^n)$に対して，
 \end{Definition}
 
 \begin{Example}\label{ex:openR}
+    1. 
+    $\cc^n$の領域$\UU$は$(\id_{\UU}\colon\UU\to\UU)$を
+    座標近傍系とする$n$次元複素多様体である．
+
+    2. 
     $X=(X, (\pphi_{i}\colon U_{i}\to \UU_{i})_{i\in I})$を
     $n$次元複素多様体とし，$U$を$X$の領域とする．
     $J\coloneqq\{i\in I; U\cap U_i \neq \emp\}$とおく．
@@ -939,7 +948,7 @@ $\UU$の各点$a=(a^1,\dots,a^n)$に対して，
 
 $\pp^1$のような，台空間がコンパクトなリーマン面を
 とくにコンパクトリーマン面という．
-例\ref{ex:openR}のように，リーマン面$X$の領域$U$は
+例\ref{ex:openR}.2 のように，リーマン面$X$の領域$U$は
 リーマン面になる．この$U$を$X$開リーマン面という．
 
 \begin{Definition}
@@ -964,7 +973,7 @@ $\pp^1$のような，台空間がコンパクトなリーマン面を
     3. 
     $U$を$X$の空でない開集合とする．
     $U$上の関数$f$は$U$の各連結成分上正則であるとき$U$上の
-    正則関数という．ここで，複素多様体の領域は例\ref{ex:openR}の方法で
+    正則関数という．ここで，複素多様体の領域は例\ref{ex:openR}.2 の方法で
     複素多様体とみなしている．
 \end{Definition}
 
@@ -979,18 +988,65 @@ $\pp^1$のような，台空間がコンパクトなリーマン面を
     またはたんに\textbf{双正則} (biholomorhic) であるという．
 \end{Definition}
 
+正則写像の合成は正則写像であり，恒等写像$\id$は正則である．
+したがって\{リーマン面\}，より一般に\{$n$次元複素多様体\}は
+正則写像を射とする圏になる．
+
 \section{1次元における諸結果}
 
-% $\pp^{1}$の定義
+
 % 有理形関数　と　極の位数
 % 有理関数を延ばせること
-\subsection{リーマン球面の等質性}
 
-\colorbox{brown}{有理形関数と有理関数体の一対一対応}
+\subsection{リーマン球面上の正則写像と等質性}
 
-\begin{Lemma}
-    $z$の有理関数$t=g(z)$は$\pp^1$上の正則関数    
+$\pp^1$から$\pp^1$への写像はそれぞれ2枚の局所座標系を用いて
+$z,w$と$t,s$により表示できる．
+\begin{Lemma}[{\cite[補題1.12]{ogs}}]\label{lem:contiP1}
+    $z$の有理関数$t=g(z)$は$\pp^1$から$\pp^1$への
+    正則写像$\widetilde{g}$に一意に延長される．
 \end{Lemma}
+
+\begin{proof}[\textbf{証明}]
+    $g\colon\cc_z\to\cc_t$に
+    対し$\widetilde{g}\colon\pp^1\to\pp^1$が存在したとする．
+    $\widetilde{g}$の座標表示は$s=1/t$, $w=1/z$を用いて得られる．
+    \begin{equation*}
+        \vcenter{\xymatrix@C=36pt@R=36pt{
+        \cc_z 
+        \ar@{{}->}[d]_{w=1/z} 
+        \ar@{{}->}[rr]^{g_{t,z}} 
+        \ar@{{}->}[rrd]^{g_{s,z}} 
+        && \cc_t
+        \ar@{{}->}[d]^{s=1/t} 
+        \\
+        \cc_w 
+        \ar[rr]_{g_{s,w}}
+        \ar@{{}->}[rru]_{g_{t,w}} 
+        && \cc_s \ar@{}[lu]
+        }}
+    \end{equation*}
+    
+\end{proof}
+
+\begin{Lemma}[リーマン球面の等質性{\cite[補題1.13]{ogs}}]
+    $A\in GL(2,\cc)$のとき
+    $p_A \in \Aut_{\text{リーマン面}}(\pp^1)$. 
+    また，$\pp^1$の任意の2点$P$, $Q$に対し，
+    $p_A(P)=Q$となる$A\in GL(2,\cc)$が存在する．
+\end{Lemma}
+
+\begin{proof}[\textbf{証明}]
+    $P=[a_0\colon a_1]$, $Q=[a'_0\colon a'_1]$とおく．
+    $\pp^1$の定義より，$(a_o,a_1), (a'_0,a'_1\in\cc^2)$は
+    どちらも$(0,0)$ではない．したがって可逆な行列$A\in GL(2,\cc)$で
+    $A\begin{bmatrix}
+        a_0\\a_1
+    \end{bmatrix}=\begin{bmatrix}
+        a'_0\\a'_1
+    \end{bmatrix}$となるものが存在する．
+    この$A$に対し$p_A(P)=Q$が成り立つ．
+\end{proof}
 
 \subsection{リーマンロッホの定理}
 
@@ -1072,16 +1128,72 @@ $\pp^1$のような，台空間がコンパクトなリーマン面を
 
 \section{コンパクトリーマン面}
 
+\begin{Lemma}[{\cite[問題2.8]{ogs}}]
+    コンパクト集合の離散部分集合は有限集合である．
+    ただし，位相空間$X$の部分集合$R$が離散集合であるとは，
+    $X$の任意の点$P$に対して，$R\cap U_{P}\subset\{P\}$
+    である$P$の近傍$U_P$が存在することをいう．
+\end{Lemma}
+\begin{proof}[\bf{証明}]
+    $R$を$X$の離散部分集合とする．$X$の
+    任意の点$P$に対して，$R\cap U_{P}\subset\{P\}$
+    である$P$の近傍$U_P$が存在するので，これを
+    用いて$X=\bigcup_{P\in X}U_P$とすると，$X$はコンパクトなので
+    有限個の$P_1,\dots P_n$で$X=U_{P_{1}},\dots,U_{P_{n}}$と
+    かける．いま
+    \begin{align*}
+        R = R\cap X 
+        = R\cap \left(U_{P_{1}}\cup\dots\cup U_{P_{n}}\right)
+        = \left(R\cap U_{P_{1}}\right)\cup\dots\cup\left(R\cap U_{P_{n}}\right)
+        \subset \{P_1\}\cup\dots\cup\{P_n\}
+    \end{align*}
+    が成り立っている．
+    $S=\{P_1\}\cup\dots\cup\{P_n\}$は有限集合なので
+    $S$の部分集合である$R$も有限集合である．
+\end{proof}
+
+\colorbox{brown}{定値でないなら会社ぞう}
+
+\begin{Theorem}[{\cite[定理2.22]{ogs}}]
+    $X$をコンパクトリーマン面とし，$Y$をリーマン面とする．
+    $f\colon X\to Y$を正則写像とする．
+    このとき，$f$は定値写像であるか全射であるかのどちらか一方である．
+    また，$Y$がコンパクトでなければ$f$は定値写像となる．
+\end{Theorem}
+
+\begin{proof}[\bf{証明}]
+    $f$が定値写像でないとすると$f$は開写像である．
+\end{proof}
+
 \begin{Theorem}[代数学の基本定理{\cite[系2.24]{ogs}}]
     $n\geqq1$を自然数とする．複素数を係数とする$n$次方程式
-    \begin{align*}
-        a_{0}z^{n}+a_{1}z^{n-1}+\dots +a_{n}=0,\quad a_{0}\neq 0
-    \end{align*}
+    \begin{align}
+        a_{0}z^{n}+a_{1}z^{n-1}+\dots +a_{n}=0,\quad a_{0}\neq 0 \label{eq:thmAlg}
+    \end{align}
     に対し，複素数解$\alpha$が存在する．
 \end{Theorem}
 
-\section{それから}
-ここはかくか微妙
+\begin{proof}[\bf{証明}]
+    $f_{z}(z)=a_{0}z^{n}+a_{1}z^{n-1}+\dots +a_{n}$と
+    おくと，$f_z(z)$は多項式関数なので有理関数である．
+    したがって補題\ref{lem:contiP1}より$\pp^1$上の自己正則写像に
+    一意に延長される．これを$f\colon\pp^1\to\pp^1$とおく．
+    $\pp^1=\cc_z\cup\cc_w$とかくとき，
+    \begin{align*}
+        f_w(w)=f_z\left(\frac{1}{w}\right)
+        =a_0\frac{1}{w^n}+\dots+a_n
+        =\frac{a_0+a_1w+\dots+a_n}{w^n}
+    \end{align*}
+    が$\cc_w$での$f$の座標表示を与える．$n\geqq1$と$a_0\ne0$より
+    $f(\infty)=f_w(0)=\infty$であり，
+    $f(0)=f_z(0)=a_n\ne\infty$より$f$は定値写像ではない．
+    従って$f$は全射なので，$0$に対し$f(a)=0$となる$a\in\pp^1$が
+    存在する．いま$f(\infty)=\infty$なので$a\ne\infty$. 
+    すなわち$a\in\cc_z$であり$a$は方程式\eqref{eq:thmAlg}の解になる．
+\end{proof}
+
+%\section{それから}
+%ここはかくか微妙
 \section{結語}
 本稿はセミナーの予習ノートと板書（後述）を元に書いた．
 この辺りの経緯について述べる．
