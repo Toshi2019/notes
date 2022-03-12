@@ -994,6 +994,7 @@ $\pp^1$のような，台空間がコンパクトなリーマン面を
 \end{Definition}
 
 正則写像の合成は正則写像であり，恒等写像$\id$は正則である．
+これらは結合則と単位則をみたす．
 したがって\{リーマン面\}，より一般に\{$n$次元複素多様体\}は
 正則写像を射とする圏になる．
 
@@ -1007,31 +1008,38 @@ $\pp^1$のような，台空間がコンパクトなリーマン面を
 
 $\pp^1$から$\pp^1$への写像はそれぞれ2枚の局所座標系を用いて
 $z,w$と$t,s$により表示できる．
+
 \begin{Lemma}[{\cite[補題1.12]{ogs}}]\label{lem:contiP1}
     $z$の有理関数$t=g(z)$は$\pp^1$から$\pp^1$への
     正則写像$\widetilde{g}$に一意に延長される．
 \end{Lemma}
 
 \begin{proof}[\textbf{証明}]
+    （一意性）
     $g\colon\cc_z\to\cc_t$に
     対し$\widetilde{g}\colon\pp^1\to\pp^1$が存在したとする．
-    $\widetilde{g}$の座標表示は$s=1/t$, $w=1/z$を用いて得られる．
-    \begin{equation*}
-        \vcenter{\xymatrix@C=36pt@R=36pt{
-        \cc_z 
-        \ar@{{}->}[d]_{w=1/z} 
-        \ar@{{}->}[rr]^{g_{t,z}} 
-        \ar@{{}->}[rrd]^{g_{s,z}} 
-        && \cc_t
-        \ar@{{}->}[d]^{s=1/t} 
-        \\
-        \cc_w 
-        \ar[rr]_{g_{s,w}}
-        \ar@{{}->}[rru]_{g_{t,w}} 
-        && \cc_s \ar@{}[lu]
-        }}
-    \end{equation*}
-    
+    $\widetilde{g}$の座標表示はいずれも$s=1/t$, $w=1/z$を用いて
+    得られる．
+    $g$に対しもう一つの正則関数$\widetilde{g}'$があっても，
+    $\cc_z$では$\widetilde{g}_{t,z}=g(z)
+    =\widetilde{g}_{t,z}'$が成り立つから，
+    有理形関数$\pp^1\to\cc_t$の剛性より$\widetilde{g}=\widetilde{g}'$. 
+
+    （存在）
+    $t=g(z)$に$z=1/w$を代入して$t=g(1/w)$. これを$g(z)$と
+    貼りあわせて$\pp^1=\cc_z\cup\cc_w$上の有理形関数$\widetilde{g}$を
+    定めることができる．$\widetilde{g}$が$\pp^1$から$\pp^1$への
+    正則写像になることを示す．
+    $P$を$\pp^1$の点とする．$\widetilde{g}$が$P$で極をもつとき，
+    $\widetilde{g}(P)=[1\colon0]$とする．
+    $\dip \lim_{Q\to P}\widetilde{g}(Q)=\infty$なので$\widetilde{g}$は$P$で連続である．
+    これにより$\widetilde{g}$は$\pp^1$から$\pp^1$への連続写像となる．
+    $P\in\cc_z$のとき$\widetilde{g}$は$P$の近傍で$s=1/g(z)$と
+    かける．$1/g(z(P))=0$であり，$a(z)$は$z(P)$で正則である．
+    同様に$z, w, t, s$の全ての座標で正則であることがわかる．
+    $P$で極をもたなければ$\widetilde{g}$は正則である．
+    よって$\widetilde{g}$は$\pp^1$から$\pp^1$への
+    正則写像である．
 \end{proof}
 
 \begin{Lemma}[リーマン球面の等質性{\cite[補題1.13]{ogs}}]
@@ -1133,6 +1141,8 @@ $z,w$と$t,s$により表示できる．
 
 \section{コンパクトリーマン面}
 
+\subsection{コンパクトリーマン面の間の正則写像}
+
 \begin{Lemma}[{\cite[問題2.8]{ogs}}]
     コンパクト集合の離散部分集合は有限集合である．
     ただし，位相空間$X$の部分集合$R$が離散集合であるとは，
@@ -1156,8 +1166,6 @@ $z,w$と$t,s$により表示できる．
     $S=\{P_1\}\cup\dots\cup\{P_n\}$は有限集合なので
     $S$の部分集合である$R$も有限集合である．
 \end{proof}
-
-\colorbox{cyan}{局所座標系}
 
 \begin{Theorem}[{\cite[定理2.18]{ogs}}]
     $X$と$Y$をリーマン面とする．
@@ -1223,6 +1231,8 @@ $z,w$と$t,s$により表示できる．
     対偶をとって，$Y$がコンパクトでないなら$f$が定数写像である
     こともわかった．
 \end{proof}
+
+\subsection{代数学の基本定理}
 
 \begin{Theorem}[代数学の基本定理{\cite[系2.24]{ogs}}]
     $n\geqq1$を自然数とする．複素数を係数とする$n$次方程式

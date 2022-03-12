@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2018.7.14)  12 MAR 2022 21:08
+This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2018.7.14)  12 MAR 2022 21:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -852,18 +852,18 @@ displayed correctly.
 174> [4] <xymatrix 2x2 219> [5] [6]
 LaTeX Font Info:    Font shape `JT1/hgt/m/n' will be
 (Font)              scaled to size 7.39746pt on input line 787.
- [7] <xymatrix 2x2 185> [8] [9] <xymatrix 3x2 306> [10] [11] [12] [13] [14] (./riemann-surface.aux)
+ [7] <xymatrix 2x2 185> [8] [9] [10] [11] [12] [13] [14] (./riemann-surface.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 20837 strings out of 493273
- 372607 string characters out of 6144919
+ 20834 strings out of 493273
+ 372591 string characters out of 6144919
  487282 words of memory out of 5000000
- 24322 multiletter control sequences out of 15000+600000
+ 24319 multiletter control sequences out of 15000+600000
  26752 words of font info for 135 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  55i,18n,82p,3261b,991s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on riemann-surface.dvi (14 pages, 94408 bytes).
+Output written on riemann-surface.dvi (14 pages, 95304 bytes).
