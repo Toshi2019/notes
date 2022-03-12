@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2018.7.14)  12 MAR 2022 19:49
+This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2018.7.14)  12 MAR 2022 21:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -781,68 +781,68 @@ LaTeX Font Info:    Font shape `JY1/hgt/m/n' will be
 LaTeX Font Info:    Font shape `JT1/hmc/m/n' will be
 (Font)              scaled to size 6.47278pt on input line 336.
 LaTeX Font Info:    Font shape `JT1/hmc/m/n' will be
-(Font)              scaled to size 7.39746pt on input line 340.
-LaTeX Font Info:    Font shape `JY1/hgt/m/n' will be
-(Font)              scaled to size 7.39746pt on input line 340.
-LaTeX Font Info:    Font shape `JY1/hgt/m/n' will be
-(Font)              scaled to size 5.5481pt on input line 340.
+(Font)              scaled to size 4.62341pt on input line 336.
 LaTeX Font Info:    Font shape `JT1/hmc/m/n' will be
-(Font)              scaled to size 5.5481pt on input line 340.
+(Font)              scaled to size 7.39746pt on input line 345.
+LaTeX Font Info:    Font shape `JY1/hgt/m/n' will be
+(Font)              scaled to size 7.39746pt on input line 345.
+LaTeX Font Info:    Font shape `JY1/hgt/m/n' will be
+(Font)              scaled to size 5.5481pt on input line 345.
+LaTeX Font Info:    Font shape `JT1/hmc/m/n' will be
+(Font)              scaled to size 5.5481pt on input line 345.
  [1
 
 ]
 LaTeX Font Info:    Font shape `JT1/hmc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/hgt/m/n' tried instead on input line 343.
+(Font)              Font shape `JT1/hgt/m/n' tried instead on input line 348.
 LaTeX Font Info:    Font shape `JT1/hgt/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 343.
+(Font)              scaled to size 9.24683pt on input line 348.
 LaTeX Font Info:    Font shape `JY1/hmc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/hgt/m/n' tried instead on input line 343.
+(Font)              Font shape `JY1/hgt/m/n' tried instead on input line 348.
 LaTeX Font Info:    Font shape `JY1/hgt/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 343.
+(Font)              scaled to size 9.24683pt on input line 348.
 LaTeX Font Info:    Font shape `JT1/hmc/bx/n' in size <5> not available
-(Font)              Font shape `JT1/hgt/m/n' tried instead on input line 391.
+(Font)              Font shape `JT1/hgt/m/n' tried instead on input line 396.
 LaTeX Font Info:    Font shape `JT1/hgt/m/n' will be
-(Font)              scaled to size 4.62341pt on input line 391.
+(Font)              scaled to size 4.62341pt on input line 396.
 LaTeX Font Info:    Font shape `JY1/hmc/bx/n' in size <5> not available
-(Font)              Font shape `JY1/hgt/m/n' tried instead on input line 391.
+(Font)              Font shape `JY1/hgt/m/n' tried instead on input line 396.
 LaTeX Font Info:    Font shape `JY1/hgt/m/n' will be
-(Font)              scaled to size 4.62341pt on input line 391.
+(Font)              scaled to size 4.62341pt on input line 396.
 LaTeX Font Info:    Font shape `JT1/hgt/m/n' will be
-(Font)              scaled to size 11.09619pt on input line 396.
+(Font)              scaled to size 11.09619pt on input line 401.
 LaTeX Font Info:    Font shape `JY1/hgt/m/n' will be
-(Font)              scaled to size 11.09619pt on input line 396.
-LaTeX Font Info:    Font shape `JT1/hmc/m/n' will be
-(Font)              scaled to size 4.62341pt on input line 405.
+(Font)              scaled to size 11.09619pt on input line 401.
  [2]
 
 LaTeX Font Warning: Font shape `JT1/hmc/m/it' undefined
-(Font)              using `JT1/hmc/m/n' instead on input line 409.
+(Font)              using `JT1/hmc/m/n' instead on input line 414.
 
 
 LaTeX Font Warning: Font shape `JY1/hmc/m/it' undefined
-(Font)              using `JY1/hmc/m/n' instead on input line 409.
+(Font)              using `JY1/hmc/m/n' instead on input line 414.
 
 
 LaTeX Font Warning: Font shape `JT1/hmc/bx/it' undefined
-(Font)              using `JT1/hmc/bx/n' instead on input line 409.
+(Font)              using `JT1/hmc/bx/n' instead on input line 414.
 
 
 LaTeX Font Warning: Font shape `JY1/hmc/bx/it' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 409.
+(Font)              using `JY1/hmc/bx/n' instead on input line 414.
 
 [3]
 LaTeX Font Info:    Font shape `JT1/hmc/m/it' will be
-(Font)              scaled to size 9.24683pt on input line 539.
+(Font)              scaled to size 9.24683pt on input line 544.
 LaTeX Font Info:    Font shape `JY1/hmc/m/it' will be
-(Font)              scaled to size 9.24683pt on input line 539.
+(Font)              scaled to size 9.24683pt on input line 544.
 LaTeX Font Info:    Font shape `JT1/hmc/bx/it' in size <10> not available
-(Font)              Font shape `JT1/hgt/m/n' tried instead on input line 539.
+(Font)              Font shape `JT1/hgt/m/n' tried instead on input line 544.
 LaTeX Font Info:    Font shape `JT1/hgt/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 539.
+(Font)              scaled to size 9.24683pt on input line 544.
 LaTeX Font Info:    Font shape `JY1/hmc/bx/it' in size <10> not available
-(Font)              Font shape `JY1/hgt/m/n' tried instead on input line 539.
+(Font)              Font shape `JY1/hgt/m/n' tried instead on input line 544.
 LaTeX Font Info:    Font shape `JY1/hgt/m/n' will be
-(Font)              scaled to size 9.24683pt on input line 539.
+(Font)              scaled to size 9.24683pt on input line 544.
  <xymatrix 2x2
 
 Package xypdf Warning: The produced DVI file is NOT PORTABLE. Convert it with
@@ -851,19 +851,19 @@ displayed correctly.
 
 174> [4] <xymatrix 2x2 219> [5] [6]
 LaTeX Font Info:    Font shape `JT1/hgt/m/n' will be
-(Font)              scaled to size 7.39746pt on input line 782.
- [7] <xymatrix 2x2 185> [8] [9] <xymatrix 3x2 306> [10] [11] [12] [13] (./riemann-surface.aux)
+(Font)              scaled to size 7.39746pt on input line 787.
+ [7] <xymatrix 2x2 185> [8] [9] <xymatrix 3x2 306> [10] [11] [12] [13] [14] (./riemann-surface.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 20836 strings out of 493273
- 372603 string characters out of 6144919
+ 20837 strings out of 493273
+ 372607 string characters out of 6144919
  487282 words of memory out of 5000000
- 24321 multiletter control sequences out of 15000+600000
+ 24322 multiletter control sequences out of 15000+600000
  26752 words of font info for 135 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  55i,18n,82p,3261b,991s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on riemann-surface.dvi (13 pages, 89436 bytes).
+Output written on riemann-surface.dvi (14 pages, 94408 bytes).
