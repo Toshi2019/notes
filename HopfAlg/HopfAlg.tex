@@ -1,0 +1,218 @@
+% -----------------------
+% preamble
+% -----------------------
+% Don't change preamble code yourself. If you add something(usepackage, newtheorem, newcommand, renewcommand),
+% please tell them editor of institutional paper of RUMS.
+
+%documentclass
+%------------------------
+\documentclass[12pt, a4paper, dvipdfmx]{jsarticle}
+
+
+%usepackage
+%------------------------
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[psamsfonts]{amssymb}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{enumerate}
+\usepackage{verbatim}
+\usepackage{subfigure}
+\usepackage{proof}
+\usepackage{listings}
+\usepackage{otf}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{tikz}
+\usepackage[all]{xy}
+\usepackage{amscd}
+
+\usepackage{pb-diagram}
+
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+
+\usepackage{enumitem}
+
+\usepackage{bbm}
+
+\usetikzlibrary{cd}
+
+%theoremstyle
+%--------------------------
+\theoremstyle{definition}
+
+
+%newtheoem
+%--------------------------
+%If you want to use theorem environment in Japanece, You can use these code. 
+%Attention
+%--------------------------
+%all theorem enivironment number depend on only section number.
+\newtheorem{Axiom}{公理}[section]
+\newtheorem{Definition}[Axiom]{定義}
+\newtheorem{Theorem}[Axiom]{定理}
+\newtheorem{Proposition}[Axiom]{命題}
+\newtheorem{Lemma}[Axiom]{補題}
+\newtheorem{Corollary}[Axiom]{系}
+\newtheorem{Example}[Axiom]{例}
+\newtheorem{Claim}[Axiom]{主張}
+\newtheorem{Property}[Axiom]{性質}
+\newtheorem{Attention}[Axiom]{注意}
+\newtheorem{Question}[Axiom]{問}
+\newtheorem{Problem}[Axiom]{問題}
+\newtheorem{Consideration}[Axiom]{考察}
+\newtheorem{Alert}[Axiom]{警告}
+\newtheorem{Notation}[Axiom]{記号}
+
+
+
+%----------------------------
+%If you want to use theorem environment with no number in Japanese, You can use these code.
+\newtheorem*{Axiom*}{公理}
+\newtheorem*{Definition*}{定義}
+\newtheorem*{Theorem*}{定理}
+\newtheorem*{Proposition*}{命題}
+\newtheorem*{Lemma*}{補題}
+\newtheorem*{Example*}{例}
+\newtheorem*{Corollary*}{系}
+\newtheorem*{Claim*}{主張}
+\newtheorem*{Property*}{性質}
+\newtheorem*{Attention*}{注意}
+\newtheorem*{Question*}{問}
+\newtheorem*{Problem*}{問題}
+\newtheorem*{Consideration*}{考察}
+\newtheorem*{Alert*}{警告}
+
+%--------------------------
+%If you want to use theorem environment in English, You can use these code.
+%--------------------------
+%all theorem enivironment number depend on only section number.
+\newtheorem{Axiom+}{Axiom}[section]
+\newtheorem{Definition+}[Axiom+]{Definition}
+\newtheorem{Theorem+}[Axiom+]{Theorem}
+\newtheorem{Proposition+}[Axiom+]{Proposition}
+\newtheorem{Lemma+}[Axiom+]{Lemma}
+\newtheorem{Example+}[Axiom+]{Example}
+\newtheorem{Corollary+}[Axiom+]{Corollary}
+\newtheorem{Claim+}[Axiom+]{Claim}
+\newtheorem{Property+}[Axiom+]{Property}
+\newtheorem{Attention+}[Axiom+]{Attention}
+\newtheorem{Question+}[Axiom+]{Question}
+\newtheorem{Problem+}[Axiom+]{Problem}
+\newtheorem{Consideration+}[Axiom+]{Consideration}
+\newtheorem{Alert+}{Alert}
+
+%commmand
+%----------------------------
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\Y}{\mathcal{Y}}
+\newcommand{\Hil}{\mathcal{H}}
+\newcommand{\RKHS}{\Hil_{k}}
+\newcommand{\Loss}{\mathcal{L}_{D}}
+\newcommand{\MLsp}{(\X, \Y, D, \Hil, \Loss)}
+\newcommand{\p}{\partial}
+\newcommand{\h}{\mathscr}
+\newcommand{\mcal}{\mathcal}
+\newcommand{\lan}{\langle}
+\newcommand{\ran}{\rangle}
+\newcommand{\pal}{\parallel}
+\newcommand{\dip}{\displaystyle}
+\newcommand{\e}{\varepsilon}
+\newcommand{\dl}{\delta}
+\newcommand{\pphi}{\varphi}
+\newcommand{\ti}{\tilde}
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\Probsp}{(\Omega, \F, \P)}
+
+
+
+%new definition macro
+%-------------------------
+\def\inner<#1>{\langle #1 \rangle}
+
+\usepackage[stable]{footmisc}
+\renewcommand{\proofname}{\bf 証明} % 「証明」の見出しを日本語にする
+\newcommand{\pr}{\mathop{\mathrm{pr}}\nolimits} % 射影の記号を斜字体にしない
+\newcommand{\id}{\mathop{\mathrm{id}}\nolimits} % 恒等写像
+\newcommand{\Ob}{\mathop{\mathrm{Ob}}\nolimits}
+\numberwithin{equation}{section} % 式番号を「(3.5)」のように印刷
+\newcommand{\Hom}{\mathop{\mathrm{Hom}}\nolimits}
+\newcommand{\Mod}{\mathop{\mathrm{Mod}}\nolimits}
+\newcommand{\End}{\mathop{\mathrm{End}}\nolimits}
+\newcommand{\Aut}{\mathop{\mathrm{Aut}}\nolimits}
+\newcommand{\Mor}{\mathop{\mathrm{Mor}}\nolimits}
+
+
+
+\usepackage{eufrak}
+\def\rnum#1{\expandafter{\romannumeral #1}} 
+\def\Rnum#1{\uppercase\expandafter{\romannumeral #1}} 
+
+\newcommand{\bm}[1]{{\mbox{\boldmath $#1$}}}
+
+
+%----------------------------
+%documenet 
+%----------------------------
+% Your main code must be written between begin document and end document.
+\title{量子群とヤンバクスター方程式の読書ノート}
+\author{Toshi2019}
+\date{}
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\section{ホップ代数}
+
+ホップ代数の定義と例
+
+\subsection*{代数と余代数}
+
+代数というときには, 単位元をもつ結合代数を意味する. 
+
+\begin{Definition}
+  代数 $(A, m, u)$ とは, $\bm{C}$ 線形空間 $A$ と
+  $\bm{C}$ 線形写像
+  \begin{align*}
+    &m : A \otimes A \to A \tag{積}\\
+    &u : {\bm{C}} \to A \tag{単位射}
+  \end{align*}
+  の三つ組で次の図式を可換にするものをいう. 
+  \[
+  \begin{CD} 
+    A \otimes A \otimes A @>{m\otimes \id}>> A \otimes A  \\
+  @V{\id \otimes m}VV       @VV{m}V  \\
+    A \otimes A           @>{m}>>            A
+  \end{CD}
+  \]
+\end{Definition}
+
+%$\lbrack\!\lbrack aaa\rbrack\!\rbrack$
+
+\[
+    \mathbb{NRC}\mathbbm{1} \otimes X
+\]
+
+
+\begin{thebibliography}{20}
+\par
+  \bibitem{jimbo1} 神保道夫, 『量子群とヤン・バクスター方程式』, 丸善出版, 2012.
+  \bibitem{abe} 阿部英一, 『ホップ代数』, 岩波書店, 1977.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,393 @@
+% -----------------------
+% preamble
+% -----------------------
+% Don't change preamble code yourself. If you add something(usepackage, newtheorem, newcommand, renewcommand),
+% please tell them editor of institutional paper of RUMS.
+
+%documentclass
+%------------------------
+\documentclass[11pt, a4paper, dvipdfmx]{jsarticle}
+
+
+%usepackage
+%------------------------
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[psamsfonts]{amssymb}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{enumerate}
+\usepackage{verbatim}
+\usepackage{subfigure}
+\usepackage{proof}
+\usepackage{listings}
+\usepackage{otf}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{tikz}
+\usepackage[all]{xy}
+\usepackage{amscd}
+
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+
+\usetikzlibrary{cd}
+
+%theoremstyle
+%--------------------------
+\theoremstyle{definition}
+
+
+%newtheoem
+%--------------------------
+%If you want to use theorem environment in Japanece, You can use these code. 
+%Attention
+%--------------------------
+%all theorem enivironment number depend on only section number.
+\newtheorem{Axiom}{公理}[section]
+\newtheorem{Definition}[Axiom]{定義}
+\newtheorem{Theorem}[Axiom]{定理}
+\newtheorem{Proposition}[Axiom]{命題}
+\newtheorem{Lemma}[Axiom]{補題}
+\newtheorem{Corollary}[Axiom]{系}
+\newtheorem{Example}[Axiom]{例}
+\newtheorem{Claim}[Axiom]{主張}
+\newtheorem{Property}[Axiom]{性質}
+\newtheorem{Attention}[Axiom]{注意}
+\newtheorem{Question}[Axiom]{問}
+\newtheorem{Problem}[Axiom]{問題}
+\newtheorem{Consideration}[Axiom]{考察}
+\newtheorem{Alert}[Axiom]{警告}
+
+
+%----------------------------
+%If you want to use theorem environment with no number in Japanese, You can use these code.
+\newtheorem*{Axiom*}{公理}
+\newtheorem*{Definition*}{定義}
+\newtheorem*{Theorem*}{定理}
+\newtheorem*{Proposition*}{命題}
+\newtheorem*{Lemma*}{補題}
+\newtheorem*{Example*}{例}
+\newtheorem*{Corollary*}{系}
+\newtheorem*{Claim*}{主張}
+\newtheorem*{Property*}{性質}
+\newtheorem*{Attention*}{注意}
+\newtheorem*{Question*}{問}
+\newtheorem*{Problem*}{問題}
+\newtheorem*{Consideration*}{考察}
+\newtheorem*{Alert*}{警告}
+
+%--------------------------
+%If you want to use theorem environment in English, You can use these code.
+%--------------------------
+%all theorem enivironment number depend on only section number.
+\newtheorem{Axiom+}{Axiom}[section]
+\newtheorem{Definition+}[Axiom+]{Definition}
+\newtheorem{Theorem+}[Axiom+]{Theorem}
+\newtheorem{Proposition+}[Axiom+]{Proposition}
+\newtheorem{Lemma+}[Axiom+]{Lemma}
+\newtheorem{Example+}[Axiom+]{Example}
+\newtheorem{Corollary+}[Axiom+]{Corollary}
+\newtheorem{Claim+}[Axiom+]{Claim}
+\newtheorem{Property+}[Axiom+]{Property}
+\newtheorem{Attention+}[Axiom+]{Attention}
+\newtheorem{Question+}[Axiom+]{Question}
+\newtheorem{Problem+}[Axiom+]{Problem}
+\newtheorem{Consideration+}[Axiom+]{Consideration}
+\newtheorem{Alert+}{Alert}
+
+%commmand
+%----------------------------
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\Y}{\mathcal{Y}}
+\newcommand{\Hil}{\mathcal{H}}
+\newcommand{\RKHS}{\Hil_{k}}
+\newcommand{\Loss}{\mathcal{L}_{D}}
+\newcommand{\MLsp}{(\X, \Y, D, \Hil, \Loss)}
+\newcommand{\p}{\partial}
+\newcommand{\h}{\mathscr}
+\newcommand{\mcal}{\mathcal}
+\newcommand{\lan}{\langle}
+\newcommand{\ran}{\rangle}
+\newcommand{\pal}{\parallel}
+\newcommand{\dip}{\displaystyle}
+\newcommand{\e}{\varepsilon}
+\newcommand{\dl}{\delta}
+\newcommand{\pphi}{\varphi}
+\newcommand{\ti}{\tilde}
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\Probsp}{(\Omega, \F, \P)}
+
+%new definition macro
+%-------------------------
+\def\inner<#1>{\langle #1 \rangle}
+
+\usepackage[stable]{footmisc}
+%\renewcommand{\proofname}{\bf 証明} % 「証明」の見出しを日本語にする
+\newcommand{\pr}{\mathop{\mathrm{pr}}\nolimits} % 射影の記号を斜字体にしない
+\numberwithin{equation}{section} % 式番号を「(3.5)」のように印刷
+\def\rnum#1{\expandafter{\romannumeral #1}} 
+\def\Rnum#1{\uppercase\expandafter{\romannumeral #1}} 
+
+%----------------------------
+%documenet 
+%----------------------------
+% Your main code must be written between begin document and end document.
+\title{実数論}
+\author{Toshi2019}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\end{abstract}
+\section{凡例}
+
+よく用いる用語と記号をまとめておく．
+\begin{itemize}
+  \item 数列: 
+  数列 $(a_n)_{n\in\N} = (a_0,a_1,\dots)$ を 
+  $(a_n)$ のように略記することがある．
+  \item 開球: 
+  ${\R}^n$をユークリッド距離による距離空間と考え, 
+  $a\in{\R}^n$を中心とする半径$r > 0$の開球を
+  $U_r(a) = \{x\in{\R}^n\mid d(a,x)\le r\}$
+  で表す. 
+  \item 開集合: 
+  $X$ を位相空間とする. $U$ が $X$ の開集合であることを
+  $U\underset{\text{open}}{\subset}X$ のようにかくことがある. 
+\end{itemize}
+
+\section{導入}
+
+$1/3 = 0.333\cdots$であることはよく知られた事実である. 中学校では
+$x = 0.333\cdots$とおき, 両辺に10を掛けて$10x = 3.333\cdots$. 
+辺々引いて$9x = 3$. 最後に両辺を9で割って$0.333\cdots = x = 1/3$
+のようにすると習った. 
+
+これを示すのに, 高校では極限を教わった上で
+\begin{align*}
+  0.333\cdots 
+  &= 0.3 + 0.03 + 0.003 + \cdots\\
+  &= \lim_{n\to\infty}\sum_{k=1}^{n}\frac{3}{10^k}\\
+  &= \lim_{n\to\infty}\left(\frac{3}{10}
+  \frac{1-(1/10)^n}{1-1/10} \right)\\
+  &= \lim_{n\to\infty}\frac{1}{3}
+  \left(1-\left(\frac{1}{10}\right)^n\right)\\
+  &= \frac{1}{3}\times(1-0) = \frac{1}{3}
+\end{align*}
+と習った. 
+
+大学に入ってすぐの微積分の授業で極限を厳密に定義することで, 
+これがきちんと基礎付けられた. すなわち, 任意の自然数$n\geqq1$に対し, 
+\begin{align*}
+  \left|\sum_{k=1}^{n}\frac{3}{10^k} - \frac{1}{3}\right| 
+  &= \left|\frac{1}{3}
+  \left(1-\left(\frac{1}{10}\right)^n\right)
+  - \frac{1}{3}\right|\\
+  &= \left|-\left(\frac{1}{10}\right)^n\right|\\
+  &= \left(\frac{1}{10}\right)^n < \frac{1}{n}
+\end{align*}
+が成り立つので, 後述する
+はさみうちの原理(命題\ref{Pr:sq})より, 
+$0.333\dots=1/3$ということになるのであった. 
+
+このように, 無限小数を, 無限級数と捉えることで, 
+特に有理数の場合には, 容易に極限を求められる. 
+
+\section{実数の連続性}
+
+次を公理とする. 
+
+\begin{Axiom}\label{Ax:RNum}
+  
+  \quad 1. 
+  ({\bf アルキメデスの原理}(axiom of Archimedes)) 
+  $a$ が実数ならば, $n \leqq a \leqq n + 1$ 
+  をみたす整数$n$が存在する. 
+    
+  2. 
+  $(a_n)$ を自然数列で, 任意の $n \geqq 0$ に対し, 
+  $a_n = 0$ か $a_n = 1$ のどちらかであるものとする. 
+  このとき, 実数$b$で, 全ての自然数$m \geqq 0$に対し
+  \begin{eqnarray}\label{axEq}
+    \sum_{n=1}^{m}\frac{a_n}{2^n} 
+    \leqq b 
+    \leqq \sum_{n=1}^{m}\frac{a_n}{2^n} + \frac{1}{2^m}
+  \end{eqnarray}
+  をみたすものが存在する. 
+\end{Axiom}
+% Ax1.1.1.2
+
+$m = 0$ とすると, 
+$\dip \sum_{n=1}^{m}\frac{a_n}{2^n} = 0$
+となり不等式\eqref{axEq}は
+$0 \leqq b \leqq 1$
+を表す. 
+
+公理\ref{Ax:RNum}から, 実数は閉区間$\left[0,1\right]$
+を整数で左右にずらしたもので覆うことができ, それらを整数部分
+と2進小数で表せる. 次の命題の系から式\eqref{axEq}の $b$ は
+ただ１つであることがわかる. 
+
+\begin{Proposition}[有理数の稠密性]\label{Pr:dnsQ}
+  $a$と$b$を実数とする. $a<b$ならば, 
+  有理数$r$ で$a<r<b$をみたすものが存在する. 
+\end{Proposition}
+
+\begin{proof}[{\bf 証明}]
+  $a<b$ より $b-a>0$. 自然数$n$を, 
+  $\dip n = \left[\frac{1}{b-a}\right] + 1$とおく. 
+  $n$ は$\dip 0 < \frac{1}{b-a} <n$
+  をみたす最小の自然数である. さらに$m = [na]+1$ とおくと
+  $na< m \leqq na+1 <nb$ なので, 有理数$r = m/n$ は
+  $a < r < b$ をみたす. 
+\end{proof}
+
+\begin{Proposition}[はさみうちの原理(squeeze theorem)]\label{Pr:sq}
+  $a$と$b$を実数とする. 任意の自然数$n\geqq1$に対し
+  $\dip|a-b|<\frac{1}{n}$ならば, $a=b$ である. 
+\end{Proposition}
+
+\begin{proof}[{\bf 証明}]
+  $|a-b|>0$ だったとする. 
+  このとき, $\dip\frac{1}{|a-b|}>0$ は実数なので, 
+  アルキメデスの公理(公理\ref{Ax:RNum}.1)より
+  $\dip \frac{1}{\left|a-b\right|}\leqq n$ 
+  をみたす自然数$n>0 \Leftrightarrow n\geqq1$
+  が存在する. この不等式の逆数をとると, 
+  $\dip \frac{1}{n}\leqq |a-b|$
+  となるが, 仮定より$\dip|a-b| < \frac{1}{n}$
+  なので
+  $\dip \frac{1}{n}\leqq|a-b| < \frac{1}{n}$
+  となりムジュン. したがって$|a-b|=0$であり, $a=b$.
+\end{proof}
+
+\begin{Corollary}
+  $(a_n)$を公理{\ref{Ax:RNum}.2} の仮定をみたす数列とする. 
+  不等式\eqref{axEq}をみたす実数$b$はただ1つである. 
+\end{Corollary}
+
+\begin{proof}[{\bf 証明}]
+  $b$と$c$を不等式\eqref{axEq}をみたす実数とすると, 
+  すべての自然数$m\geqq 1$ に対し, 
+  $\dip
+  \sum_{n=1}^{m}\frac{a_n}{2^n} 
+  \leqq b 
+  \leqq \sum_{n=1}^{m}\frac{a_n}{2^n} + \frac{1}{2^m}, 
+  \quad
+  \sum_{n=1}^{m}\frac{a_n}{2^n} 
+  \leqq c 
+  \leqq \sum_{n=1}^{m}\frac{a_n}{2^n} + \frac{1}{2^m}$
+  が成り立つので, ふたつめの不等式を$-1$倍したものを
+  ひとつめの不等式に辺々足して, 
+  $\dip -\frac{1}{2^m} \leqq b - c \leqq \frac{1}{2^m}$
+  すなわち 
+  $\dip |b - c| \leqq \frac{1}{2^m}$ を得る. 
+  $\dip |b - c| \leqq \frac{1}{2^m} < \frac{1}{m}$
+  なので, はさみうちの原理(命題\ref{Pr:sq}) より $b=c$ である. 
+\end{proof}
+
+これで公理{\ref{Ax:RNum}.2}の$b$を特徴づけることができた. 
+この$b$を
+$\dip
+  \sum_{n=1}^{\infty}\frac{a_n}{2^n}
+$
+で表す. ($\infty$の記号単体では意味を持たせていない.)
+$0.a_1a_2a_3a_4\dots$ のように表し, 
+$b$ の2{\bf 進小数表示}(binary decimal representation)
+ということもある. (たとえば $1/2=0.1000\dots, 
+5/8=1/2+1/8=0.101000\dots$のように.)
+
+
+実数はいくつかの同値な性質により, その性質を様々な視点から
+捉えることができる. 以下, 公理\ref{Ax:RNum}から出発して, 
+それらの性質を順次示していくことにする. 
+
+\begin{Theorem}[実数の連続性(continuity of real numbers)]\label{conOfR1}
+    $a\leqq b$ を実数とし, 閉区間 $[a,b]$ の部分集合 $A$ が
+    次の条件(D)をみたすとする. 
+    \begin{quote}\label{aa}
+        (D)\quad $x$ が $A$ の元ならば, 閉区間$[a,x]$は$A$に含まれる.
+    \end{quote}
+    このとき, 実数$c$で$A=[a,c]$か$A = [a,c)$の
+    どちらか一方が成り立つものが存在する. 
+\end{Theorem}
+
+定理\ref{conOfR1}の実数$c$を$A$の{\bf 終点}(end point) 
+と呼ぶことにする. 
+
+\begin{proof}[{\bf 証明}]
+  まず, $[a,b]= [0,1]$の場合に示し, その後$a, b$が一般の場合を
+  $a=0,b=1$の場合に帰着させて示す. $a=0, b=1$とする. $0\notin A$
+  のとき, 条件(D)より, $A = \emptyset$. $1\in A$ のとき, 
+  条件(D)より, $A=[0,1]$. よって$0\in A, 1 \notin A$のときを考える. 
+
+  数列$(a_n)$を次のように帰納的に定義する. $a_0=0$とする. 
+  $a_n$ が自然数$m$に対し$a_m$まで定まっているとき, 
+  $\dip s_m = \sum_{n=1}^{m}\frac{a_n}{2^n}$ とおく. 
+  $s_0 = 0$である. $\dip s_m + \frac{1}{2^{m+1}}\in A$
+  のとき, $a_{m+1}=1$とおき, そうでないときは$a_{m+1}=0$とおく. 
+  
+  $(a_n)$の定義と, 自然数$m$に関する帰納法により, 
+  どの番号$m=0,1,2,\dots$に対しても, 
+  $s_m\in A$かつ$\dip s_m+\frac{1}{2^m}\notin A$
+  が成り立つことを示す.
+  (\Rnum{1}) $m=0$のとき, 
+  $s_0=a_0=0\in A$かつ$\dip s_0+\frac{1}{2^0}=1\notin A$. 
+  ($0\in A, 1\notin A$と仮定したのだった.)
+  (\Rnum{2}) $m=l$のとき, 
+  $s_l\in A$かつ$\dip s_l+\frac{1}{2^l}\notin A$
+  であるとすると, 
+  $m=l+1$のとき, 
+  (1) 
+  $\dip s_l + \frac{1}{2^{l+1}} \in A$ の場合, 
+  $a_{l+1}=1$であり, 
+  $\dip s_{l+1}= s_l + \frac{1}{2^{l+1}}\in A$. (たった今そう場合分けした.)
+  また, $\dip s_{l+1}+\frac{1}{2^{l+1}}=s_l + \frac{1}{2^{l+1}} + \frac{1}{2^{l+1}}
+  = s_l + \frac{1}{2^l} \notin A$. ($m=l$のときの帰納法の仮定.)
+  (2) 
+  $s_l + \dip\frac{1}{2^{l+1}} \notin A$ の場合, 
+  $a_{l+1}=0$であり, 
+  $s_{l+1}= s_l \in A$. 
+  また, $\dip s_{l+1}+\dip\frac{1}{2^{l+1}}=s_l + \frac{1}{2^{l+1}}\notin A$. 
+  以上より, 
+  どの番号$m=0,1,2,\dots$に対しても, 
+  $s_m\in A$かつ$\dip s_m+\frac{1}{2^m}\notin A$が成り立つ. 
+
+
+\end{proof}
+
+
+
+\section{上限と下限\footnote{ここからは, 2021,Apr,17 以降の追加分.}}
+$A\subset \R$ に対し, $A$の上界と下界を定める. 
+実数$r$ が$A$の上界 (下界) であるとは, 任意の$A$の元$x\in A$に対し
+$x \leqq r$ ($r \leqq x$)となることをいう. 
+
+
+
+\begin{thebibliography}{20}
+\par
+  \bibitem{aomoto1} 青本和彦, 『微分と積分1』, 現代数学への入門, 岩波書店, 2003.
+  \bibitem{saito1} 斎藤毅, 『集合・位相』, 東京大学出版会, 2009. 
+  \bibitem{saito2} 斎藤毅, 『微積分』, 東京大学出版会, 2013．
+  \bibitem{saito3} 斎藤毅, 「はじまりはコンパクト」, 『新・数学の学び方』, 岩波書店, 2015, pp.34-50. 
+  \bibitem{sugi1} 杉浦光夫, 『解析入門$\mathrm{I}$』, 東京大学出版会, 1980. 
+  \bibitem{1matsu1} 一松信, 『解析学序説 上』, 裳華房, 1962.
+  \bibitem{1matsu2} 一松信, 『初等関数の数値計算』, シリーズ新しい応用の数学 8, 教育出版, 1974. 
+  \bibitem{mori1} 森毅, 『現代の古典解析』, ちくま学芸文庫, 2006.
+  \bibitem{mori2} 森毅, 『位相のこころ』, ちくま学芸文庫, 2006.
+\end{thebibliography}
+\end{document}

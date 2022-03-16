@@ -1,0 +1,1349 @@
+% -----------------------
+% preamble
+% -----------------------
+
+% ------------------------
+% documentclass
+% ------------------------
+\documentclass[11pt, a4paper, dvipdfmx]{jsarticle}
+
+% ------------------------
+% usepackage
+% ------------------------
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amscd}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[psamsfonts]{amssymb}
+\usepackage{amsthm}
+\usepackage{ascmac}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{fancybox}
+\usepackage[stable]{footmisc}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{otf}
+\usepackage{pifont}
+\usepackage{proof}
+\usepackage{subfigure}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage[all]{xy}
+
+\usetikzlibrary{cd}
+
+
+
+% ================================
+% パッケージを追加する場合のスペース 
+\usepackage{url}
+%=================================
+
+
+% --------------------------
+% theoremstyle
+% --------------------------
+\theoremstyle{definition}
+
+% --------------------------
+% newtheoem
+% --------------------------
+
+% 日本語で定理, 命題, 証明などを番号付きで用いるためのコマンドです. 
+% If you want to use theorem environment in Japanece, 
+% you can use these code. 
+% Attention!
+% All theorem enivironment numbers depend on 
+% only section numbers.
+\newtheorem{Axiom}{公理}[section]
+\newtheorem{Definition}[Axiom]{定義}
+\newtheorem{Theorem}[Axiom]{定理}
+\newtheorem{Proposition}[Axiom]{命題}
+\newtheorem{Lemma}[Axiom]{補題}
+\newtheorem{Corollary}[Axiom]{系}
+\newtheorem{Example}[Axiom]{例}
+\newtheorem{Claim}[Axiom]{主張}
+\newtheorem{Property}[Axiom]{性質}
+\newtheorem{Attention}[Axiom]{注意}
+\newtheorem{Question}[Axiom]{問}
+\newtheorem{Problem}[Axiom]{問題}
+\newtheorem{Consideration}[Axiom]{考察}
+\newtheorem{Alert}[Axiom]{警告}
+\newtheorem{Fact}[Axiom]{事実}
+
+
+% 日本語で定理, 命題, 証明などを番号なしで用いるためのコマンドです. 
+% If you want to use theorem environment with no number in Japanese, You can use these code.
+\newtheorem*{Axiom*}{公理}
+\newtheorem*{Definition*}{定義}
+\newtheorem*{Theorem*}{定理}
+\newtheorem*{Proposition*}{命題}
+\newtheorem*{Lemma*}{補題}
+\newtheorem*{Example*}{例}
+\newtheorem*{Corollary*}{系}
+\newtheorem*{Claim*}{主張}
+\newtheorem*{Property*}{性質}
+\newtheorem*{Attention*}{注意}
+\newtheorem*{Question*}{問}
+\newtheorem*{Problem*}{問題}
+\newtheorem*{Consideration*}{考察}
+\newtheorem*{Alert*}{警告}
+\newtheorem{Fact*}{事実}
+
+
+% 英語で定理, 命題, 証明などを番号付きで用いるためのコマンドです. 
+%　If you want to use theorem environment in English, You can use these code.
+%all theorem enivironment number depend on only section number.
+\newtheorem{Axiom+}{Axiom}[section]
+\newtheorem{Definition+}[Axiom+]{Definition}
+\newtheorem{Theorem+}[Axiom+]{Theorem}
+\newtheorem{Proposition+}[Axiom+]{Proposition}
+\newtheorem{Lemma+}[Axiom+]{Lemma}
+\newtheorem{Example+}[Axiom+]{Example}
+\newtheorem{Corollary+}[Axiom+]{Corollary}
+\newtheorem{Claim+}[Axiom+]{Claim}
+\newtheorem{Property+}[Axiom+]{Property}
+\newtheorem{Attention+}[Axiom+]{Attention}
+\newtheorem{Question+}[Axiom+]{Question}
+\newtheorem{Problem+}[Axiom+]{Problem}
+\newtheorem{Consideration+}[Axiom+]{Consideration}
+\newtheorem{Alert+}{Alert}
+\newtheorem{Fact+}[Axiom+]{Fact}
+\newtheorem{Remark+}[Axiom+]{Remark}
+
+% ----------------------------
+% commmand
+% ----------------------------
+% 執筆に便利なコマンド集です. 
+% コマンドを追加する場合は下のスペースへ. 
+
+% 集合の記号 (黒板文字)
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\KK}{\mathbb{K}}
+
+
+% 集合の記号 (太文字)
+\newcommand{\nn}{\mathbf{N}}
+\newcommand{\zz}{\mathbf{Z}}
+\newcommand{\qq}{\mathbf{Q}}
+\newcommand{\rr}{\mathbf{R}}
+\newcommand{\cc}{\mathbf{C}}
+\newcommand{\pp}{\mathbf{P}}
+\newcommand{\kk}{\mathbf{K}}
+
+% 特殊な写像の記号
+\newcommand{\ev}{\mathop{\mathrm{ev}}\nolimits} % 値写像
+\newcommand{\pr}{\mathop{\mathrm{pr}}\nolimits} % 射影
+\newcommand{\id}{\mathop{\mathrm{id}}\nolimits} % 恒等射
+
+% スクリプト体にするコマンド
+%   例えば　{\mcal C} のように用いる
+\newcommand{\mcal}{\mathcal}
+
+% 花文字にするコマンド 
+%   例えば　{\h C} のように用いる
+\newcommand{\h}{\mathscr}
+
+% ヒルベルト空間などの記号
+\newcommand{\F}{\mcal{F}}
+\newcommand{\X}{\mcal{X}}
+\newcommand{\Y}{\mcal{Y}}
+\newcommand{\Hil}{\mcal{H}}
+\newcommand{\RKHS}{\Hil_{k}}
+\newcommand{\Loss}{\mcal{L}_{D}}
+\newcommand{\MLsp}{(\X, \Y, D, \Hil, \Loss)}
+
+% 偏微分作用素の記号
+\newcommand{\p}{\partial}
+
+% 角カッコの記号 (内積は下にマクロがあります)
+\newcommand{\lan}{\langle}
+\newcommand{\ran}{\rangle}
+
+
+
+% 圏の記号など
+\newcommand{\Set}{{\bf Set}}
+\newcommand{\Vect}{{\bf Vect}}
+\newcommand{\FDVect}{{\bf FDVect}}
+\newcommand{\Ring}{{\bf Ring}}
+\newcommand{\Ab}{{\bf Ab}}
+\newcommand{\Mod}{\mathop{\mathrm{Mod}}\nolimits}
+\newcommand{\CGA}{{\bf CGA}}
+\newcommand{\GVect}{{\bf GVect}}
+\newcommand{\Lie}{{\bf Lie}}
+\newcommand{\dLie}{{\bf Liec}}
+
+
+
+% 射の集合など
+\newcommand{\Map}{\mathop{\mathrm{Map}}\nolimits}
+\newcommand{\Hom}{\mathop{\mathrm{Hom}}\nolimits}
+\newcommand{\End}{\mathop{\mathrm{End}}\nolimits}
+\newcommand{\Aut}{\mathop{\mathrm{Aut}}\nolimits}
+\newcommand{\Mor}{\mathop{\mathrm{Mor}}\nolimits}
+\newcommand{\Ker}{\mathop{\mathrm{Ker}}\nolimits}
+\newcommand{\Img}{\mathop{\mathrm{Im}}\nolimits}
+\newcommand{\Cok}{\mathop{\mathrm{Coker}}\nolimits}
+\newcommand{\Cim}{\mathop{\mathrm{Coim}}\nolimits}
+
+
+
+% その他便利なコマンド
+\newcommand{\dip}{\displaystyle} % 本文中で数式モード
+\newcommand{\e}{\varepsilon} % イプシロン
+\newcommand{\dl}{\delta} % デルタ
+\newcommand{\pphi}{\varphi} % ファイ
+\newcommand{\ti}{\tilde} % チルダ
+\newcommand{\pal}{\parallel} % 平行
+\newcommand{\op}{{\rm op}} % 双対を取る記号
+\newcommand{\lcm}{\mathop{\mathrm{lcm}}\nolimits} % 最小公倍数の記号
+\newcommand{\Probsp}{(\Omega, \F, \P)} 
+\newcommand{\argmax}{\mathop{\rm arg~max}\limits}
+\newcommand{\argmin}{\mathop{\rm arg~min}\limits}
+
+
+
+
+
+% ================================
+% コマンドを追加する場合のスペース 
+\numberwithin{equation}{section}
+% =================================
+
+
+
+
+
+% ---------------------------
+% new definition macro
+% ---------------------------
+% 便利なマクロ集です
+
+% 内積のマクロ
+%   例えば \inner<\pphi | \psi> のように用いる
+\def\inner<#1>{\langle #1 \rangle}
+
+% ================================
+% マクロを追加する場合のスペース 
+
+%=================================
+
+
+
+
+
+% ----------------------------
+% documenet 
+% ----------------------------
+% 以下, 本文の執筆スペースです. 
+% Your main code must be written between 
+% begin document and end document.
+% ---------------------------
+
+\title{End 環であそぼう}
+\author{Toshi2019}
+\date{}
+\begin{document}
+\maketitle
+
+% abstract:記事の内容を要約する環境です（使用の有無は任意）
+\begin{abstract}
+    この間, 初めてコホモロジーの計算をしてみた. 
+    なかなか? いや結構楽しかったので
+    それを記事にしようというやつ. 
+    理解の過程を割とありのまま残すように
+    心がけた. 
+    教養程度の知識をお持ちであればほとんどは
+    ご理解いただけるよう配慮したが, 
+    用いる術語のブレがあったりと, 
+    完璧を期したわけではない. 
+    不備は各自で補完されたい. 
+    最後に, 愚直に計算する例を多めに載せた. 
+    眺める (手を動かして計算を再現してみる) 
+    なり, 他にも面白い例を作ろうと試みられるなりすると
+    納得感も強く得られると思う. 
+\end{abstract}
+
+\section{凡例}
+
+よく用いる (かもしれない) 記号についてまとめておく. 
+
+\begin{itemize}
+    \item 集合: $\nn, \zz, \qq, \rr, \cc$ を
+    自然数, 整数, 有理数, 実数, 複素数
+    全体の成す集合とする. 
+    \item 基数: 集合$X$に対し, $|X|$で$X$の基数を表す. 例えば, 
+    $|\{0,1,\ldots,n-1\}| = n$である. 
+    \item 交換子: $[p,q]$ は $pq - qp$ を表す. 
+    \item クロネッカー記号: 
+    $\dl_j^i$ は$i=j$のとき$1$, そうでないとき$0$を表すとする. 
+    \item 射: 群や環といった諸々の代数系の準同型をたんに射という. 
+    \item 双対空間: 体$k$上の線形空間$V$に対し, 
+    $V^* = \Hom_k(V,k)$とおく. 
+    \item 標数: 標数 0 の体といった言い回しを用いることが
+    ある. 不慣れな方は, $\rr$や$\cc$ を思い浮かべてもらえばよい. 
+\end{itemize}
+
+\section{加群もろもろ}
+
+行列を線形写像だと思うと, 
+正方行列は自分から自身への
+線型写像ということになる. 
+このことについてもう少し想いを馳せてみる. 
+行列には足し算とスカラー倍があって, 線形空間を成していた. 
+のみならず, 積も備えた代数系になってもいる. 
+このようなものを多元環とか結合代数, 
+あるいはたんに代数と言ったりする
+\footnote{
+    本稿では, 専ら代数の語を用いる. 
+}. 
+標語的には
+\begin{align*}
+    \text{(代数)} = \text{(線形空間)} + \text{(積)} \tag*{(甲)}\label{eq:alg1}
+\end{align*}
+あるいは
+\begin{align}
+    \text{(代数)} = \text{(環)} + \text{(スカラー倍)} \tag*{(乙)}\label{eq:alg}
+\end{align}
+という具合である. 
+
+\subsubsection*{復習: 環の定義}
+
+環について不慣れな方のために復習しておく. 
+
+\begin{Definition}\label{def:ring}
+    集合$R$ が \emph{環}(ring) であるとは, 
+    $R$ に加法$+\colon R\times R\to R$と
+    乗法$\times\colon R\times R\to R$が定まっており, 
+    次の条件 (1)--(4) をみたすことをいう. 
+
+    (1) 
+    $R$は加法について可換群である. 
+
+    (2) 
+    任意の$x,y,z\in R$ に対し, 
+    $(xy)z = x(yz)$ . 
+
+    (3) 
+    元 $1\in R$ で, 
+    任意の$x\in R$ に対し $x1 = 1x = x$ 
+    をみたすものがただ一つ存在する. 
+
+    (4) 
+    任意の$x,y,z\in R$ に対し, 
+    $(x+y)z = xz+yz, x(y+z) = xy+xz$. 
+\end{Definition}
+さらに次の (5) を満たすとき, $R$ は
+\emph{可換環}(commutative ring) である
+という. 
+
+(5) 
+任意の$x,y,z\in R$ に対し, 
+$xy = yx$. 
+
+\subsection{代数}
+
+標語\ref{eq:alg}をもう少しきちんと定式化してみる. 
+$k$ を可換環とし, 
+$A$ を単位元を持つ (可換とは限らない) 環とする. 
+環の射$\pphi : k \to A$ で, 
+$k$ の像 $\pphi(k)$ が $A$ の中心に含まれるもの
+が与えられたとき, すなわち, 
+\begin{align*}
+    \text{任意の}x\in k, a\in A \text{に対し, }
+    \pphi(x) a = a \pphi(x)
+\end{align*}
+をみたすものが与えられたとき, 
+$A$ を $k$ \emph{代数}(algebra) であるという. 
+
+\begin{Example}\label{alg:mat}
+    線形空間 $\rr^n$ から自身への線形写像を
+    $n$次正方行列とみなすと, その全体 $M_n(\rr)$ は, 
+    可換環$\rr$からの射$\pphi : \rr \to M_n(\rr)$
+    を$\pphi(x) = xE_n$ ($E_n$ は単位行列) で定めることで
+    $\rr$代数となる. 
+    実際, $X$ を$n$次正方行列とすると
+    $\pphi(x)X = xE_n X = X x E_n = X\pphi(x)$である. 
+\end{Example}
+
+多項式環も素敵な対象である. 
+
+\begin{Example}
+    可換環 $A$ 上の$n$変数多項式環
+    $A[x_1,\ldots,x_n]$
+    は $A$ 代数になる. 実際, 
+    $a \mapsto a \cdot 1$とすれば
+    スカラー倍が定まる. 
+\end{Example}
+
+\subsubsection*{環上の加群についてすこし}
+
+\begin{Definition}\label{def:modules}
+    $A$ を環とする. 加法群$M$が$A$上の\emph{左加群}(left module) 
+    であるとは, 
+    $M$ に左からの作用 $A\times M\to M$が定まっており, 
+    次の条件 (1)--(4) をみたすことをいう. 
+
+    (1) 
+    任意の $a\in A$, $x,y\in M$ に対し, 
+    $a(x+y) = ax + ay$. 
+
+    (2) 
+    任意の $a,b\in A$, $x\in M$ に対し, 
+    $(a+b)x = ax + bx$. 
+
+    (3) 
+    任意の $a,b\in A$, $x\in M$ に対し, 
+    $(ab)x = a(bx)$. 
+
+    (4) 
+    任意の$x\in M$ に対し, $1x=x$. 
+\end{Definition}
+
+定義\ref{def:modules}の作用を右からに変えて, 
+右加群を定義する. 
+さらに, 環$A,B$をそれぞれ左右から掛けるとき, 
+$a(xb) = (ax)b$
+が成り立つとしたものを, 
+$(A,B)$\emph{両側加群}(bimodule) という. 
+以下, 特に断らない限り, $A$加群といえば左$A$加群を指す. 
+
+\subsubsection*{End 環}
+
+$A$を可換環とし, 
+$M$ を環$A$上の加群とするとき, 
+$M$ の$A$\emph{自己準同型環}\footnote{
+    個人的には `エンドかん' と読むのが好み.
+}(endomorphism algebra) $\End_A(M)$を
+$\End_A(M) \coloneqq \Hom_A(M,M)$
+で定める. 
+たとえば, $\End_\rr(\rr^n) = M_n(\rr)$であり, 
+例\ref{alg:mat}で見たように, 
+$\End_\rr(\rr^n)$ は$\rr$ 代数になる. 
+
+念のため, $\End_A(M)$ に代数の構造が
+のることを見ておく. 
+
+まず, $\End_A(M)$ 自身が環になっていることを示す. 
+$f,g\in\End_A(M)$ に対し, 
+$f+g\in\End_A(M)$, $fg\in\End_A(M)$ を
+\begin{align*}
+    (f+g)(x) \coloneqq f(x)+ g(x), \quad 
+    (fg)(x)\coloneqq f\circ g(x) \quad (x\in M)
+\end{align*}
+で定められる. このとき, 
+$0\in \End_A(M)\ (0(x)\coloneqq 0), \id_M$
+を加法, 乗法の単位元として
+定義\ref{def:ring} の条件をみたす. 実際, 
+加法群の条件については, $M$の加法群の性質から従う. 
+積に関する条件については, 
+写像の合成に関する結合則と, 
+\begin{align*}
+    f(g+h)(x) = f(g(x)+h(x)) 
+    = f(g(x)) + f(h(x)) = (fg + fh)(x), 
+\end{align*}
+同様に, 
+$(f+g)h(x) = (fh + gh)(x)$
+から従う. 
+
+$A$の$M$への作用をみる. 
+$a\in A, f\in\End_A(M)$ に対し, $af\in\End_A(M)$を
+$(af)(x) \coloneqq af(x)$で定められる. 
+実際, 
+$(af)(bx) = af(bx) =abf(x) = baf(x) b(af)(x)$
+が成り立ち, $af$ は$A$加群の射になる
+\footnote{
+    ここで, $A$ の可換性が効いていることに注意. 
+    一般に, $(A,B)$両側加群から$A$ 加群への射でないと, 
+    スカラー倍したものは射にならない.}. 
+ということで, このとき, 
+$a,b\in A, f,g\in\End_A(M), x\in M$ に対し, 
+\begin{align*}
+    a(f+g)(x) &= a((f+g)(x)) = a(f(x)+g(x)) \\
+    &= af(x) + ag(x) = (af+ag)(x), \\
+    (a+b)f(x) &= af(x) + ag(x) = (af+bf)(x), \\
+    (ab)f(x) &= a(bf(x)) = a(bf)(x), \\
+    1f(x) &= f(x)
+\end{align*}
+が成り立つ. 
+したがって, $\End_A(M)$は$A$代数である. 
+
+以下, 環と言っていても代数の構造を入れて考えていることもある 
+(そうでないこともある). 
+
+\subsubsection*{多項式の End 環}
+
+多項式環の自己射として, 掛け算による作用が考えられる. 
+具体的な式で見てみる. 
+
+\begin{Example}
+    体 $k$ 上の多項式 $a{x_1}^2 + bx_2 + c$ に対し, 
+    $x_2$ をかけても
+    \begin{align*}
+        x_2(a{x_1}^2 + bx_2 + c) 
+        = a{x_1}^2x_2 + bx_2x_3 + cx_2
+    \end{align*}
+    となり, 再び多項式である. 
+\end{Example}
+
+微分による作用も考えられる. 
+
+\begin{Example}
+    体 $k$ 上の多項式 $a{x_1}^2 + bx_2 + c$ を
+    $x_1$ で微分しても
+    \begin{align*}
+        \p_1(a{x_1}^2 + bx_2 + c)
+        \coloneqq \frac{\p}{\p x_1}(a{x_1}^2 + bx_2 + c)
+        = 2a{x_1}
+    \end{align*}
+    となり, 再び多項式である\footnote{
+        $\p$は$d$の異字体なので, $d$と同じ読み方をするのが個人的には好み. 
+    }. 
+\end{Example}
+
+ここまでくると, 
+多項式環$k[x_1,\ldots,x_n]$の$\End$環の部分代数のうち, 
+微分と掛け算の成すものを考えることができる. 
+
+\begin{Definition}[Weyl 代数]\label{def:weyl}
+    $k$を体とする. 不定元 $x_i$, $\p_j$ 
+    $(1\leqq i,j\leqq n)$ で生成され, 関係
+    \begin{align}\label{eq:relation1}
+        [x_i,x_j] = 0, \quad
+        [\p_i,\p_j] = 0, \quad
+        [\p_j,x_i] = \dl_j^i　
+    \end{align}
+    を入れることで定まる$k$上の代数を Weyl 代数といい, 
+    $W_n(k)$で表す. 
+\end{Definition}
+
+$W_n(k)\subset \End(k[x_1,\ldots,x_n])$であり, 
+$k[x_1,\ldots,x_n]$ は左$W_n(k)$ 加群になる
+\footnote{
+    進んだ注: 定義\ref{def:weyl}は
+    生成元と関係式のみでなされていることに注意. 
+    微分と掛け算という解釈は
+    $W_n(k)$が多項式空間上に表現されるということ
+    である. (Fock 表現)
+}. 
+
+$W_n(k)$ の元の表示について見ておく. 
+$W_n(k)$ の元 $P(x,\p)$ は
+$k[x_1,\ldots,x_n]$を係数とする多項式
+\begin{align}\label{eq:weyl}
+    P(x,\p) 
+    = \sum_{|\alpha|\geqq 0}a_\alpha(x)\p^\alpha
+    \quad \text{(有限和)}
+\end{align}
+(ただし
+$\alpha = (\alpha_1,\ldots ,\alpha_n)\in \nn^n$, 
+$|\alpha|=\alpha_1+\cdots+ \alpha_n$,
+$a_\alpha(x)\in k[x_1,\ldots,x_n]$,
+$\p^\alpha = \p_1^{\alpha_1}\cdots\p_n^{\alpha_n}$)
+として一意にかける. 次の例で説明しよう. 
+
+\begin{Example}
+    $P_1(x,\p) 
+    = \p_1x_1 + \p_2\p_3x_3$
+    とおく. 交換関係\eqref{eq:relation1}から
+    例えば
+    $[\p_1, x_1] = \p_1x_1 - x_1\p_1 = 1$
+    が得られるので, 
+    $\p_1x_1 = x_1\p_1 + 1$
+    と交換していくことで
+    \begin{align*}
+        P_1(x,\p) 
+        &= (x_1\p_1 + 1) + \p_2(x_3\p_3 + 1) \\
+        &= x_1\p_1 + 1 + \p_2x_3\p_3 + \p_2 \\
+        &= 1 + x_1\p_1 + \p_2 + x_3\p_2\p_3
+    \end{align*}
+    と書き直せる. 
+    第1項は$\alpha = (0,0,0)$で, 
+    $1 = a_{(0,0,0)}\p^{(0,0,0)}$とかける. 同様にして, 
+    $a_{(1,0,0)}(x)= x_1$, 
+    $a_{(0,1,0)}(x)= 1$, 
+    $a_{(0,1,1)}(x)= x_3$ 
+    とおけば, 
+    \begin{align*}
+        P_1(x,\p) = a_{(0,0,0)}\p^{(0,0,0)}
+        + a_{(1,0,0)}(x)\p^{(1,0,0)} 
+        + a_{(0,1,0)}(x)\p^{(0,1,0)}
+        + a_{(0,1,1)}(x)\p^{(0,1,1)}
+    \end{align*}
+    となり, 確かに, \eqref{eq:weyl} の形になる. 
+\end{Example}
+
+いまの例はつまらないかもしれないが, 
+次の場合も眺めておくと楽しい. 
+
+\begin{Example}
+    $P_2(x,\p) 
+    = x_1\p_2x_2x_1\p_1
+    + \p_2\p_1x_2\p_1x_1\p_2$ 
+    とおく. 交換関係\eqref{eq:relation1}から, 
+    \begin{align*}
+        P_2(x,\p)
+        &= x_1\p_2x_2x_1\p_1
+        + \p_2\p_1x_2\p_1x_1\p_2 \\
+        &= x_1^2\p_1\p_2x_2 
+        + \p_2\p_1x_2(x_1\p_1 + 1)\p_2 \\
+        &= x_1^2\p_1(x_2\p_2 + 1)
+        +  \p_2\p_1x_2x_1\p_1\p_2
+        +  \p_2\p_1x_2\p_2 \\
+        &= x_1^2\p_1x_2\p_2 + {x_1}^2\p_1 
+        + (x_2\p_2 + 1)\p_1x_1\p_1\p_2
+        + (x_2\p_2 + 1)\p_1\p_2 \\
+        &= x_1^2x_2\p_1\p_2 + {x_1}^2\p_1 
+        + x_2\p_2\p_1x_1\p_1\p_2
+        + \p_1x_1\p_1\p_2
+        + x_2\p_2\p_1\p_2
+        + \p_1\p_2 \\
+        &= x_1^2x_2\p_1\p_2 + {x_1}^2\p_1 
+        + x_2\p_2(x_1\p_1 + 1)\p_1\p_2 
+        + (x_1\p_1 + 1)\p_1\p_2
+        + x_2\p_1\p_2^2 + \p_1\p_2 \\
+        &= x_1^2x_2\p_1\p_2 + {x_1}^2\p_1 
+        + x_2\p_2x_1\p_1\p_1\p_2
+        + x_2\p_2\p_1\p_2 
+        + x_1\p_1\p_1\p_2
+        + \p_1\p_2
+        + x_2\p_1\p_2^2 + \p_1\p_2 \\
+        &= x_1^2x_2\p_1\p_2 + {x_1}^2\p_1 
+        + x_1x_2\p_1^2\p_2^2
+        + x_2\p_1\p_2^2 
+        + x_1\p_1^2\p_2
+        + 2\p_1\p_2
+        + x_2\p_1\p_2^2 \\
+        &= x_1^2\p_1 
+        + (2 + x_1^2)\p_1\p_2 
+        + x_1\p_1^2\p_2
+        + 2x_2\p_1\p_2^2
+        + x_1x_2\p_1^2\p_2^2
+    \end{align*}
+    と書き直せる. 第1項は $\alpha = (1,0)$ で, 
+    $x_1^2\p_1 = a_{(1,0)}(x)\p^{(1,0)}$
+    とかける. 同様にして, 
+    $a_{(1,1)}(x) = 2 + x_1^2$, 
+    $a_{(2,1)}(x) = x_1$, 
+    $a_{(1,2)}(x) = 2x_2$,
+    $a_{(2,2)}(x) = x_1x_2$,
+    とおけば
+    \begin{align*}
+        P_2(x,\p)
+        = a_{(1,0)}(x)\p^{(1,0)} 
+        + a_{(1,1)}(x)\p^{(1,1)} 
+        + a_{(2,1)}(x)\p^{(2,1)}
+        + a_{(1,2)}(x)\p^{(1,2)} 
+        + a_{(2,2)}(x)\p^{(2,2)}  
+    \end{align*}
+    となり, 確かに, \eqref{eq:weyl} の形になる. 
+    実際に (単項式だけでなく) 多項式が係数になっていることもわかった. 
+\end{Example}
+
+以上の変形が, そのまま表示の一意性の証明になっていることに注意. 
+
+
+\subsubsection*{核と余核と時々 (余) 像}
+
+$f\colon M\to N$ を$A$加群の射とする. このとき, 
+\begin{align*}
+    \Ker f \coloneqq f^{-1}(0),\quad
+    \Img f \coloneqq f(M)
+\end{align*}
+とおき, $f$ の\emph{核}(kernel), \emph{像}(image) という. 
+それぞれ $M, N$の部分加群になっていて, 商加群を考えられる. 
+\begin{align*}
+    \Cok f \coloneqq N/\Img f,\quad
+    \Cim f \coloneqq M/\Ker f
+\end{align*}
+を $f$ の\emph{余核}(cokernel), 
+\emph{余像}(coimage) という. 
+実は, $\Cim f$ と $\Img f$は同形になる. (準同型定理!)
+
+\begin{Example}\label{ex:weyl}
+    $W_n(k)$ を Weyl 代数とする. 
+    左$W_n(k)$加群の射$W_n(k)\to k[x_1,\ldots,x_n]$
+    を$P\mapsto P(1,0)$ で定める. 
+    $a(x)\in k[x_1,\ldots,x_n]$に対し, 
+    $a(x)\p^{(0)}\in W_n(k)$が
+    $a(x)\p^{(0)} \mapsto a(x)$
+    をみたすので, 
+    この射は全射であり, 核は
+    $(\p_1,\ldots,\p_n)$
+    で生成される左イデアルである. 
+    したがって, $\Cim f \cong \Img f$から, 
+    左$W_n(k)$加群の同形
+    \begin{align}
+        W_n(k)/\sum_j W_n(k)\p_j \xrightarrow{\sim} k[x_1,\ldots,x_n]
+    \end{align}
+    を得る. 
+\end{Example}
+\subsubsection*{テンソル積について少々} 
+
+$A$を$k$代数とする. 
+右$A$加群$M$と左$A$加群$N$に対し, 
+$k$加群$M\otimes_A N$\footnote{
+    `$M$テンサー$N$'と読むのが個人的には好み. 
+}を
+次の性質を満たすものとして定める. 
+
+任意の $m,m'\in M$, $n,n'\in N$, $a\in A$, $\lambda \in k$
+に対し, 
+\begin{align*}
+    &(m+m')\otimes n = m\otimes n + m'\otimes n, \\ 
+    &m\otimes (n+n') = m\otimes n + m\otimes n', \\
+    &ma\otimes n = m \otimes an, \\
+    &\lambda (m\otimes n) = m\lambda \otimes n 
+    =m\otimes \lambda n.
+\end{align*}
+$M\otimes_A N$を$A$上の
+\emph{テンソル積} (tensor product) という. 
+
+% N\otimes_A B のdef=========== 
+%============================
+
+
+$A$, $B$ を環とする. $\lambda: A\to B$ を環の射とすると, 
+$B$を$(A,B)$両側加群とみなせる. 
+実際, $a\in A$, $b\in B$に対し
+$ab \coloneqq\lambda(a)b$
+とかくことにすると, $x\in B$に対し
+$a(xb) = \lambda(a)(xb) = (\lambda(a)x)b = (ax)b$
+が成り立つ. 
+
+このとき, 任意の$A$加群$M$に対し, 
+$M\otimes_A B$ は$B$加群となる, 
+これを$M$の$A$から$B$へのスカラー拡大といい, $M_{(B)}$とかく. 
+具体的には, 
+\begin{align*}
+    (M\otimes_A B) \times B\to M\otimes_A B; \quad
+    (x\otimes b, a) \mapsto x\otimes(ba)
+\end{align*}
+という構造が入っている. 
+
+\section{ちょっとホモロジー代数}
+
+あとで使うのでまとめておく. 
+定義の羅列にこそなるが, 語学だと思って, 
+眺めておいてもらえればよい. 
+
+\begin{Definition}
+    $A$加群の列$(M^n)_{n\in\nn}$と
+    射の列$(d_M^n\colon M^n\to M^{n+1})_{n\in\nn}$
+    に対し, 次を満たすものを
+    \emph{複体} (complex) $(M^\bullet,d^\bullet)$という. 
+    \begin{align*}
+        \text{任意の}n\in\zz \text{に対し, }
+        d_M^n\circ d_M^{n-1} = 0. 
+    \end{align*}
+    これは, 任意の$n\in\zz$に対し, 
+    $\Img d_M^{n-1} \subset\Ker d_M^n$
+    ということである. 
+    各 $d_M^n$ を微分 (写像) という. 
+\end{Definition}
+
+さらに, $\Img d_M^{n-1} \supset\Ker d_M^n$
+が成り立っているとき, すなわち, 
+$\Img d_M^{n-1} = \Ker d_M^n$
+のとき, この列は\emph{完全}(exact) であるという. 
+
+\begin{Definition}[複体の射] 
+    複体$(M^\bullet,d_M^\bullet), 
+    (N^\bullet,d_N^\bullet)$に対し, 複体の射 
+    $\pphi^\bullet\colon (M^\bullet,d_M^\bullet)\to (N^\bullet,d_N^\bullet)$
+    とは, 射の族 $(\pphi^n)_{n\in\zz}$ で, 
+    次の図式を可換にするものをいう. 
+    \[\begin{tikzcd}
+        \cdots \arrow[r]& M^n\arrow[d,"\pphi^n"'] \arrow[r,"d_M^{n}"]& M^{n+1} \arrow[d,"\pphi^{n+1}"]\arrow[r]& \cdots\\
+        \cdots \arrow[r]& N^n \arrow[r, "d_N^{n}"']& N^{n+1} \arrow[r]& \cdots
+    \end{tikzcd}\]
+\end{Definition}
+
+\begin{Definition}[コホモロジー]
+    複体$(M^\bullet,d^\bullet)$に対し, 
+    \begin{align*}
+        H^i(M^\bullet,d^\bullet) \coloneqq 
+        \Ker d^{i} / \Img d^{i-1}
+    \end{align*}
+    とおき, $i$次コホモロジーという. 
+\end{Definition}
+
+\section{koszul 複体}
+
+\subsection{外冪について}
+
+$k$ を標数$0$の体とし, $A$ を $k$ 代数とする. 
+
+\begin{Definition}
+    2項演算$x\wedge y$\footnote{
+        `$x$ウェッジ$y$' と読むのが個人的には好み. 
+        敢えて定義域を明示していないが, 
+        後述する$\bigwedge^j L$を
+        $j= 1,\ldots,n$と走らせて直和したものである. 
+        (外積代数)
+    }を, 次の性質をみたすものとして定める. 
+    
+    (結合則) \quad 
+    $(x\wedge y) \wedge z = x\wedge (y\wedge z)$
+
+    (双線形性)\quad 
+    $(ax + by)\wedge z = ax\wedge z + by\wedge z$, \quad
+    $x \wedge (ay + bz) = ax\wedge y + bx\wedge z$,
+
+    (反対称性) \quad
+    $y\wedge x = - x\wedge y$, $x\wedge x = 0$
+\end{Definition}
+
+ざっくり, $j$コかけたものを($L^*$上の) 
+$j$線形交代形式ということを頭に入れておいてもらえるとよい. 
+
+$L$ を $n$次元 $k$ 線形空間とするとき, 
+$L^*$上の$j$線形交代形式の成す$k$線形空間を
+$\bigwedge^j L$とかき, $L$の$j$次外冪という. 
+具体的には, 
+\begin{align*}
+    \bigwedge^j L \coloneqq 
+    \left\{
+        \sum a_ix_{i_1}\wedge \dots \wedge x_{i_j}
+        \mid 
+        i_1 < \cdots < i_j, a_i\in k
+    \right\}
+\end{align*}
+である. 
+$\dip \dim \left(\bigwedge^j L \right) = \binom{n}{j}$, 
+とくに
+$\bigwedge^0 L = k$, 
+$\bigwedge^1 L = L$, 
+$\bigwedge^n L = k$
+である. 
+
+
+\subsection{複体の導入}
+
+$(e_1,\ldots, e_n)$を$L$の基底とし, 
+$I=\{i_1<\cdots<i_j\}\subset \{1,\ldots,n\}$
+するとき, 
+\begin{align*}
+    e_I \coloneqq e_{i_1}\wedge\cdots\wedge e_{i_j}
+\end{align*}
+とおく. 
+$M^{(j)} = M \otimes \bigwedge^j k^n$ とすると, 
+$M^{(j)}$ には 
+$1\otimes a:x\otimes e_I \mapsto x\otimes e_I \lambda(a)$
+で$A$ 加群の構造が入る. 
+$M^{(j)}$ の元$m$は一意的に
+\begin{align*}
+    m = \sum_{|I|=j} m_I \otimes e_{I}
+\end{align*}
+とかける. 
+
+2次の場合を見てみる. $|I| = 2$となる$I$は
+$I = \{1,2\}, \{1,3\},\ldots,\{1,n\},\ldots,\{n-1,n\}$
+であるので, 
+\begin{align*}
+    m &= m_{\{1,2\}}\otimes e_{\{1,2\}} 
+    +\cdots
+    + m_{\{n-1,n\}}\otimes e_{\{n-1,n\}}\\
+    &=m_{\{1,2\}}\otimes e_1\wedge e_2 
+    +\cdots
+    + m_{\{n-1,n\}}\otimes e_{n-1}\wedge e_n
+\end{align*}
+という形になる. 一意性は 
+$e_j\wedge e_i = -e_i\wedge e_j$
+で潰せば従うことも見やすいであろう. 
+
+$\pphi = (\pphi_1,\ldots,\pphi_n)$
+を$\pphi_i\in\End_A(M)$で, 
+互いに可換, 即ち
+$[\pphi_i,\pphi_j]=0 \ (1\leqq i,j \leqq n)$
+をみたすものの列とする. 
+$d\in \Hom_A(M^{(j)}, M^{(j+1)})$ を
+\begin{align*}
+    d(m\otimes e_I) 
+    = \sum_{i=1}^n\pphi_i(m)\otimes e_i\wedge e_I
+    = \pphi_1(m)\otimes e_1\wedge e_I 
+    +\cdots+ \pphi_n(m)\otimes e_n\wedge e_I
+\end{align*}
+と, これを線形に拡張したものにより定める. 
+$\pphi_i$たちの可換性から, 
+$d\circ d = 0$であることがしたがう. 
+試しに $n=4$ の場合を見てみよう. 
+$k^n = k^4$で, $e_1,e_2,e_3,e_4$ を標準基底とする. まず, 
+\begin{itemize}
+    \item $\bigwedge^0 k^4 =k$,
+    \item $\bigwedge^1 k^4 =
+    \langle 
+        e_1, e_2, e_3, e_4 
+    \rangle \cong k^4$,
+    \item $\bigwedge^2 k^4 =
+    \langle 
+        e_1\wedge e_2, e_1\wedge e_3, e_1\wedge e_4, 
+        e_2\wedge e_3, e_2\wedge e_4, e_3\wedge e_4 
+    \rangle$,
+    \item $\bigwedge^3 k^4 =
+    \langle 
+        e_1\wedge e_2\wedge e_3, e_1\wedge e_2\wedge e_4, 
+        e_1\wedge e_3\wedge e_4, e_2\wedge e_3\wedge e_4
+    \rangle$,
+    \item $\bigwedge^4 k^4 =
+    \langle 
+        e_1\wedge e_2\wedge e_3\wedge e_4, 
+    \rangle
+    \cong k$
+\end{itemize}
+となることから, 
+\begin{itemize}
+    \item $M^{(0)} = M\otimes \bigwedge^0 k^4 = M\otimes k\cong M$,
+    \item $M^{(1)} = M\otimes \bigwedge^1 k^4 
+        \cong M \otimes k^4$,
+    \item $M^{(2)} = M\otimes \bigwedge^2 k^4$,
+    \item $M^{(3)} = M\otimes \bigwedge^3 k^4$,
+    \item $M^{(4)} = M\otimes \bigwedge^4 k^4
+    \cong M\otimes k\cong M$
+\end{itemize}
+のようになる. それぞれの元の形は次のようになる. 
+$M^{(0)}$は, 
+\begin{align*}
+    m = \sum_{|I|=0}m_I\otimes e_I 
+    = m_\varnothing \eqqcolon m_0 \in M,
+\end{align*}
+$M^{(1)}$は,
+\begin{align*}
+    m = \sum_{|I|=1}m_I\otimes e_I 
+        &= m_{\{1\}}\otimes e_{\{1\}}+ m_{\{2\}}\otimes e_{\{2\}}
+        + m_{\{3\}}\otimes e_{\{3\}}+ m_{\{4\}}\otimes e_{\{4\}}\\
+        &=m_{\{1\}}\otimes e_1+ m_{\{2\}}\otimes e_2
+        + m_{\{3\}}\otimes e_3+ m_{\{4\}}\otimes e_4,
+\end{align*}
+$M^{(2)}$は, \begin{align*}
+        m = \sum_{|I|=2}m_I\otimes e_I 
+        &= m_{\{1,2\}}\otimes e_{\{1,2\}}
+        +  m_{\{1,3\}}\otimes e_{\{1,3\}}
+        +  m_{\{1,4\}}\otimes e_{\{1,4\}}\\
+        &+ m_{\{2,3\}}\otimes e_{\{2,3\}}
+        +  m_{\{2,4\}}\otimes e_{\{2,4\}}
+        +  m_{\{3,4\}}\otimes e_{\{3,4\}}\\
+        &= m_{\{1,2\}}\otimes e_1\wedge e_2
+        +  m_{\{1,3\}}\otimes e_1\wedge e_3
+        +  m_{\{1,4\}}\otimes e_1\wedge e_4\\
+        &+  m_{\{2,3\}}\otimes e_2\wedge e_3
+        +  m_{\{2,4\}}\otimes e_2\wedge e_4
+        +  m_{\{3,4\}}\otimes e_3\wedge e_4
+    \end{align*}
+$M^{(3)}$は, 
+    \begin{align*}
+        m = \sum_{|I|=3}m_I\otimes e_I
+        &= m_{\{1,2,3\}}\otimes e_{\{1,2,3\}}
+        + m_{\{1,2,4\}}\otimes e_{\{1,2,4\}}\\
+        &+ m_{\{1,3,4\}}\otimes e_{\{1,3,4\}}
+        + m_{\{2,3,4\}}\otimes e_{\{2,3,4\}}\\
+        &= m_{\{1,2,3\}}\otimes e_1\wedge e_2\wedge e_3
+        +  m_{\{1,2,4\}}\otimes e_1\wedge e_2\wedge e_4\\
+        &+ m_{\{1,3,4\}}\otimes e_1\wedge e_3\wedge e_4
+        +  m_{\{2,3,4\}}\otimes e_2\wedge e_3\wedge e_4,
+    \end{align*}
+$M^{(4)}$は, 
+    \begin{align*}
+        m = \sum_{|I|=4}m_I\otimes e_I 
+        = m_{\{1,2,3,4\}}\otimes e_{\{1,2,3,4\}}
+        = m_{\{1,2,3,4\}}\otimes e_1\wedge e_2\wedge e_3\wedge e_4
+    \end{align*}
+となる. 
+
+$d\circ d: M^{(0)}\to M^{(2)}$ を計算してみよう. 
+{\small
+\begin{align*}
+    &\quad d\circ d(m) 
+    = d\left(
+        \pphi_1(m)\otimes e_1+ \pphi_2(m)\otimes e_2+ 
+        \pphi_3(m)\otimes e_3+ \pphi_4(m)\otimes e_4
+    \right)\\
+    =&\quad d(\pphi_1(m)\otimes e_1)+ d(\pphi_2(m)\otimes e_2)
+    + d(\pphi_3(m)\otimes e_3)+ d(\pphi_4(m)\otimes e_4)\\
+    =& \quad
+     \pphi_1\pphi_1(m)\otimes e_1\wedge e_1
+    +\pphi_2\pphi_1(m)\otimes e_2\wedge e_1
+    +\pphi_3\pphi_1(m)\otimes e_3\wedge e_1
+    +\pphi_4\pphi_1(m)\otimes e_4\wedge e_1\\
+    &+\pphi_1\pphi_2(m)\otimes e_1\wedge e_2
+    +\pphi_2\pphi_2(m)\otimes e_2\wedge e_2
+    +\pphi_3\pphi_2(m)\otimes e_3\wedge e_2
+    +\pphi_4\pphi_2(m)\otimes e_4\wedge e_2\\
+    &+\pphi_1\pphi_3(m)\otimes e_1\wedge e_3
+    +\pphi_2\pphi_3(m)\otimes e_2\wedge e_3
+    +\pphi_3\pphi_3(m)\otimes e_3\wedge e_3
+    +\pphi_4\pphi_3(m)\otimes e_4\wedge e_3\\
+    &+\pphi_1\pphi_4(m)\otimes e_1\wedge e_4
+    +\pphi_2\pphi_4(m)\otimes e_2\wedge e_4
+    +\pphi_3\pphi_4(m)\otimes e_3\wedge e_4
+    +\pphi_4\pphi_4(m)\otimes e_4\wedge e_4
+    \end{align*}
+    \begin{align*}
+    =& \quad 
+    0 
+    -\pphi_2\pphi_1(m)\otimes e_1\wedge e_2
+    -\pphi_3\pphi_1(m)\otimes e_1\wedge e_3
+    -\pphi_4\pphi_1(m)\otimes e_1\wedge e_4\\
+    &+\pphi_1\pphi_2(m)\otimes e_1\wedge e_2
+    +0
+    -\pphi_3\pphi_2(m)\otimes e_2\wedge e_3
+    -\pphi_4\pphi_2(m)\otimes e_2\wedge e_4\\
+    &+\pphi_1\pphi_3(m)\otimes e_1\wedge e_3
+    +\pphi_2\pphi_3(m)\otimes e_2\wedge e_3
+    +0
+    -\pphi_4\pphi_3(m)\otimes e_3\wedge e_4\\
+    &+\pphi_1\pphi_4(m)\otimes e_1\wedge e_4
+    +\pphi_2\pphi_4(m)\otimes e_2\wedge e_4
+    +\pphi_3\pphi_4(m)\otimes e_3\wedge e_4
+    +0\\
+    =& \quad
+    (\pphi_1\pphi_2-\pphi_2\pphi_1)(m)\otimes e_1\wedge e_2
+    +(\pphi_1\pphi_3-\pphi_3\pphi_1)(m)\otimes e_1\wedge e_3
+    +(\pphi_1\pphi_4-\pphi_4\pphi_1)(m)\otimes e_1\wedge e_4\\
+    &+(\pphi_2\pphi_3-\pphi_3\pphi_2)(m)\otimes e_2\wedge e_3
+    +(\pphi_2\pphi_4-\pphi_4\pphi_2)(m)\otimes e_2\wedge e_4
+    +(\pphi_3\pphi_4-\pphi_4\pphi_3)(m)\otimes e_3\wedge e_4\\
+    =& \quad 
+    [\pphi_1,\pphi_2](m)\otimes e_1\wedge e_2
+    +[\pphi_1,\pphi_3](m)\otimes e_1\wedge e_3
+    +[\pphi_1,\pphi_4](m)\otimes e_1\wedge e_4\\
+    &+[\pphi_2,\pphi_3](m)\otimes e_2\wedge e_3
+    +[\pphi_2,\pphi_4](m)\otimes e_2\wedge e_4
+    +[\pphi_3,\pphi_4](m)\otimes e_3\wedge e_4\\
+    =& \quad 0+0+0+0+0+0 = 0.
+\end{align*}}
+確かに$d\circ d = 0$になった. 
+
+$d\circ d = 0$ から, 複体を考えたくなる. 
+\begin{equation*}
+    \begin{tikzcd}
+        K^{\bullet}(M,\pphi)\colon 
+        0\arrow[left]{r}{0}&M^{(0)} 
+        \arrow[left]{r}{d}&
+        \cdots 
+        \arrow[left]{r}{d}&M^{(n)}
+        \arrow[left]{r}{0}&0
+    \end{tikzcd}
+\end{equation*}
+
+\begin{Definition}
+    上で定まる複体$K^\bullet(M,\pphi)$を 
+    Koszul 複体という
+    \footnote{
+        フランス語の発音に倣い `コシュール' と読むのが
+        個人的には好み. 
+    }. 
+\end{Definition}
+
+$n = 1$ のとき, この複体は
+\begin{equation*}
+    \begin{tikzcd}
+         0\arrow[left]{r}{0}&M^{(0)} 
+         \arrow[left]{r}{d}&M^{(1)}
+         \arrow[left]{r}{0}&0
+    \end{tikzcd}
+\end{equation*}
+という形になるが, $M^{(0)} = M^{(1)} = M$なので, 
+\begin{equation*}
+    \begin{tikzcd}
+         0\arrow[left]{r}{0}&M 
+         \arrow[left]{r}{d}&M
+         \arrow[left]{r}{0}&0,
+    \end{tikzcd}
+\end{equation*}
+さらに, 
+\begin{align*}
+    d(m\otimes1) 
+    &= \sum_{i=1}^1\pphi_i(m)\otimes e_i\wedge1\\
+    &= \pphi_1(m)\otimes e_1\wedge1\\
+    &= \pphi_1(m)\otimes e_1 \cong \pphi_1(m)
+\end{align*}なので, 
+\begin{equation*}
+    \begin{tikzcd}
+         0\arrow[left]{r}{0}&M 
+         \arrow[left]{r}{\pphi_1}&M
+         \arrow[left]{r}{0}&0
+    \end{tikzcd}
+\end{equation*}
+である. コホモロジーを計算すると, 
+\begin{align*}
+    H^0(K^\bullet(M,\pphi)) &= \Ker\pphi_1 / \Img0 
+    =\Ker\pphi_1/0= \Ker\pphi_1, \\
+    H^1(K^\bullet(M,\pphi)) &= \Ker0/\Img\pphi_1 = M/\Img\pphi_1 = \Cok\pphi_1
+\end{align*}
+となる. 
+
+一般の$n$では, 
+\begin{align*}
+    H^0(K^\bullet(M,\pphi)) &= \Ker d / \Img0 
+    = \Ker d = \Ker\pphi_1 \cap\cdots\cap \Ker\pphi_n, \\
+    H^n(K^\bullet(M,\pphi)) &= \Ker 0/ \Img d = M/ \Img d
+    = M/\left( \pphi_1(M)+\cdots+\pphi_n(M) \right)
+\end{align*}
+となる. 
+
+$\pphi = (\pphi_1,\ldots,\pphi_n)$ に対して, 
+$\pphi' = (\pphi_1,\ldots,\pphi_{n-1})$ とおき, 
+$d'$ を $K^\bullet(M,\pphi')$ の微分とする. 
+このとき, $\pphi_n$ は複体の射
+\begin{align*}
+    \widetilde{\pphi}_n:K^\bullet(M,\pphi')\to K^\bullet(M,\pphi')
+\end{align*}
+を定める. $n=3$ のときの例をみてみよう. 
+$\pphi = (\pphi_1,\pphi_2)$, 
+$d':M^{(j)}\to M^{(j+1)}$ ($j=0,1$) 
+で, 2つの複体
+\begin{equation*}
+    \begin{tikzcd}
+         0\arrow[left]{r}& M^{(0)} 
+         \arrow[left]{r}{d'}& M^{(1)}
+         \arrow[left]{r}{d'}& M^{(2)}\arrow[left]{r}&0, \\
+         0\arrow[left]{r}& M^{(0)} 
+         \arrow[left]{r}{d'}& M^{(1)}
+         \arrow[left]{r}{d'}& M^{(2)}\arrow[left]{r}&0
+    \end{tikzcd}
+\end{equation*}
+の間に$\pphi_3$ で射を定めたい. 
+$\pphi_i,\pphi_j$ は互いに可換であったことから, 図式
+\begin{equation*}
+    \begin{tikzcd}
+         0\arrow[left]{r}& M^{(0)} \arrow[left]{r}{d'}\arrow[left]{d}{\pphi_3}& M^{(1)} \arrow[left]{r}{d'}\arrow[left]{d}{\pphi_3}& M^{(2)}\arrow[left]{r}\arrow[left]{d}{\pphi_3}&0 \\
+         0\arrow[left]{r}& M^{(0)} \arrow[left]{r}{d'}& M^{(1)} \arrow[left]{r}{d'}& M^{(2)}\arrow[left]{r}&0
+    \end{tikzcd}
+\end{equation*}
+が可換になることを見越して計算してみる. 
+$d':M^{(0)}\to M^{(1)}$の構成は$n=2$のときと同じだから, 
+$\pphi_3:M\to M$ に対して, 
+\begin{align*}
+    \pphi_3\circ d'(m) 
+    &= \pphi_3 \left( 
+            \pphi_1(m)\otimes e_1 + \pphi_2(m)\otimes e_2 
+       \right)\\
+    &= \pphi_3\pphi_1(m)\otimes e_1 
+    + \pphi_3\pphi_2(m)\otimes e_2 \\
+    &= \pphi_1\pphi_3(m)\otimes e_1 
+    + \pphi_2\pphi_3(m)\otimes e_2 
+    = d'\circ\pphi_3(m)
+\end{align*}
+となり, 確かに図式の左側は可換になる. 
+右側も同様に確かめられるが, もはや書くまでもないだろう. 
+以上より, めでたく射
+$K^\bullet(M,\pphi')\to K^\bullet(M,\pphi')$
+が定まり, $\widetilde{\pphi}_n$ と書く必然性が納得できた. 
+
+
+
+
+Koszul 複体では, 次の定理 (とその系) を用いることで, 
+コホモロジーの計算が非常に単純になる. 
+
+\begin{Theorem}
+    次の完全列が存在する. 
+    \begin{equation}
+        \begin{tikzcd}
+             \cdots\arrow[left]{r}&
+             H^j(K^\bullet(M,\pphi')) 
+             \arrow[left]{r}{\pphi_n}&
+             H^j(K^\bullet(M,\pphi'))
+             \arrow[left]{r}&
+             H^{j+1}(K^\bullet(M,\pphi))
+             \arrow[left]{r}&\cdots
+        \end{tikzcd}
+    \end{equation}
+\end{Theorem}
+
+\begin{proof}[{\bf 証明}] 
+    カンタンのため, 
+    \begin{align*}
+        Z^j(\pphi)
+        &\coloneqq \Ker(d^j\colon M^{(j)}\to M^{(j+1)})
+        \quad
+        \left(=
+            \Ker(d^j\colon
+            M\otimes \bigwedge^jk^n
+            \to M\otimes \bigwedge^{j+1}k^n)
+        \right), \\
+        B^j(\pphi)
+        &\coloneqq \Img(d^{j-1}\colon M^{(j-1)}\to M^{(j)})
+        \quad
+        \left(=
+            \Img(d^{j-1}\colon 
+            M\otimes \bigwedge^{j-1}k^n
+            \to M\otimes \bigwedge^{j}k^n)
+        \right), \\
+        H^j(\pphi)&\coloneqq H^j(K^\bullet(M,\pphi)) 
+        = Z^j(\pphi)/ B^j(\pphi)
+    \end{align*}
+    とおく. $Z^j(\pphi'), B^j(\pphi'), H^j(\pphi')$ 
+    も同様に定める. 
+
+    次の完全列を構成することで示す. 
+    \[\begin{tikzcd} 
+        \cdots 
+        \arrow[r]& H^j(\pphi') 
+        \arrow[r,"\pphi_n"]& H^j(\pphi') 
+        \arrow[r,"\wedge e_n"]& H^{j+1}(\pphi) 
+        \arrow[r,"\vee e_n"]& H^{j+1}(\pphi') 
+        \arrow[r,"\pphi_n"]&\cdots
+    \end{tikzcd}.\]
+
+    (i) 
+    $\wedge e_n$を次のように構成する. 
+    $a\in Z^j(\pphi')$ に対し 
+    \begin{align*}
+        \wedge e_n(a) = a\wedge e_n
+    \end{align*}
+    とおくと, 
+    $\wedge e_n(d'b) = d'(b\wedge e_n)$が成り立つ. 
+    したがって, 
+    $\wedge e_n\colon H^j(\pphi') \to H^{j+1}(\pphi)$
+    が矛盾なく定まる. 
+
+    (ii) 
+    $\vee e_n$を次のように構成する. 
+    $a = \sum_I a_Ie_I \in Z^j(\pphi)$とする. 
+    \begin{align*}
+        \vee e_n(a)= \sum_I a'_Ie_I, 
+        \quad a'_I = 
+        \begin{cases}
+            a_I\quad n\notin I, \\
+            0 \quad n\in I
+        \end{cases}
+    \end{align*}
+    とすると, 
+    $\vee e_n (db) = d'(\vee e_n (b))$となるので, 
+    $\vee e_n\colon H^{j+1}(\pphi) \to H^{j+1}(\pphi')$
+    が矛盾なく定まる. 
+
+    あとは, 
+    $\wedge e_n\circ\pphi_n = 0$, 
+    $\pphi\circ\vee e_n = 0$, 
+    $\Ker(\wedge e_n) = \Img(\vee e_n)$, 
+    $\Ker(\vee e_n) = \Img(\wedge e_n)$
+    をチェックすればよい. 
+\end{proof}
+
+\begin{Definition}
+    任意の $1\leqq j \leqq n$ に対し, 
+    $\pphi_j$ が 
+    $M/\left( \pphi_1(M)+\cdots+\pphi_{j-1}(M) \right)$
+    の自己射として単射であるとき, 
+    $(\pphi_1,\ldots,\pphi_n)$ は
+    \emph{正則列}(regular sequence) 
+    であるという. 
+\end{Definition}
+
+\begin{Corollary}\label{cor:regular}
+    $(\pphi_1,\ldots,\pphi_n)$ を正則列とする. 
+    このとき, $j\neq n$ に対し, 
+    $H^j(K^\bullet(M,\pphi))\cong 0$
+    である. 
+\end{Corollary}
+
+\begin{proof}[{\bf 証明}]
+    $(\pphi_1,\ldots, \pphi_n)$を正則列とし, $n$に関する
+    帰納法で示す. $n-1$まで成り立つとすると, 
+    $M/(\pphi_1(M) + \cdots + \pphi_{n-1}(M))
+    \cong H^{n-1}(K^\bullet(M,\pphi))$
+    であり, $\pphi_n$ は単射なので, 成り立つ. 
+\end{proof}
+
+\section{具体例の計算}
+
+$k$を標数 0 の体とし, 
+$\mcal{O}_n \coloneqq k[x_1,\ldots, x_n]$
+と略記する. 
+$W_n \coloneqq W_n(k)$ と略記し, $\cdot\p_j$で
+右からの掛け算を表すと, 
+$W_n$自身を左$W_n$加群とみたときの
+$W_n$線形写像とみなせる. 
+$(x_1\p_2 + \p_1)\cdot\p_1
+=x_1\p_2\p_1 + \p_1^2
+=\p_1^2 +x_1\p_1\p_2$
+という具合. 
+
+
+$\p_i,\p_j$は互いに可換であったから, 
+$(\p_1,\ldots,\p_n)$
+は Koszul 複体
+$K^\bullet(W_n,(\p_1,\ldots,\p_n)):$
+\begin{equation*}
+    \begin{tikzcd}
+        0\arrow[left]{r}& W_n^{(0)} \arrow[left]{r}{d}&
+        \cdots
+        \arrow[left]{r}{d}& W_n^{(n)}\arrow[left]{r}&0,
+    \end{tikzcd}
+\end{equation*}
+\begin{align*}
+    d(\sum_I a_I\otimes e_I)
+    \coloneqq \sum_{j=i}^n \sum_I 
+    a_I\cdot \p_j\otimes e_j\wedge e_I
+\end{align*}
+を定める. 
+$(\p_1,\ldots,\p_n)$は正則列なので, 
+系\ref{cor:regular}より
+$j\neq n$ で完全であり, $n$次のコホモロジーは, 
+\begin{align*}
+    H^n(K^\bullet(M,\pphi)) 
+    \cong W_n/(\sum_j W_n \cdot\p_j )
+    \cong \mcal{O}_n\footnotemark.
+\end{align*}
+\footnotetext{例\ref{ex:weyl}と見比べよ.}
+
+\section{終わりに}
+
+志賀直哉『清兵衛と瓢箪』は瓢箪マニアの少年, 
+清兵衛が主人公の短編小説である. 
+あるとき, 町家の軒先にぶら下がっている安物の
+瓢箪に目を奪われた清兵衛は, 一目でその価値を見抜き, 
+迷わず購入する. 来る日も来る日もその瓢箪を
+磨き続けるのであるが, ひょんなことから
+学校の教員に没収されてしまう. 
+その後, 金に困った教員は
+瓢箪を二足三文で
+小間使いに売り払ってしまうのであるが, 
+その何十倍もの値段で, 質屋に売られたという話である. 
+
+柏原正樹はチャーン賞受賞時に制作された映像の中で次のように語っている. 
+\begin{quotation}
+    `To find what is important and what is not important 
+    --- I think that is the most difficult part 
+    of the research of mathematics.'
+\end{quotation}
+清兵衛のような, 真に重要なものを見抜ける目を養いたい. 
+
+%===============================================
+% 参考文献スペース
+%===============================================
+\begin{thebibliography}{20} 
+    \bibitem{souhomo} 志甫淳, 層とホモロジー代数, 共立出版 (2016). 
+    \bibitem{Ho87} 堀田良之, 代数入門 -- 群と加群, 裳華房 (1987).
+    \bibitem{Ho97} 堀田良之, 環と体 1 可換環論, 岩波書店 (1997).
+    \bibitem{Tani} 谷崎俊之, 環と体 3 非可換環論, 岩波書店 (1998).
+    \bibitem{Mat86} H.\ Matsumura, 
+    \emph{Commutative ring theory}, 
+    Cambridge Studies in Advanced Math. 
+    \textbf{8} Cambridge University Press (1986).
+    \bibitem{KS06} M.\ Kashiwara, P.\ Schapira, 
+    \emph{Categories and sheaves}, 
+    Grundlehren der mathematischen Wissenschaften. 
+    \textbf{332} Springer-Verlag (2006).
+    \bibitem{Sch} P.\ Schapira, 
+    \emph{An introduction to algebra and topology}, 
+    \url{https://webusers.imj-prg.fr/~pierre.schapira/lectnotes/}
+\end{thebibliography}
+
+%===============================================
+
+
+\end{document}

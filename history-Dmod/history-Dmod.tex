@@ -1,0 +1,267 @@
+%==========================================
+%   History of D-modules --- Survey
+%   2021.Nov.26 - 
+%   written by Toshihiro Oshiba
+%==========================================
+
+\documentclass[12pt,a4paper]{jsarticle}
+
+
+%usepackage
+%------------------------
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[psamsfonts]{amssymb}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+%\usepackage{rsfso}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{enumerate}
+\usepackage{verbatim}
+\usepackage{subfigure}
+\usepackage{proof}
+\usepackage{listings}
+\usepackage{otf}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{tikz}
+\usepackage[all]{xy}
+\usepackage{amscd}
+
+\usepackage[pdfborder=0,dvipdfmx]{hyperref}
+\usepackage{xcolor}
+\definecolor{darkgreen}{rgb}{0,0.45,0} 
+\definecolor{darkred}{rgb}{0.75,0,0}
+\definecolor{darkblue}{rgb}{0,0,0.6} 
+\hypersetup{
+    colorlinks=true,
+    citecolor=darkgreen,
+    linkcolor=darkblue,
+    urlcolor=darkblue,
+}
+\usepackage{pxjahyper}
+\usepackage{comment}
+\usepackage{enumitem}
+\usepackage{layout}
+
+\usetikzlibrary{cd}
+
+%\theoremstyle{definition}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+
+\theoremstyle{definition}
+\newtheorem{dfn}[thm]{Definition}
+\newtheorem{lem}[thm]{Lemma}
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+
+\renewcommand{\qedsymbol}{q.e.d.}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
+% category theory
+\newcommand{\fin}[1]{{#1}^{\mathrm{f}}} % finiteness
+\newcommand{\Hom}{\mathop{\mathrm{Hom}}\nolimits}
+\newcommand{\Mod}{\mathop{\mathrm{Mod}}\nolimits}
+\newcommand{\End}{\mathop{\mathrm{End}}\nolimits}
+\newcommand{\Aut}{\mathop{\mathrm{Aut}}\nolimits}
+\newcommand{\Mor}{\mathop{\mathrm{Mor}}\nolimits}
+\newcommand{\hol}{\mathop{\mathrm{hol}}\nolimits}
+\newcommand{\Perv}{\mathop{\mathrm{Perv}}\nolimits}
+\newcommand{\op}{\mathop{\mathrm{op}}\nolimits}
+
+
+
+
+% sheaf theory
+\newcommand{\F}{\mathscr{F}}
+\newcommand{\HH}{\mathscr{H}}
+\newcommand{\shhol}[1]{\mathscr{O}_{#1}}
+\newcommand{\shan}[1]{\mathscr{A}_{#1}}
+\newcommand{\shor}[1]{\omega_{#1}}
+\newcommand{\shhyp}[1]{\mathscr{B}_{#1}}
+
+% D-modules
+\newcommand{\DD}{\mathscr{D}}
+\newcommand{\PP}{\mathscr{P}}
+\newcommand{\Sol}{\mathop{{\mathcal{S}ol}}\nolimits}
+\newcommand{\MM}{\mathscr{M}}
+\newcommand{\Rhom}{\mathop{{\mathrm{R}\mathscr{H}om}}\nolimits}
+
+
+
+%new definition macro
+%-------------------------
+\def\inner<#1>{\langle #1 \rangle}
+
+\newcommand{\mapres}[2]{\left. #1 \right|_{#2}}
+
+\numberwithin{equation}{section}
+
+
+%==============================================================
+% page layout 
+%--------------------------------------------------------------
+
+
+
+
+
+
+
+%==============================================================
+
+
+
+
+
+
+\title{$\mathcal{D}$加群の翻訳}
+\author{}
+
+\begin{document}
+\maketitle
+
+
+\section*{\cite[Introduction]{KS16}の翻訳}
+
+このノートは \cite{DK13}と\cite{KS14}にもとづき, 
+2015年の2月と3月に IHES にて行われた連続講義 (\cite{KS15}を見よ) 
+の拡大版である. 
+
+ここでは, 読者は導来圏による層とD加群の定式化に
+慣れ親しんでいることを仮定する. 
+
+$X$を複素多様体とする. $\Mod(\DD_X)$で
+左$\DD_X$加群のなすアーベル圏を表し, $\Mod_{\hol}(\DD_X)$で
+ホロノミー$\DD_X$加群のなす$\Mod(\DD_X)$の
+充満部分圏を表し, $\Perv(\CC_X)$で$\CC$を係数とする
+偏屈層のなすアーベル圏を表すとする. \cite{Ka75}で構成された関手
+\begin{align*}
+    &\Sol \colon \Mod_{\hol}(\DD_X)^{\op} \to \Perv(\CC_X)\\
+    &\MM \mapsto \Rhom_{\DD}(\MM, \shhol{X})
+\end{align*}
+を考える. (この時には偏屈層は表立って現れてはいなかったが, この論文で
+筆者は$\Rhom_{\DD}(\MM,\shhol{X})$が$\CC$構成可能であることと
+現在偏屈性 (perversity) と呼ばれている条件を満たすことを証明していることに注意.)
+
+よく知られているように, この関手は忠実ではない. 
+例えば, $X$を$t$を径数とする複素直線$\mathbb{A}^1(\CC)$とし, $P=t^2\partial_t-1$, $Q=t^2\partial_t+t$とするとき, 
+２つの$\DD_X$加群$\DD_X/\DD_X P$と$\DD_X/\DD_XQ$は同じ解の層をもつ. 
+この困難を克服するための自然な発想は層$\shhol{X}$を種々の増加条件を持つ
+整型関数の前層, 例えば
+緩増加整型関数の前層$\shhol{X}^{t}$などに取り替えることである. 
+この前層は普通の位相に対しては層にならないが, 適切な
+グロタンディーク位相である部分解析位相に対しては層になる. 
+そしてここでは部分解析層の圏を帰納層の圏にうめこむ. 
+
+As we shall see, the indsheaf OXt is not sufficient 
+to obtain a Riemann- Hilbert correspondence, 
+but it is a first step to this direction. 
+To obtain a final result, 
+it is necessary to add an extra variable and 
+to work with an “enhanced” version of OXt in order 
+to describe “various growths” in a rigorous way.
+
+In a first part, 
+we shall recall the main results of the theory 
+of ind- sheaves and subanalytic sheaves 
+and we shall explain with some details the
+operations on D-modules and their tempered holomorphic solutions. As an application, we obtain the Riemann-Hilbert correspondence for regular holo- nomic D-modules as well as the fact that the de Rham functor commutes with integral transforms.
+
+In a second part, 
+we do the same for the sheaf of enhanced tempered solutions 
+of (no more necessarily regular) holonomic D-modules. 
+For that purpose, 
+we first recall the main results of the theory of 
+indsheaves on bor- dered spaces 
+and its enhanced version, 
+a generalization to indsheaves of a construction 
+of Tamarkin [Ta08].
+
+Let us describe with some details the contents of these Notes.
+
+Section 1 is a brief review on the theory of 
+sheaves and D-modules. 
+Its aim is essentially to fix the notations 
+and to recall the main formulas of constant use.
+
+In Section 2, extracted from [KS96, KS01], we briefly describe the category of indsheaves on a locally compact space and the six operations on indsheaves. A method for constructing indsheaves on a subanalytic space is the use of the subanalytic Grothendieck topology, a topology for which the open sets are the open relatively compact subanalytic subsets and the coverings are the finite coverings. On a real analytic manifold M, this allows us to construct the indsheaves of Whitney functions, tempered C∞-functions and tempered distributions. On a complex manifold X, by taking the Dolbeault complexes with such coefficients, we obtain the indsheaf (in the derived sense) OXw of Whitney holomorphic functions and the indsheaf OXt of tempered holomor- phic functions.
+
+Then, in Section 3, also extracted from [KS96, KS01], we study the tem- pered de Rham and Sol (Sol for solutions) functors, that is, we study these functors with values in the sheaf of tempered holomorphic functions. We prove two main results which will be the main tools to treat the regular Riemann-Hilbert correspondence later. The first one is Theorem 3.1.1 which calculates the inverse image of the tempered de Rham complex. It is a reformulation of a theorem of [Ka84], a vast generalization of the famous Grothendieck theorem on the de Rham cohomology of algebraic varieties. The second result, Theorem 3.1.5, is a tempered version of the Grauert di- rect image theorem.
+
+In Section 4 we give a proof of the main theorem of [Ka80, Ka84] on the Riemann-Hilbert correspondence for regular holonomic D-modules (see
+4
+ 
+CONTENTS
+Corollary 4.3.4). Our proof is based on Lemma 4.1.3 which essentially claims that to prove that regular holonomic D-modules have a certain property, it is enough to check that this property is stable by projective direct images and is satisfied by modules of “regular normal forms”, that is, modules associated with equations of the type zi∂zi − λi or ∂zj . The Riemann-Hilbert correspon- dence as formulated in loc. cit. is not enough to treat integral transform and we have to prove a “tempered” version of it (Theorem 4.3.2). We then collect all results on the tempered solutions of D-modules in a single formula which, roughly speaking, asserts that the tempered de Rham functor commutes with integral transforms whose kernel is regular holonomic (Theorem 4.4.2). We end this section with a detailed study of the irregular holonomic D-module DX exp(1/z) on A1(C), following [KS03]. This case shows that the solution functor with values in the indsheaf OXt gives many informations on the holo- nomic D-modules, but not enough: it is not fully faithful. As seen in the next sections, in order to treat irregular case, we need the enhanced version of the setting discussed in this section.
+
+
+
+
+Bibliographical and historical comments. 
+A first important step in a modern treatment 
+of the Riemann-Hilbert correspondence is the book of 
+Deligne [De70]. 
+A second important step is the constructibility theorem [Ka75] 
+and a precise formulation of this correspondence in 1977 
+by the same author (see [Ra78, p. 287]). 
+Then a detailed sketch of proof of the theorem 
+establishing this correspondence (in the regular case) 
+appeared in [Ka80] 
+where the functor Thom of tempered cohomology 
+was introduced, and a detailed proof appeared in [Ka84]. 
+A different proof to this correspondence
+appeared in [Me84]. 
+The functorial operations on the functor Thom, 
+as well as its dual notion, 
+the Whitney tensor product, are systematically 
+studied in [KS96]. 
+These two functors are in fact better understood by the lan- guage of OXt and OXw, the indsheaves of tempered holomorphic functions and Whitney holomorphic functions introduced in [KS01].
+In the early 2000, it became clear that the indsheaf OXt of tempered holo- morphic functions is an essential tool for the study of irregular holonomic
+6
+ 
+modules and a toy model was studied in [KS03]. However, on X = A1(C), the two holonomic DX -modules DX exp(1/t) and DX exp(2/t) have the same tempered holomorphic solutions, which shows that OXt is not precise enough to treat irregular holonomic D-modules. This difficulty is overcome in [DK13] by adding an extra variable in order to capture the growth at singular points. This is done, first by adapting to indsheaves a construction of Tamarkin [Ta08], leading to the notion of “enhanced indsheaves”, then by defining the “enhanced indsheaf of tempered holomorphic functions”. Us- ing fundamental results of Mochizuki [Mo09, Mo11] (see also Sabbah [Sa00] for preliminary results and see Kedlaya [Ke10, Ke11] for the analytic case), this leads to the solution of the Riemann-Hilbert correspondence for (not necessarily regular) holonomic D-modules.
+As already mentioned, most of the results discussed here are already known. We sometimes don’t give proofs, or only give a sketch of the proof. However, Theorems 2.5.13, 6.6.4 and Corollaries 2.5.15, 7.7.2 are new.
+
+
+\begin{thebibliography}{20}
+    \par
+    \bibitem[DK13]{DK13}A.\ D’Agnolo and M.\ Kashiwara, 
+    \textit{Riemann-Hilbert correspondence for holonomic systems}, 
+    \texttt{arXiv:1311.2374v1}.
+
+    \bibitem[Hatshorne1]{Hartshorne1} R. Hartshorne, 
+    \textit{Residues and duality}, Lecture Notes in Mathematics, 
+    Vol.\ 20, Springer-Verlag, Berlin, 1966.
+
+    \bibitem[Sato1]{Sato1} Mikio Sato, \textit{Theory of hyperfunctions II}, J. Fac.\ Sci.\ Univ.\ Tokyo, {\bf{8}} (1960), 387--437.
+
+    \bibitem[Ka75]{Ka75} Masaki Kashiwara, 
+    \textit{On the maximally overdetermined system 
+    of linear differential equations I}, Publ.\ Res.\ Inst.\ Math.\ Sci.\ \textbf{10} (1974/75), 563– 579.
+
+    \bibitem[KS14]{KS14} Masaki Kashiwara and Pierre Schapira, 
+    \textit{Irregular holonomic kernels 
+    and Laplace transform}, Selecta Math., \textbf{22}(\textbf{1}), 
+    55–109, 2016.
+
+    \bibitem[KS15]{KS15} Masaki Kashiwara and Pierre Schapira, \textit{Lectures on Regular and Irregular Holonomic D-modules},
+    (2015), \url{http://preprints.ihes.fr/2015/M/M-15-08.pdf}.
+    
+    \bibitem[KS16]{KS16} Masaki Kashiwara and Pierre Schapira, 
+    \emph{Regular and irregular holonomic $\mathcal{D}$-modules}, 
+    London Mathematical Society Lecture Note Series, \textbf{433}, 
+    Cambridge University Press, 2016.
+
+    \end{thebibliography}
+\end{document}

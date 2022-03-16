@@ -1,0 +1,20 @@
+\contentsline {chapter}{\numberline {第1章}圏という言語}{9}{chapter.1}
+\contentsline {section}{\numberline {1.1}前置き: 集合と宇宙}{9}{section.1.1}
+\contentsline {section}{\numberline {1.2}圏と関手}{9}{section.1.2}
+\contentsline {section}{\numberline {1.3}関手の射}{13}{section.1.3}
+\contentsline {section}{\numberline {1.4}米田の補題}{13}{section.1.4}
+\contentsline {section}{\numberline {1.5}随伴関手}{13}{section.1.5}
+\contentsline {chapter}{\numberline {第2章}極限}{15}{chapter.2}
+\contentsline {section}{\numberline {2.1}極限}{15}{section.2.1}
+\contentsline {section}{\numberline {2.2}諸例}{15}{section.2.2}
+\contentsline {section}{\numberline {2.3}関手の Kan 拡張}{15}{section.2.3}
+\contentsline {section}{\numberline {2.4}圏$\mathbf {Set}$の帰納極限}{15}{section.2.4}
+\contentsline {section}{\numberline {2.5}共終関手}{15}{section.2.5}
+\contentsline {section}{\numberline {2.6}帰納極限と射影極限}{15}{section.2.6}
+\contentsline {section}{\numberline {2.7}関手の米田拡張}{15}{section.2.7}
+\contentsline {chapter}{\numberline {第3章}フィルター極限}{17}{chapter.3}
+\contentsline {section}{\numberline {3.1}圏$\mathbf {Set}$のフィルター帰納極限}{17}{section.3.1}
+\contentsline {section}{\numberline {3.2}フィルター圏}{17}{section.3.2}
+\contentsline {section}{\numberline {3.3}完全関手}{17}{section.3.3}
+\contentsline {section}{\numberline {3.4}２つの関手の圏}{17}{section.3.4}
+\contentsline {chapter}{参考文献}{19}{chapter*.7}

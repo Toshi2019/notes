@@ -1,0 +1,609 @@
+% -----------------------
+% preamble
+% -----------------------
+% Don't change preamble code yourself. If you add something(usepackage, newtheorem, newcommand, renewcommand),
+% please tell them editor of institutional paper of RUMS.
+
+%documentclass
+%------------------------
+\documentclass[12pt, a4paper, dvipdfmx]{jsarticle}
+
+
+%usepackage
+%------------------------
+\usepackage{amsmath}
+\usepackage{amsthm}
+%\usepackage[psamsfonts]{amssymb}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{enumerate}
+\usepackage{verbatim}
+\usepackage{subfigure}
+\usepackage{proof}
+\usepackage{listings}
+\usepackage{otf}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{tikz}
+\usepackage[all]{xy}
+\usepackage{amscd}
+
+\usepackage{pb-diagram}
+
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{xcolor}
+\definecolor{darkgreen}{rgb}{0,0.45,0} 
+\definecolor{darkred}{rgb}{0.75,0,0}
+\definecolor{darkblue}{rgb}{0,0,0.6} 
+\hypersetup{
+    colorlinks=true,
+    citecolor=darkgreen,
+    linkcolor=darkred,
+    urlcolor=darkblue,
+}
+\usepackage{pxjahyper}
+
+\usepackage{enumitem}
+
+\usepackage{bbm}
+
+\usetikzlibrary{cd}
+\def\objectstyle{\displaystyle}
+
+%theoremstyle
+%--------------------------
+\theoremstyle{definition}
+
+
+%newtheoem
+%--------------------------
+%If you want to use theorem environment in Japanece, You can use these code. 
+%Attention
+%--------------------------
+%all theorem enivironment number depend on only section number.
+\newtheorem{Axiom}{公理}[section]
+\newtheorem{Definition}[Axiom]{定義}
+\newtheorem{Theorem}[Axiom]{定理}
+\newtheorem{Proposition}[Axiom]{命題}
+\newtheorem{Lemma}[Axiom]{補題}
+\newtheorem{Corollary}[Axiom]{系}
+\newtheorem{Example}[Axiom]{例}
+\newtheorem{Claim}[Axiom]{主張}
+\newtheorem{Property}[Axiom]{性質}
+\newtheorem{Remark}[Axiom]{注意}
+\newtheorem{Question}[Axiom]{問}
+\newtheorem{Problem}[Axiom]{問題}
+\newtheorem{Consideration}[Axiom]{考察}
+\newtheorem{Alert}[Axiom]{警告}
+\newtheorem{Notation}[Axiom]{記号}
+
+
+
+%----------------------------
+%If you want to use theorem environment with no number in Japanese, You can use these code.
+\newtheorem*{Axiom*}{公理}
+\newtheorem*{Definition*}{定義}
+\newtheorem*{Theorem*}{定理}
+\newtheorem*{Proposition*}{命題}
+\newtheorem*{Lemma*}{補題}
+\newtheorem*{Example*}{例}
+\newtheorem*{Corollary*}{系}
+\newtheorem*{Claim*}{主張}
+\newtheorem*{Property*}{性質}
+\newtheorem*{Remark*}{注意}
+\newtheorem*{Question*}{問}
+\newtheorem*{Problem*}{問題}
+\newtheorem*{Consideration*}{考察}
+\newtheorem*{Alert*}{警告}
+
+%--------------------------
+%If you want to use theorem environment in English, You can use these code.
+%--------------------------
+%all theorem enivironment number depend on only section number.
+\newtheorem{Axiom+}{Axiom}[section]
+\newtheorem{Definition+}[Axiom+]{Definition}
+\newtheorem{Theorem+}[Axiom+]{Theorem}
+\newtheorem{Proposition+}[Axiom+]{Proposition}
+\newtheorem{Lemma+}[Axiom+]{Lemma}
+\newtheorem{Example+}[Axiom+]{Example}
+\newtheorem{Corollary+}[Axiom+]{Corollary}
+\newtheorem{Claim+}[Axiom+]{Claim}
+\newtheorem{Property+}[Axiom+]{Property}
+\newtheorem{Remark+}[Axiom+]{Attention}
+\newtheorem{Question+}[Axiom+]{Question}
+\newtheorem{Problem+}[Axiom+]{Problem}
+\newtheorem{Consideration+}[Axiom+]{Consideration}
+\newtheorem{Alert+}{Alert}
+
+%commmand
+%----------------------------
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\Y}{\mathcal{Y}}
+\newcommand{\Hil}{\mathcal{H}}
+\newcommand{\RKHS}{\Hil_{k}}
+\newcommand{\Loss}{\mathcal{L}_{D}}
+\newcommand{\MLsp}{(\X, \Y, D, \Hil, \Loss)}
+\newcommand{\p}{\partial}
+\newcommand{\h}{\mathscr}
+\newcommand{\mcal}{\mathcal}
+\newcommand{\lan}{\langle}
+\newcommand{\ran}{\rangle}
+\newcommand{\pal}{\parallel}
+\newcommand{\dip}{\displaystyle}
+\newcommand{\e}{\varepsilon}
+\newcommand{\dl}{\delta}
+\newcommand{\pphi}{\varphi}
+\newcommand{\ti}{\tilde}
+
+\newcommand{\inc}{\hookrightarrow}
+\newcommand{\cni}{\hookleftarrow}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\Probsp}{(\Omega, \F, \P)}
+
+%new definition macro
+%-------------------------
+\def\inner<#1>{\langle #1 \rangle}
+
+\usepackage[stable]{footmisc}
+%\renewcommand{\proofname}{\textrm{証明}} % 「証明」の見出しを日本語にする
+\newcommand{\pr}{\mathop{\mathrm{pr}}\nolimits} % 射影の記号を斜字体にしない
+\newcommand{\id}{\mathop{\mathrm{id}}\nolimits} % 恒等写像
+\newcommand{\Ob}{\mathop{\mathrm{Ob}}\nolimits}
+\numberwithin{equation}{section} % 式番号を「(3.5)」のように印刷
+\newcommand{\Hom}{\mathop{\mathrm{Hom}}\nolimits}
+\newcommand{\Mod}{\mathop{\mathrm{Mod}}\nolimits}
+\newcommand{\End}{\mathop{\mathrm{End}}\nolimits}
+\newcommand{\Aut}{\mathop{\mathrm{Aut}}\nolimits}
+\newcommand{\Mor}{\mathop{\mathrm{Mor}}\nolimits}
+
+% 圏の記号など
+\newcommand{\Set}{{\bf Set}}
+\newcommand{\Vect}{{\bf Vect}}
+\newcommand{\FDVect}{{\bf FDVect}}
+\newcommand{\Ring}{{\bf Ring}}
+\newcommand{\Ab}{{\bf Ab}}
+\newcommand{\CGA}{{\bf CGA}}
+\newcommand{\GVect}{{\bf GVect}}
+\newcommand{\Lie}{{\bf Lie}}
+\newcommand{\dLie}{{\bf Liec}}
+\newcommand{\Op}{\mathop{\mathrm{Open}}\nolimits}
+\newcommand{\op}{{\rm op}} % 双対を取る記号
+
+
+
+%\usepackage{eufrak}
+\def\rnum#1{\expandafter{\romannumeral #1}} 
+\def\Rnum#1{\uppercase\expandafter{\romannumeral #1}} 
+
+\newcommand{\bm}[1]{{\mbox{\boldmath $#1$}}}
+
+\newcommand{\gG}{\mathfrak{g}}
+\newcommand{\gh}{\mathfrak{h}}
+\newcommand{\lL}{\mathop{\mathrm{L}}\nolimits}
+
+\newcommand{\cat}[1]{\textup{\textsf{#1}}}% for categories
+\newcommand{\fun}[1]{\textup{#1}}%for functors
+
+
+%for yoneda
+\font\maljapanese=dmjhira at 2ex % you can change this "2ex" value
+\def\yo{\textrm{\maljapanese\char"48}}
+
+%
+% \qed を自動で入れない proof 環境を再定義
+%
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \normalfont
+  \topsep6\p@\@plus6\p@ \trivlist
+  \item[\hskip\labelsep{\textbf{#1}}\@addpunct{\textbf{. }}]\ignorespaces
+}{%
+  \endtrivlist
+}
+\renewcommand{\proofname}{証明}
+\makeatother
+
+
+
+
+%----------------------------
+%documenet 
+%----------------------------
+% Your main code must be written between begin document and end document.
+\title{Liu ゼミノート}
+\author{}
+\date{}
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    2021 年春セメスターに行なった \cite{Liu} ゼミのノート. 
+\end{abstract}
+
+\section*{実施日}
+\begin{itemize}
+    \item 5/15: 定義\ref{def-psh}   -- 注意\ref{Rem-Bsh}
+    \item 5/16: 補題\ref{lem-shCmp} -- 定義\ref{def-morPsh}
+    \item 5/21: 定義\ref{def-stalk} -- 定義\ref{def-shfify}
+\end{itemize}
+
+\setcounter{section}{1}
+
+\section{Ringed topological spaces}
+
+\subsection{Sheaves}
+
+\begin{Definition}\label{def-psh}
+    $X$ を位相空間とする. 
+    $X$上の \textbf{(アーベル群の) 前層} (presheaf) 
+    $\F$は次のデータからなる. 
+
+    -- $X$ の各開部分集合 $U$ に対するアーベル群 $\F(U)$, そして
+
+    -- 部分開集合の各組 $V \subset U$ に対する
+    群準同型 (\textbf{制限写像}) $\rho_{UV} \colon \F(U)\to \F(V)$
+    で, 次の条件を満たすもの: 
+    \begin{enumerate}
+        \renewcommand{\labelenumi}{({\arabic{enumi}})}
+        \item $\F(\varnothing) = 0$; 
+        \item $\rho_{UU} = \id$; 
+        \item $W \subset V \subset U$ ならば, 
+        $\rho_{UW} = \rho_{VW} \circ \rho_{UV}$.
+    \end{enumerate}
+    元$s\in \F(U)$を$\F$の$U$上の\textbf{切断} (section) という. 
+    $s|_V$ で $\rho_{UV}(s)\in\F(V)$ を表し, 
+    $s$ の $V$ への\textbf{制限} (restriction) とよぶ. 
+\end{Definition}
+
+\begin{Definition}\label{def-shv}
+    前層 $\F$ が次の条件をみたすとき, \textbf{層} であるという. 
+    \begin{enumerate}
+        \renewcommand{\labelenumi}{({\arabic{enumi}})}
+        \setcounter{enumi}{3}
+        \item (\textbf{一意性})\label{shv-uniq}
+        $U$を$X$の開部分集合とし, 
+        $s\in \F(U)$, $\{U_i\}_i$を
+        開部分集合$U_i$による$U$ の被覆とする. 
+        全ての$i$に対し$s|_{U_i} = 0$ ならば, $s = 0$
+        である. 
+        \item (\textbf{局所切断の貼り合わせ})\label{shv-glu}
+        (\ref{shv-uniq}) の記法を用いる. 
+        $s_i\in \F(U_i)$, $i\in I$
+        を切断で
+        $s_i|_{U_i\cap U_j} = s_j|_{U_i\cap U_j}$
+        をみたすものとする. 
+        このとき, 切断$s\in \F(U)$で
+        $s|_{U_i} = s_i$
+        をみたすものが存在する 
+        (この切断$s$は (\ref{shv-uniq}) より一意である). 
+    \end{enumerate}
+\end{Definition}
+
+\begin{proof}[定義\ref{def-shv}は何を言っているのか] 
+    次の射を考える. 
+    \begin{align*}
+        \prod_{i\in I}\rho_{UU_i} \colon 
+        \F(U)\to \prod_{i\in I}\F(U_i);
+        \quad 
+        s\mapsto (s|_{U_i})_{i\in I}.
+    \end{align*}
+
+    (\ref{shv-uniq}) は
+    $\prod_{i\in I} \rho_{UU_i}$が単射である, と言っている. 
+    
+    (\ref{shv-uniq})について. 
+    $\prod_{i\in I}\F(U_i)$の部分群
+    \begin{align*}
+        M \coloneqq \left\{\left.
+            (s_i)_{i\in I} \in \prod_{i\in I}\F(U_i) 
+            \right|\ \forall i,j\in I \ 
+            s_i|_{U_i\cap U_j} = s_j|_{U_i\cap U_j} \right\}
+    \end{align*}
+    を考える. (\ref{shv-glu}) は
+    $\prod_{i\in I}\rho_{UU_i}\colon \F(U)\to M$
+    が全射であるということである. 
+
+    つまり, (\ref{shv-uniq}), (\ref{shv-glu}) を合わせると, 
+    $\prod_{i\in I}\rho_{UU_i}$ によって 
+    $\F(U)$と$M$が同形になるといっている.
+\end{proof}
+
+\begin{proof}[定義\ref{def-shv} (\ref{shv-glu}) の一意性の証明] 
+    切断$s, s' \in \F(U)$が
+    $s|_{U_i} = s_i$, $s'|_{U_i} = s_i$
+    をみたすとする. このとき, 
+    \begin{align*}
+        (s-s')|_{U_i} 
+        &= \rho_{UU_i}(s-s') \\
+        &= \rho_{UU_i}(s) - \rho_{UU_i}(s')\\
+        &= s|_{U_i} - s'|_{U_i} = s_i - s_i = 0. 
+    \end{align*}
+    したがって, 定義\ref{def-shv} (\ref{shv-uniq}) より$s-s' = 0$. 
+    すなわち. $s = s'$.
+\end{proof}
+
+同様にして, \textbf{環上の層}, 
+固定した環の上の\textbf{代数上の層}等々を定義できる. 
+$\F$の\textbf{部分層}$\F'$も自然な概念である: 
+$\F'(U)$は$\F(U)$の部分群であり, 
+制限$\rho'_{UV}$は$\rho_{UV}$によって引き起こされる. 
+
+\begin{proof}[部分層の定義] 
+    まず部分関手の定義を復習する. 
+    $F,G\colon \mcal{C} \to \mcal{C}'$
+    を関手とし, $\pphi \colon F\to G$ を関手の射とする. 
+    $\mcal{C}$の全ての対象 $X$ に対し, $F(X)\subset G(X)$
+    であり$\pphi(X)$が包含$ F(X)\inc G(X)$となるとき, 
+    $F$を$G$の部分関手という. 
+
+    $G\colon \mcal{C}\to\mcal{C}'$を関手とし, 
+    各対象$X\in\mcal{C}$に対し部分対象$F(X)\subset G(X)$
+    が与えられているとき, $G$の部分関手$F$が定まるための条件は, 
+    $\mcal{C}$の任意の射$f\colon X\to Y$に対し
+    $G(f)(F(X))\subset F(Y)$となることである. 
+    \[\begin{tikzcd}
+        G(X) 
+        \arrow[r, "G(f)"] 
+        &
+        G(Y)\\
+        F(X)
+        \arrow[r,hook, "G(f)"] 
+        \arrow[u,hook] 
+        &
+        G(Y)\arrow[u,hook].
+    \end{tikzcd}\]
+
+    同様の条件をみたす関手
+    $\mcal{G}\subset\F\colon \cat{Open}_X^{\op}\to\cat{Ab}$
+    で, 層の条件 (\ref{shv-uniq}), (\ref{shv-glu}) 
+    をみたすものとして$\F$の部分層$\mcal{G}$を定める. 
+\end{proof}
+
+\begin{Example}
+    $X$を位相空間とする. $X$の任意の開集合$U$に対し, 
+    $\mcal{C}(U) = \mathrm{C}^0(U,\R)$を
+    $U$から$\R$への連続関数の集合とする. 
+    制限$\rho_{UV}$は普通の関数の制限である. 
+    このとき, $\mcal{C}$は$X$の層である.
+    $\F(U) = \R^U$ を$U$上の$\R$に値をとる関数の集合とすると, 
+    これは$\mcal{C}$を部分層としてもつ層$\F$を定める.  
+\end{Example}
+
+\begin{proof}
+    $\mcal{C}(\varnothing) = 0$であるか: 
+    空集合からの写像は包含$i\colon \varnothing\inc \R$のみであるから, 
+    $\mcal{C}(\varnothing) = \{i\} \cong 0$である. 
+
+    $\mcal{C}$が層になるための条件 
+    (\ref{shv-uniq}), (\ref{shv-glu}) 
+    をみたすことを示す. 
+    $U = \cup_{i\in I} U_i$とする. 
+    このとき, $s\colon U \to \R; s(x) = (x\in U_i)$を考える. 
+    任意の$x\in U$に対し$x\in U_i$となる$i$が存在するので
+    $s(x) = 0$である. 
+    したがって, $\mcal{C}$は (\ref{shv-uniq}) をみたす. 
+
+    $(s_i)_{i\in I}$, 
+    $s_i|_{U_i\cap U_j} = s_j|_{U_i\cap U_j} 
+    \ (i,j \in I)$
+    とする. 写像$s\colon U \to \R$を
+    $s(x) = s_i(x)\ (x\in U_i)$
+    で定めたい. 
+    いま, $x\in U$について$x\in U_i$をとなる$i\in I$
+    が存在することは保証されている. 
+    $x$が$U_i$の元であり, かつ$U_j$の元でもあるとする. 
+    このとき$s_i(x) = s_j(x)$が成り立つことを示す. 
+    \begin{align*}
+        s_i(x) = s_i|_{U_i\cap U_j}(x), 
+        s_j(x) = s_j|_{U_j\cap U_i}(x). 
+    \end{align*} 
+    したがって, $s_i(x) = s_j(x)$が成り立つので, 
+    $s$は well-defined であり 
+    (\ref{shv-glu}) が成り立つ. 
+
+    $s\colon U \to \R$が連続写像であることを示す. 
+    $x\in U$とし, $\e>0$を実数とする. 
+    いま$x$が$U_i$の点であるとすると, $s_i$は連続なので
+    開近傍$V_i\subset U_i$が存在する. 
+    この$V_i$に対し, $V_i\subset U$である. 
+    $x_0$を$V_i$の点とすると, 
+    \begin{align*}
+        | s(x)-s(x_0) | = | s_i(x)-s_i(x_0) | < \e
+    \end{align*}
+    が成り立つ. したがって, $s$は連続である. \qed
+\end{proof}
+
+\begin{proof}[関手$\F$について]
+    $V\subset U$を$X$の開集合とする. 
+    \begin{equation*}
+        \vcenter{\xymatrix@C=36pt@R=36pt{
+        \mcal{C}(U) \ar[r]^-{\rho^\mcal{C}_{UV}} \ar@{^{(}->}[d] 
+        & 
+        \mcal{C}(V) \ar@{^{(}->}[d] \\
+        \F(U) \ar[r]^-{\rho^\F_{UV}}  
+        & 
+        \F(V)\ar@{}[lu]|{\circlearrowright}
+        }}
+    \end{equation*}
+    
+    $f\in\mcal{C}(U)$を切断とする. 
+    $\rho^\mcal{C}_{UV}(f)=f|_V$であり, 
+    $f|_V\in \mcal{C}(V)$が成り立つ. 
+    よって, $\mcal{C}$は$\F$の部分層である. \qed
+\end{proof}
+
+\begin{Example} \label{ex-Ax}
+    $A$を非自明なアーベル群とする. $X$を位相空間とする. 
+    $\mcal{A}_X(U) = A$とし, $U$と$V$が空でなければ
+    $\rho_{UV}=\id_A$とする. 
+    これは$X$上の前層を定める. 
+    一般には, $\mcal{A}_X$は層にはならない. 
+    例えば, $X$が空でない２つの開集合の非交和だとすると, 
+    層の条件 (\ref{shv-glu}) が成り立たない. 
+\end{Example}
+
+\begin{proof}
+    $X = U \sqcup V (U,V\neq\varnothing)$とおき, 
+    $a\neq b\in A$とする. 
+    $a|_{U\cap V} = b|_{U\cap V}$
+    であるが, $U\cup V$について, 
+    $x\in A$で, $x|_U = a, x|_V = b$
+    をみたすものが存在し, $x|_U = x$となるが, 
+    これは$a\neq b$にムジュン. 
+    したがって, $\mcal{A}_X$は
+    層の条件 (\ref{shv-glu}) を満たさず, 
+    層にはならない. \qed
+\end{proof}
+
+\begin{Remark} \label{Rem-rst}
+    $U$が$X$の開集合であるとき, $X$上の任意の前層$\F$は
+    自明な方法で, すなわち, $U$の任意の開部分集合$V$に対し, 
+    $\F|_{U}(V)=\F(V)$とおくことで, 
+    $U$上の前層$\F|_{U}$を引き起こす. 
+    $\F$の$U$への\textbf{制限}(restriction) という. 
+    $\F$が層になるならば, $\F|_{U}$もそうなる. 
+\end{Remark}
+
+\begin{proof}[コメント]
+    $X$:top.\ sp., $V\subset U\subset X$: open のとき, 
+    $\F\colon \cat{Open}X^\op\to \cat{Ab}$に対し
+    $\F|_U\colon \cat{Open}U^\op\to \cat{Ab}$ : $V\mapsto \F(V)$
+    としてとるということ. 
+\end{proof}
+
+\begin{Remark} \label{Rem-Bsh}
+    $\mcal{B}$を$X$の部分集合の基底とする 
+    (即ち, $\mcal{B}$は$X$の開集合のなす集合であって, 
+    $X$の任意の開集合は$\mcal{B}$に属する部分開集合の合併であり, 
+    有限の共通部分について安定であるということである). 
+    $\mcal{B}$前層と$\mcal{B}$層を, 上の定義において 
+    「$X$の開集合$U$」を「$\mcal{B}$に属する開集合$U$」で
+    置き換えることで定められる. 
+    このとき任意の$\mcal{B}$層$\F_0$は$X$上の層$\F$に
+    一意に (より正確には同型を除いて一意に, 
+    定義\ref{def-morPsh}参照) 拡張される. 
+\end{Remark}
+
+$\mcal{U} = \{U_i\}_i$を$X$の開集合族とする. 
+$U = \cup_i U_i$とし$U_{ij} = U_i \cap U_j$とする. 
+$X$上の任意の前層$\F$に対し, 
+アーベル群の複体$C^\bullet(\mcal{U},\F)$
+\begin{align*}
+    0 \rightarrow 
+    \F(Y) \xrightarrow{d_0} 
+    \prod_i \F(U_i) \xrightarrow{d_1} 
+    \prod_{i,j} \F(U_{ij})
+\end{align*}
+で, $d_0\colon s \mapsto (s|_{U_i})_i$と
+$d_1\colon (s_i)_i \mapsto(s_i|_{U_{ij}} - s_j|_{U_{ij}})_{i,j}$
+で定まるものを得る. 
+
+\begin{Lemma} \label{lem-shCmp}
+    上の記号のもとで, $\F$が層であることと,
+    $X$の任意の開集合族$\mcal{U}$に対し
+    $C^\bullet(\mcal{U},\F)$が完全であることは同値である. 
+\end{Lemma}
+
+\begin{proof}
+    $\mcal{U}$
+\end{proof}
+
+\begin{Definition} \label{def-stalk}
+    $\F$を$X$上の前層とし, $x\in X$とする. 
+    $\F$の$x$における\textbf{茎} (stalk) とは, 
+    群
+    \begin{align*}
+        \F_x = \varinjlim_{U\in I_x} \F(U)
+    \end{align*}
+    のことをいう. 
+\end{Definition}
+
+\begin{proof}[$I_x$について]
+    $I_x\subset \cat{Open}X$を$x$の開近傍全体の成す順序集合で, 
+    $U, V \in I_x$の順序を
+    $U < V \Longleftrightarrow U \supset V$
+    で定めたものとする ($I_x$を圏とみなしたとき, 
+    $I_x$は$\cat{Open}X^\op$の充満部分圏になっている).     
+\end{proof}
+% \varinjlim  は帰納極限 (逆極限, 極限), 
+% \varprojlim は射影極限 (順極限, 余極限)
+
+\begin{Lemma}
+    $s_x = t_x$
+\end{Lemma}
+
+\begin{Definition} \label{def-morPsh}
+    $\alpha(U)$
+\end{Definition}
+
+\begin{Example}
+    $\C \setminus \{0\}$
+\end{Example}
+
+\begin{Proposition}
+    $\alpha_x$
+\end{Proposition}
+
+\begin{Corollary}
+    $\alpha\colon \F \to \mcal{G}$
+\end{Corollary}
+
+\begin{Definition} \label{def-shfify}
+    $\F^\dagger$
+\end{Definition}
+
+%=======================================
+% 複体テンプレート
+\begin{comment}
+    \begin{equation*}
+        \vcenter{\xymatrix@C=36pt{
+        0 \ar[r] 
+        & 
+        \F(Y) \ar[r]^-{d_0} 
+        & 
+        \prod_i \F(U_i) \ar[r]^-{d_1} 
+        & \prod_{i,j} \F(U_{ij}),
+        }}
+    \end{equation*}
+\end{comment}
+
+
+% 随伴テンプレート
+\begin{comment}
+\begin{equation}
+    \begin{tikzcd}
+    \cat{C}
+    \arrow[r, bend left, "F"] 
+    \arrow[r, phantom, "\perp"] 
+    & 
+    \cat{C}' \arrow[l, bend left, "G"]
+    \end{tikzcd}
+\end{equation}
+\end{comment}
+
+
+
+
+\begin{thebibliography}{20}
+\par
+  \bibitem[Liu]{Liu} Qing Liu, 
+  \textit{Algebraic Geometry and Arithmetic Curves}, 
+  Oxford Graduate Text in Mathematics, 
+  \textbf{6}, 2010.
+\end{thebibliography}
+\end{document}

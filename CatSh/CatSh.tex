@@ -1,0 +1,509 @@
+% -----------------------
+% preamble
+% -----------------------
+% Don't change preamble code yourself. If you add something(usepackage, newtheorem, newcommand, renewcommand),
+% please tell them editor of institutional paper of RUMS.
+
+%documentclass
+%------------------------
+\documentclass[a5paper, dvipdfmx]{jsbook}
+
+
+%usepackage
+%------------------------
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[psamsfonts]{amssymb}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{enumerate}
+\usepackage{verbatim}
+\usepackage{subfigure}
+\usepackage{proof}
+\usepackage{listings}
+\usepackage{otf}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{tikz}
+\usepackage[all]{xy}
+\usepackage{amscd}
+
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+
+\usepackage{enumitem}
+
+\usetikzlibrary{cd}
+
+%theoremstyle
+%--------------------------
+\theoremstyle{definition}
+
+
+%newtheoem
+%--------------------------
+%If you want to use theorem environment in Japanece, You can use these code. 
+%Attention
+%--------------------------
+%all theorem enivironment number depend on only section number.
+\newtheorem{Axiom}{公理}[section]
+\newtheorem{Definition}[Axiom]{定義}
+\newtheorem{Theorem}[Axiom]{定理}
+\newtheorem{Proposition}[Axiom]{命題}
+\newtheorem{Lemma}[Axiom]{補題}
+\newtheorem{Corollary}[Axiom]{系}
+\newtheorem{Example}[Axiom]{例}
+\newtheorem{Claim}[Axiom]{主張}
+\newtheorem{Property}[Axiom]{性質}
+\newtheorem{Attention}[Axiom]{注意}
+\newtheorem{Question}[Axiom]{問}
+\newtheorem{Problem}[Axiom]{問題}
+\newtheorem{Consideration}[Axiom]{考察}
+\newtheorem{Alert}[Axiom]{警告}
+\newtheorem{Notation}[Axiom]{記号}
+
+
+
+%----------------------------
+%If you want to use theorem environment with no number in Japanese, You can use these code.
+\newtheorem*{Axiom*}{公理}
+\newtheorem*{Definition*}{定義}
+\newtheorem*{Theorem*}{定理}
+\newtheorem*{Proposition*}{命題}
+\newtheorem*{Lemma*}{補題}
+\newtheorem*{Example*}{例}
+\newtheorem*{Corollary*}{系}
+\newtheorem*{Claim*}{主張}
+\newtheorem*{Property*}{性質}
+\newtheorem*{Attention*}{注意}
+\newtheorem*{Question*}{問}
+\newtheorem*{Problem*}{問題}
+\newtheorem*{Consideration*}{考察}
+\newtheorem*{Alert*}{警告}
+
+%--------------------------
+%If you want to use theorem environment in English, You can use these code.
+%--------------------------
+%all theorem enivironment number depend on only section number.
+\newtheorem{Axiom+}{Axiom}[section]
+\newtheorem{Definition+}[Axiom+]{Definition}
+\newtheorem{Theorem+}[Axiom+]{Theorem}
+\newtheorem{Proposition+}[Axiom+]{Proposition}
+\newtheorem{Lemma+}[Axiom+]{Lemma}
+\newtheorem{Example+}[Axiom+]{Example}
+\newtheorem{Corollary+}[Axiom+]{Corollary}
+\newtheorem{Claim+}[Axiom+]{Claim}
+\newtheorem{Property+}[Axiom+]{Property}
+\newtheorem{Attention+}[Axiom+]{Attention}
+\newtheorem{Question+}[Axiom+]{Question}
+\newtheorem{Problem+}[Axiom+]{Problem}
+\newtheorem{Consideration+}[Axiom+]{Consideration}
+\newtheorem{Alert+}{Alert}
+
+%commmand
+%----------------------------
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+
+\newcommand{\p}{\partial}
+\newcommand{\h}{\mathscr}
+\newcommand{\mcal}{\mathcal}
+\newcommand{\mrm}{\mathrm}
+
+\newcommand{\lan}{\langle}
+\newcommand{\ran}{\rangle}
+\newcommand{\pal}{\parallel}
+\newcommand{\dip}{\displaystyle}
+\newcommand{\e}{\varepsilon}
+\newcommand{\dl}{\delta}
+\newcommand{\pphi}{\varphi}
+\newcommand{\ti}{\tilde}
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\Probsp}{(\Omega, \F, \P)}
+
+%new definition macro
+%-------------------------
+\def\inner<#1>{\langle #1 \rangle}
+
+\usepackage[stable]{footmisc}
+\renewcommand{\proofname}{\bf 証明} % 「証明」の見出しを日本語にする
+\newcommand{\pr}{\mathop{\mathrm{pr}}\nolimits} % 射影の記号を斜字体にしない
+\newcommand{\id}{\mathop{\mathrm{id}}\nolimits} % 恒等写像
+\newcommand{\Ob}{\mathop{\mathrm{Ob}}\nolimits}
+\numberwithin{equation}{section} % 式番号を「(3.5)」のように印刷
+\newcommand{\Hom}{\mathop{\mathrm{Hom}}\nolimits}
+\newcommand{\Mod}{\mathop{\mathrm{Mod}}\nolimits}
+\newcommand{\End}{\mathop{\mathrm{End}}\nolimits}
+\newcommand{\Aut}{\mathop{\mathrm{Aut}}\nolimits}
+\newcommand{\Mor}{\mathop{\mathrm{Mor}}\nolimits}
+
+
+
+\usepackage{eufrak}
+\def\rnum#1{\expandafter{\romannumeral #1}} 
+\def\Rnum#1{\uppercase\expandafter{\romannumeral #1}} 
+
+
+
+%----------------------------
+%documenet 
+%----------------------------
+% Your main code must be written between begin document and end document.
+\title{圏と層}
+\author{柏原 正樹, P・シャピラ}
+\date{}
+\begin{document}
+\maketitle
+
+%=================================
+\chapter*{まえがき}
+%=================================
+20世紀半ば以降, 数学の言葉はめざましく変化している. 
+特にグロタンディークのアイデアが代数幾何から他の分野にも
+広がるようになってからはその傾向は顕著である. 
+集合と写像の概念を膨らませたものとして, 
+圏と層は今ではほとんどすべての分野に顔を出す
+新しい道具であり, 
+単なる便利な言葉として現れることもあれば, 
+数学をより深く理解するための自然な手法として
+現れることもある. 
+
+アイレンベルクとマックレーンにより40年代に創始された圏論は
+
+
+%=================================
+\tableofcontents
+%=================================
+
+%=================================
+\chapter*{序章}
+%=================================
+
+
+本書の目的は, まえがきで概説した圏, ホモロジー代数, 層の
+話題について述べることである. 
+
+\textbf{1章.} 
+まず, 圏と関手の基本的な概念を定義するところから始め, 
+同時に, 多数の典型的な例を与える. 
+集合論に関して注意すべき点があり
+矛盾を避けるために, 
+宇宙を１つ固定しその中で議論をする. 
+
+
+%===================================
+\chapter{圏という言語}
+%===================================
+
+集合 $E$ とは元の集まりであり, 
+２つの元 $x$ と $y$ が $E$ にあるとき, 
+$x$ と $y$ の間には何の関係もない. 
+圏の概念はもっと洗練されている. 
+
+%====================================
+\section{前置き: 集合と宇宙}
+%====================================
+
+本節の目的はいくつかの記号を定め宇宙の公理を思い出すことである. 
+集合論に立ち入ったり, 必要以上に宇宙について言及することはしない. 
+
+集合$u$に対し, $u$の部分集合のなす集合を$\mcal{P}(u)$で表す. 
+
+% 定義1.1.1 ==========================
+\begin{Definition}
+  宇宙 $\mcal{U}$ とは次の条件をみたす集合である. 
+\end{Definition}
+
+%=====================================
+\section{圏と関手}
+%=====================================
+
+% 圏の定義
+\begin{Definition}
+  圏 $\mcal{C}$ はつぎのものから成る: 
+  \begin{enumerate}
+  \renewcommand{\labelenumi}{(\roman{enumi})}
+    \item 集合 $\Ob(\mcal{C})$
+    \item 集合 $\Hom_\mcal{C}(X,Y)$
+    \item 合成と呼ばれる写像: \begin{align*}
+      \Hom_\mcal{C}(X,Y) \times \Hom_\mcal{C}(Y,Z) 
+      \to \Hom_\mcal{C}(X,Z)
+    \end{align*}
+  \end{enumerate}
+  次の条件を満たす: 
+  \begin{enumerate}
+  \renewcommand{\labelenumi}{(\alph{enumi})}
+    \item $\circ$ は結合法則を満たす. すなわち
+    \item $\id_X \in \Hom_\mcal{C}(X,X)$
+  \end{enumerate}
+\end{Definition}
+
+% 例1.2.2: 圏の例
+\begin{Example}
+
+  (\rnum{1}) % 圏 Set
+  \textbf{Set} は $\mcal{U}$ 集合と写像のなす圏であり, 
+  $\textbf{Set}^f$ は有限 $\mcal{U}$ 集合で構成された
+  充満部分圏である. 
+
+  (\rnum{2}) % 圏 Rel
+  2項関係のなす圏 {\textbf{Rel}} は次で定められる: 
+  $\Ob(\mcal{\textbf{Set}})=\Ob(\mcal{\textbf{Set}})$, 
+  $\Hom_{\textbf{Rel}}(X,Y) = \mcal{P}(X\times Y)$.
+  結合律は次のように定められる: 
+  $f:X\to Y, g:Y\to Z$ のとき, $g\circ f$ は集合
+  \[
+    \{(x,z)\in X\times Z\mid\exists y\left((x,y)\in f, (y,z)\in g\right)\}
+  \]
+  である. もちろん, $\id_X$ は$X\times X$の対角集合である. 
+
+  (\rnum{3}) % 圏 pSet
+  {\textbf{pSet}} は点付き$\mcal{U}$ 集合の圏である. 
+  対象は組$(X,x)$で$X$が$\mcal{U}$集合かつ$x\in X$ 
+  であるものであり, 射$f\in \Hom_{\textbf{pSet}}((X,x),(Y,y))$
+  は写像$f:X\to Y$で$f(x)=y$をみたすものである. 
+
+  $(\mathrm{iv})$ % 圏 Mod(R)
+  $R\in \mcal{U}$ を環とする. 左$R$加群で$\mcal{U}$ に属すものと
+  $R$線形写像のなす圏を$\Mod(R)$ で表す. すなわち定義より 
+  $\Hom_{\Mod(R)}(\bullet,\bullet)=\Hom_R(\bullet,\bullet)$
+  である. 右$R$加群は左$R^{\mrm{op}}$加群のことであった. ここに
+  $R^{\mrm{op}}$は$R$に反対積の構造を入れたものを表す. 
+
+  % End環 Aut群
+  $\End_R(M)$ で$R$加群$M$の$R$自己準同型環を表し, $\Aut_R(M)$で
+  $M$の$R$自己同型のなす群を表す. 
+
+  % 有限加群
+  $\Mod^{\mrm f}(R)$ で有限生成$R$加群より成る$\Mod(R)$の充満部分圏を表す. 
+  ($M$が有限生成であるとは, ある整数$n\geqq 0$に対して
+  全射$R$線形写像$u:R^{\oplus n}\twoheadrightarrow M$ 
+  が存在することをいうのであった.) 
+  「有限生成」であるということを単に有限であるともいう. 
+
+  % 有限表示
+  $\Mod^{\mrm fp}(R)$ で有限表示$R$加群より成る$\Mod^f(R)$の
+  充満部分圏を表す. 
+  ($M$が有限表示であるとは, $M$が有限かつ上で定義した線形写像$u$の
+  核が有限であることをいうのであった.)
+
+  (\rnum{5}) % 順序集合の圏
+  $(I,\leqq)$ を順序集合とする. これを次のようにして
+  圏$\mcal{I}$ とみなす. 
+  \begin{alignat*}{3}
+    \Ob(\mcal{I}) &= I \\
+    \Hom_\mcal{I}(i,j) &= 
+    \begin{cases}
+      \{\mathrm{pt}\} \quad & i\leqq j\text{のとき, }\\
+      \emptyset       \quad & \text{そうでないとき. }
+    \end{cases}
+  \end{alignat*}
+  言い換えると, $i$ から $j$への射のなす集合は$i\leqq j$
+  である場合には1つの元をもち, そうでないときには空集合である. 
+  $\mcal{I}^\mathrm{op}$ は$(I,\leqq^\mathrm{op})$ 
+  と同一視した圏であることに注意. ここに
+  $x\leqq^\mathrm{op} y$ は$y \leqq x$ ということである. 
+  $\mcal{I}$ を単に $I$ とかくこともある. 
+
+  (\rnum{6}) % 圏 Top
+  \textbf{Top} で$\mcal{U}$ に属する位相空間と
+  連続写像のなす圏を表す. 
+\end{Example}
+
+圏$\mcal{C}$ の射全体に圏の構造を付与できる. 
+
+\begin{Definition}[category of morphisms]
+  $\mcal{C}$を圏とする. $\Mor(\mcal{C})$ で
+  対象を$\mcal{C}$の射とし, 射が以下のように表される圏を表す. 
+  $f:X\to Y$と$g:X'\to Y'$が$\Mor(\mcal{C})$に
+  属しているとき, 
+  \[
+    \Hom_{\Mor(\mcal{C})}(f,g) 
+    \coloneqq 
+    \{u:X\to X', v:Y\to Y' ; g\circ u = v \circ f\}
+  \]
+  である. $\Mor(\mcal{C})$ の結合則と単位射は自明なものである. 
+\end{Definition}
+
+$\Mor(\mcal{C})$ における射 $f \to g$ は次の可換図式により
+可視化でされる: 
+\[
+  \begin{CD}
+     X    @>{f}>>  Y \\
+  @V{u}VV       @VV{v}V \\
+     X'   @>{g}>>  Y'
+  \end{CD}
+\]
+
+\begin{Definition}
+  (\rnum{1}) 
+  $P \in \mcal{C}$ とする. 
+  すべての$X \in \mcal{C}$ に対し, 
+  $\Hom_{\mcal{C}}(P, X) \simeq \{\mathrm{pt}\}$ 
+  であるとき, $P$ を $\mcal{C}$ の始対象と呼ぶ. 
+  $\mcal{C}$ の始対象を ${\emptyset}_{\mcal{C}}$ で表す. 
+  ($P_1$ と $P_2$ が始対象であるとすると, 
+  一意な同型$P_1 \simeq P_2$ が存在する.)
+
+  (\rnum{2})
+  $P \in \mcal{C}$ とする. 
+  $P$ が ${\mcal{C}}^{\mathrm{op}}$ の始対象であるとき, 
+  すなわち, 
+  すべての$X \in \mcal{C}$ に対し, 
+  $\Hom_{\mcal{C}}(X,P) \simeq \{\mathrm{pt}\}$ 
+  であるとき, $P$ を $\mcal{C}$ の終対象と呼ぶ. 
+  $\mcal{C}$ の終対象を ${\mathrm{pt}}_{\mcal{C}}$ で表す. 
+  
+  (\rnum{3})
+  $P \in \mcal{C}$ とする. 
+  $P$ が $\mcal{C}$ の始対象でも終対象でもあるとき, 
+  $P$ は零対象であるという. 
+  このような$P$を$0$で表すことが多い. 
+  $\mcal{C}$ が零対象をもつとき, 
+  任意の $X,Y\in \mcal{C}$ に対し, 
+  合成 $X \to 0 \to Y$ として得られる射もまた
+  $0: X \to Y$ で表す. 
+  ($0: X \to Y$ と任意の射 $f: Y \to Z$ 
+  の合成も$0: X \to Z$ で表される.)
+\end{Definition}
+
+\begin{Example}
+  (\rnum{1})
+  圏 $\mathbf{Set}$においては, $\emptyset$ が始対象であり
+  $\{\mathrm{pt}\}$ が終対象である. 
+
+  (\rnum{2}) 
+  圏 $\mathbf{pSet}$においては, 
+  対象$(\{\mathrm{pt}\}, \mathrm{pt})$ 
+  が零対象である. 
+
+  (\rnum{3}) 
+  零加群 $0$ は$\Mod (R)$ の零対象である. 
+
+  (\rnum{4}) 
+  順序集合$({\Z}, \leqq)$ と結びついた圏は
+  始対象も終対象も存在しない. 
+\end{Example}
+
+\begin{Notation}
+  (\rnum{1})
+  対象が１つで射が１つ (この対象の恒等射) 
+  の圏を $\mathbf{Pt}$ で表す. 
+  
+  (\rnum{2}) 
+  対象をもたない (したがって, 射も存在しない) 空圏を, 
+  たんに $\emptyset$ で表す. 
+
+  (\rnum{3}) 
+  対象が2つ, たとえば $a$ と $b$, そして
+  恒等射 ${\id}_a$ と ${\id}_b$ の他に1つの射で
+  構成される圏を図式$\bullet \to \bullet$ で表す. 
+  この圏を $\mathbf{Arr}$ で表す. 
+
+  (\rnum{4}) 
+  対象が2つ, たとえば $\{a,b\}$, そして
+  恒等射 ${\id}_a$ と ${\id}_b$ の他に2つの平行な射で
+  構成される圏を図式
+    $
+    \begin{tikzcd}
+      {\bullet}
+        \arrow[r, shift left]
+        \arrow[r, shift right]
+      & {\bullet}
+    \end{tikzcd}
+    $
+  で表す. 
+
+  (\rnum{5}) 
+  1つの対象 $c$ と恒等射 ${\id}_c$ の他に
+  1つの射$p: c \to c$で$p^2 = p$ をみたすものにより
+  構成される圏を $\mathbf{Pr}$ で表す. 
+\end{Notation}
+
+\begin{Example}
+  $R$ を環とする. $N \in \Mod(R^{\mathrm{op}})$ であり
+  $M \in \Mod(R)$ であるとする. 
+  圏$\mcal{C}$ を次のように定義する. 
+  $\mcal{C}$ の対象は $L \in \Mod(\Z)$ と 
+  $N\times M$ から $L$ への双線形写像
+  (すなわち, $\Z$ 双線型であり, すべての$a\in R$ に対し, 
+  $f(na,m)=f(n,am)$をみたすもの)
+  の組$(f,L)$ である. 
+  $f: N\times M \to L$ から $g: n\times M \to K$ への
+  射は線形写像 $h: L \to K$ で $h\circ f = g$ 
+  をみたすものである. 
+  任意の双線形写像 $f: N\times M \to L$ 
+  (すなわち, 任意の$\mcal{C}$ の対象) は
+  $u: N\times M \to N\otimes _{R} M$ 
+  を通して一意に分解するので, $(u, N\otimes _{R} M)$ 
+  は$\mcal{C}$の始対象である. 
+\end{Example}
+
+\begin{Definition}
+  (\rnum{1}) 
+  $\mcal{C}$, $\mcal{C}'$を圏とする. 
+  関手$F: \mcal{C} \to \mcal{C}'$ は写像
+  $F: \Ob(\mcal{C}) \to \Ob(\mcal{C}')$ 
+  と, 任意の$X, Y  \in \mcal{C}$  に対する写像
+  $F:\Hom _{\mcal{C}}(X,Y)\to\Hom _{\mcal{C}'}(F(X),F(Y))$
+  で次の条件 {\ref{idFunctor}}, {\ref{CompFunctor}} 
+  をみたすものより成る. 
+  \begin{enumerate}[label*=(\arabic*)]
+    \item 任意の対象$X\in\mcal{C}$に対し, 
+      $F(\id_X) = \id_{F(X)}$, \label{idFunctor}
+    \item 任意の$f: X\to Y$, $g:Y\to Z$ に対し, 
+      $F(g\circ f) = F(g)\circ F(f)$.  \label{CompFunctor}
+  \end{enumerate}
+
+  $\mcal{C}$ から $\mcal{C}'$ への反変関手とは
+  ${\mcal{C}}^{\mathrm{op}}$ から $\mcal{C}'$ 
+  への関手のことである. つまり, 反変関手とは
+  {\ref{CompFunctor}} のかわりに 
+  $F(g\circ f) = F(f)\circ F(g)$ 
+  をみたすものである. 
+\end{Definition}
+
+\section{関手の射}
+
+\section{米田の補題}
+
+\section{随伴関手}
+\section*{演習}
+
+\chapter{極限}
+
+\section{極限}
+\section{諸例}
+\section{関手の Kan 拡張}
+\section{圏$\mathbf{Set}$の帰納極限}
+\section{共終関手}
+\section{帰納極限と射影極限}
+\section{関手の米田拡張}
+\section*{演習}
+
+\chapter{フィルター極限}
+
+\section{圏$\mathbf{Set}$のフィルター帰納極限}
+\section{フィルター圏}
+\section{完全関手}
+\section{２つの関手の圏}
+\section*{演習}
+
+
+\begin{thebibliography}{20}
+\par
+  \bibitem{saito1} 斎藤毅, 『集合と位相』, 東京大学出版会, 2009.
+  \bibitem{KS1} M.\ Kashiwara, P.\ Schapira, \textit{Categories and Sheaves}, Springer, 2006.
+\end{thebibliography}
+\end{document}

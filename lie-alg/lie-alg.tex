@@ -1,0 +1,373 @@
+% -----------------------
+% preamble
+% -----------------------
+% Don't change preamble code yourself. If you add something(usepackage, newtheorem, newcommand, renewcommand),
+% please tell them editor of institutional paper of RUMS.
+
+%documentclass
+%------------------------
+\documentclass[12pt, a4paper, dvipdfmx]{jsarticle}
+
+
+%usepackage
+%------------------------
+\usepackage{amsmath}
+\usepackage{amsthm}
+%\usepackage[psamsfonts]{amssymb}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{enumerate}
+\usepackage{verbatim}
+\usepackage{subfigure}
+\usepackage{proof}
+\usepackage{listings}
+\usepackage{otf}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{tikz}
+\usepackage[all]{xy}
+\usepackage{amscd}
+
+\usepackage{pb-diagram}
+
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{xcolor}
+\definecolor{darkgreen}{rgb}{0,0.45,0} 
+\definecolor{darkred}{rgb}{0.75,0,0}
+\definecolor{darkblue}{rgb}{0,0,0.6} 
+\hypersetup{
+    colorlinks=true,
+    citecolor=darkgreen,
+    linkcolor=darkred,
+    urlcolor=darkblue,
+}
+\usepackage{pxjahyper}
+
+\usepackage{enumitem}
+
+\usepackage{bbm}
+
+\usetikzlibrary{cd}
+
+%theoremstyle
+%--------------------------
+\theoremstyle{definition}
+
+
+%newtheoem
+%--------------------------
+%If you want to use theorem environment in Japanece, You can use these code. 
+%Attention
+%--------------------------
+%all theorem enivironment number depend on only section number.
+\newtheorem{Axiom}{公理}[section]
+\newtheorem{Definition}[Axiom]{定義}
+\newtheorem{Theorem}[Axiom]{定理}
+\newtheorem{Proposition}[Axiom]{命題}
+\newtheorem{Lemma}[Axiom]{補題}
+\newtheorem{Corollary}[Axiom]{系}
+\newtheorem{Example}[Axiom]{例}
+\newtheorem{Claim}[Axiom]{主張}
+\newtheorem{Property}[Axiom]{性質}
+\newtheorem{Attention}[Axiom]{注意}
+\newtheorem{Question}[Axiom]{問}
+\newtheorem{Problem}[Axiom]{問題}
+\newtheorem{Consideration}[Axiom]{考察}
+\newtheorem{Alert}[Axiom]{警告}
+\newtheorem{Notation}[Axiom]{記号}
+
+
+
+%----------------------------
+%If you want to use theorem environment with no number in Japanese, You can use these code.
+\newtheorem*{Axiom*}{公理}
+\newtheorem*{Definition*}{定義}
+\newtheorem*{Theorem*}{定理}
+\newtheorem*{Proposition*}{命題}
+\newtheorem*{Lemma*}{補題}
+\newtheorem*{Example*}{例}
+\newtheorem*{Corollary*}{系}
+\newtheorem*{Claim*}{主張}
+\newtheorem*{Property*}{性質}
+\newtheorem*{Attention*}{注意}
+\newtheorem*{Question*}{問}
+\newtheorem*{Problem*}{問題}
+\newtheorem*{Consideration*}{考察}
+\newtheorem*{Alert*}{警告}
+
+%--------------------------
+%If you want to use theorem environment in English, You can use these code.
+%--------------------------
+%all theorem enivironment number depend on only section number.
+\newtheorem{Axiom+}{Axiom}[section]
+\newtheorem{Definition+}[Axiom+]{Definition}
+\newtheorem{Theorem+}[Axiom+]{Theorem}
+\newtheorem{Proposition+}[Axiom+]{Proposition}
+\newtheorem{Lemma+}[Axiom+]{Lemma}
+\newtheorem{Example+}[Axiom+]{Example}
+\newtheorem{Corollary+}[Axiom+]{Corollary}
+\newtheorem{Claim+}[Axiom+]{Claim}
+\newtheorem{Property+}[Axiom+]{Property}
+\newtheorem{Attention+}[Axiom+]{Attention}
+\newtheorem{Question+}[Axiom+]{Question}
+\newtheorem{Problem+}[Axiom+]{Problem}
+\newtheorem{Consideration+}[Axiom+]{Consideration}
+\newtheorem{Alert+}{Alert}
+
+%commmand
+%----------------------------
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\Y}{\mathcal{Y}}
+\newcommand{\Hil}{\mathcal{H}}
+\newcommand{\RKHS}{\Hil_{k}}
+\newcommand{\Loss}{\mathcal{L}_{D}}
+\newcommand{\MLsp}{(\X, \Y, D, \Hil, \Loss)}
+\newcommand{\p}{\partial}
+\newcommand{\h}{\mathscr}
+\newcommand{\mcal}{\mathcal}
+\newcommand{\lan}{\langle}
+\newcommand{\ran}{\rangle}
+\newcommand{\pal}{\parallel}
+\newcommand{\dip}{\displaystyle}
+\newcommand{\e}{\varepsilon}
+\newcommand{\dl}{\delta}
+\newcommand{\pphi}{\varphi}
+\newcommand{\ti}{\tilde}
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\Probsp}{(\Omega, \F, \P)}
+
+%new definition macro
+%-------------------------
+\def\inner<#1>{\langle #1 \rangle}
+
+\usepackage[stable]{footmisc}
+\renewcommand{\proofname}{\bf 証明} % 「証明」の見出しを日本語にする
+\newcommand{\pr}{\mathop{\mathrm{pr}}\nolimits} % 射影の記号を斜字体にしない
+\newcommand{\id}{\mathop{\mathrm{id}}\nolimits} % 恒等写像
+\newcommand{\Ob}{\mathop{\mathrm{Ob}}\nolimits}
+\numberwithin{equation}{section} % 式番号を「(3.5)」のように印刷
+\newcommand{\Hom}{\mathop{\mathrm{Hom}}\nolimits}
+\newcommand{\Mod}{\mathop{\mathrm{Mod}}\nolimits}
+\newcommand{\End}{\mathop{\mathrm{End}}\nolimits}
+\newcommand{\Aut}{\mathop{\mathrm{Aut}}\nolimits}
+\newcommand{\Mor}{\mathop{\mathrm{Mor}}\nolimits}
+
+% 圏の記号など
+\newcommand{\Set}{{\bf Set}}
+\newcommand{\Vect}{{\bf Vect}}
+\newcommand{\FDVect}{{\bf FDVect}}
+\newcommand{\Ring}{{\bf Ring}}
+\newcommand{\Ab}{{\bf Ab}}
+\newcommand{\CGA}{{\bf CGA}}
+\newcommand{\GVect}{{\bf GVect}}
+\newcommand{\Lie}{{\bf Lie}}
+\newcommand{\dLie}{{\bf Liec}}
+
+
+%\usepackage{eufrak}
+\def\rnum#1{\expandafter{\romannumeral #1}} 
+\def\Rnum#1{\uppercase\expandafter{\romannumeral #1}} 
+
+\newcommand{\bm}[1]{{\mbox{\boldmath $#1$}}}
+
+\newcommand{\gG}{\mathfrak{g}}
+\newcommand{\gh}{\mathfrak{h}}
+\newcommand{\lL}{\mathop{\mathrm{L}}\nolimits}
+
+\newcommand{\cat}[1]{\textup{\textsf{#1}}}% for categories
+\newcommand{\fun}[1]{\textup{#1}}%for functors
+
+%for yoneda
+\font\maljapanese=dmjhira at 2ex % you can change this "2ex" value
+\def\yo{\textrm{\maljapanese\char"48}}
+
+
+%----------------------------
+%documenet 
+%----------------------------
+% Your main code must be written between begin document and end document.
+\title{Lie環と代数の随伴}
+\author{Toshi2019}
+\date{}
+\begin{document}
+
+\maketitle
+
+Lie 環と代数の間の随伴についてまとめたノート. 
+\[
+\begin{tikzcd}[column sep=large]
+\cat{Lie}_k 
+\arrow[r, bend left, "U"] 
+\arrow[r, phantom, "\perp"]  
+&
+\cat{Alg}_k 
+\arrow[l, bend left, "\lL"]
+\end{tikzcd}\label{adj-}
+\]
+
+% 随伴テンプレート
+\begin{comment}
+\begin{equation}
+    \begin{tikzcd}
+    \cat{C}
+    \arrow[r, bend left, "F"] 
+    \arrow[r, phantom, "\perp"] 
+    & 
+    \cat{C}' \arrow[l, bend left, "G"]
+    \end{tikzcd}
+\end{equation}
+\end{comment}
+
+
+\section{主定理}
+
+$k$ を単位元を持つ可換環とする. 
+$k$ 代数と$k$ 代数射のなす圏を$\cat{Alg}_k$, 
+$k$ 上の Lie 環と Lie 環射のなす圏を$\cat{Lie}_k$
+とかく. 
+次の \eqref{alg-lie} を示すのが本稿の目的である. 
+\begin{align}
+    \Hom_{\cat{Alg}_k}(U(\gG),A)
+    \cong
+    \Hom_{\cat{Lie}_k}(\gG,\lL(A)) \label{alg-lie}
+\end{align}
+ここで, 
+$U: \cat{Lie}_k\to\cat{Alg}_k$ 
+は Lie 環 $\gG$ に対し, 
+包絡環 $U(\gG)$ を対応させ, 
+Lie 環射 $f: \gG \to \gG'$に対し, 
+代数射 $U(f): U(\gG) \to U(\gG')$ 
+を対応させる関手である. 
+また, 
+$L: \cat{Alg}_k \to \cat{Lie}_k$
+は, 代数 $A$ に対し Lie 環を, 
+代数射 $h: A\to A'$ に対し 
+Lie 環射を, 後述する方法\eqref{bracket}で対応させる関手である. 
+
+\section{Lie 環}
+
+Lie 環 $(\gG, [\bullet,\bullet])$とは, 
+$k$ 線形空間 $\gG$ と $k$ 双線形写像
+$[\bullet,\bullet]: \gG\times\gG\to\gG$
+の組で次の条件を満たすものをいう. 
+
+\begin{quote}
+    (L1) 任意の $x\in \gG$ に対し $[x,x] = 0$\\
+    (L2) 任意の $x,y,z\in \gG$ に対し 
+    $[x,[y,z]] + [y,[z,x]] + [z,[x,y]] = 0$
+\end{quote}
+
+
+
+\section{代数}
+
+$k$ を単位元を持つ可換環とする. 
+$k$ 代数 $(A, m, u)$ とは, $k$ 線形空間 $A$ と
+$k$ 線形写像$m: A\otimes A\to A$, 
+$u: k \to A$
+の三つ組で次の図式を可換にするものをいう. 
+\[
+\begin{tikzcd} 
+A \otimes A \otimes A
+\arrow[r, "{m\otimes \id}"] 
+\arrow["{\id \otimes m}"',d] 
+& 
+A \otimes A 
+\arrow[d, "m"] 
+& & 
+k \otimes A 
+\arrow[r, "u\otimes \id"] 
+\arrow[dr, "\sim" sloped] 
+& 
+A \otimes A 
+\arrow[d, "m"] 
+& 
+A \otimes k
+\arrow[l, "\id \otimes u"']
+\arrow[dl, "\sim"' sloped]\\ 
+A \otimes A 
+\arrow[r, "m"] 
+%\arrow[ur, dashed, "i"] 
+& 
+A 
+& & &
+A 
+\end{tikzcd}
+\]
+
+以下, $k$ を取り替えないので, 
+$k$ 代数をたんに代数とよぶ. 
+$(A,m_A,u_A), (B,m_B,u_B)$ を代数とする. 
+線形写像 $f:A\to B$ が代数射であるとは, 
+次の図式が可換となることをいう. 
+\[
+    \begin{tikzcd}
+        A\otimes A
+        \arrow[r, "m_A"]
+        \arrow[d, "f\otimes f"']
+        & 
+        A
+        \arrow[d, "f"]
+        & & &%=============================
+        k
+        \arrow[r, "u_A"]\arrow[d, equals]
+        &
+        A
+        \arrow[d, "f"]\\%===============
+        B\otimes B
+        \arrow[r,"m_B"]
+        &
+        B
+        & & &%=============================
+        k
+        \arrow[r,"u_B"]
+        &
+        B
+    \end{tikzcd}
+\]
+
+代数$A$に対し, 次の方法でブラケット積を定める. 
+\begin{align}
+    [x,y] = xy - yx \label{bracket}    
+\end{align}
+これにより, $A$ から Lie環$\lL(A)$が定まる. 
+このとき, 代数射 $f: A \to B$
+に対し, 
+\begin{align*}
+    f([x,y]) 
+    &= f([x,y]) = f(xy) - f(yx)\\
+    &= f(x)f(y) - f(y)f(x)
+    = [f(x), f(y)]
+\end{align*}
+が成り立つので, $f$ を自然にLie環射とみなせる. 
+これを$L(f):\lL(A) \to \lL(B)$とかく. 
+
+\section{包絡環}
+$\gG$ をLie環とする. 
+
+\section{証明}
+
+
+
+\begin{thebibliography}{20}
+\par
+  \bibitem[阿部 77]{Abe} 阿部英一, ホップ代数, 岩波書店, 1977.
+  \bibitem[谷崎 02]{Tani} 谷崎俊之, リー代数と量子群, 共立叢書　現代数学の潮流, 共立出版, 2002.
+  \bibitem[Kas95]{Kas} C.\ Kassel, Quantum Groups, 
+  Graduate Texts in Mathematics, 
+  vol.\ 155, Springer-Verlag, New York, 1995.
+\end{thebibliography}
+\end{document}
