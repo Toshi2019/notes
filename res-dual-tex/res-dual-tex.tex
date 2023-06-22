@@ -1,0 +1,159 @@
+%==========================================
+%   Residues and duality TeX project
+%   2023.Jun.22 - 
+%   written by Toshihiro Oshiba
+%==========================================
+
+\documentclass[leqno]{book}
+
+
+%usepackage
+%------------------------
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[psamsfonts]{amssymb}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+%\usepackage{rsfso}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{enumerate}
+\usepackage{verbatim}
+\usepackage{subfigure}
+\usepackage{proof}
+\usepackage{listings}
+\usepackage{otf}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{tikz}
+\usepackage[all]{xy}
+\usepackage{amscd}
+
+\usepackage[pdfborder=0,dvipdfmx]{hyperref}
+\usepackage{xcolor}
+\definecolor{darkgreen}{rgb}{0,0.45,0} 
+\definecolor{darkred}{rgb}{0.75,0,0}
+\definecolor{darkblue}{rgb}{0,0,0.6} 
+\hypersetup{
+    colorlinks=true,
+    citecolor=darkgreen,
+    linkcolor=darkblue,
+    urlcolor=darkblue,
+}
+\usepackage{pxjahyper}
+\usepackage{comment}
+\usepackage{enumitem}
+\usepackage{layout}
+
+\usetikzlibrary{cd}
+
+%\theoremstyle{definition}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+
+\theoremstyle{definition}
+\newtheorem{dfn}[thm]{Definition}
+\newtheorem{lem}[thm]{Lemma}
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+
+\renewcommand{\qedsymbol}{q.e.d.}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
+% category theory
+\newcommand{\fin}[1]{{#1}^{\mathrm{f}}} % finiteness
+
+
+% sheaf theory
+\newcommand{\F}{\mathscr{F}}
+\newcommand{\HH}{\mathscr{H}}
+\newcommand{\shhol}[1]{\mathscr{O}_{#1}}
+\newcommand{\shan}[1]{\mathscr{A}_{#1}}
+\newcommand{\shor}[1]{\omega_{#1}}
+\newcommand{\shhyp}[1]{\mathscr{B}_{#1}}
+
+% D-modules
+\newcommand{\DD}{\mathscr{D}}
+\newcommand{\PP}{\mathscr{P}}
+
+
+%new definition macro
+%-------------------------
+\def\inner<#1>{\langle #1 \rangle}
+
+\newcommand{\mapres}[2]{\left. #1 \right|_{#2}}
+
+\numberwithin{equation}{section}
+
+
+%==============================================================
+% page layout 
+%--------------------------------------------------------------
+
+%\setlength{\oddsidemargin}{-1cm}
+\setlength{\evensidemargin}{\oddsidemargin}
+\pagestyle{myheadings}
+
+
+
+
+
+
+%==============================================================
+
+
+
+
+
+
+\title{Residues and duality}
+\author{}
+
+\begin{document}
+\maketitle
+
+\frontmatter
+
+\tableofcontents
+\markboth{Contents}{Contents}
+
+%\include{skk-preface}
+\layout
+\mainmatter
+
+%\include{skk-chap1}
+\include{rs-intro}
+%\include{skk-12}
+%\include{skk-13}
+%\include{skk-21}
+%\include{skk-22}
+%\include{skk-23}
+%\include{skk-24}
+%\include{skk-25}
+%\include{skk-31}
+%\include{skk-32}
+
+\backmatter
+
+%\include{skk-bib}
+\begin{thebibliography}{20}
+    \par
+    \bibitem[Hatshorne1]{Hartshorne1} R. Hartshorne, 
+    \textit{Residues and duality}, Lecture Notes in Mathematics, 
+    Vol.\ 20, Springer-Verlag, Berlin, 1966.
+
+    \bibitem[Sato1]{Sato1} Mikio Sato, \textit{Theory of hyperfunctions II}, J. Fac.\ Sci.\ Univ.\ Tokyo, {\bf{8}} (1960), 387--437.
+
+    \bibitem[16]{SerreGr} Jeqn-Pierre Serre, 
+    \textit{Groupes alg\'ebriques et corps de classes}, Paris, Herman (1959).
+
+    \end{thebibliography}
+\end{document}

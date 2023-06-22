@@ -1,0 +1,496 @@
+
+%Don't forget to delete
+%showkeys
+%overfullrule
+%\date \ber \er \cmt
+
+
+
+%\documentclass[12pt,leqno]{amsart}
+\documentclass[12pt, a4paper, dvipdfmx, draft]{jsarticle}
+
+
+% ------------------------
+% usepackage
+% ------------------------
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amscd}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[psamsfonts]{amssymb}
+\usepackage{amsthm}
+\usepackage{ascmac}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{fancybox}
+\usepackage[stable]{footmisc}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{otf}
+\usepackage{pifont}
+\usepackage{proof}
+\usepackage{subfigure}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage[all]{xy}
+
+\usetikzlibrary{cd}
+
+
+
+% ================================
+% パッケージを追加する場合のスペース 
+\usepackage{latexsym}
+\usepackage{wrapfig}
+\usepackage{layout}
+\usepackage{url}
+
+\usepackage{okumacro}
+%=================================
+
+
+% --------------------------
+% theoremstyle
+% --------------------------
+\theoremstyle{definition}
+
+
+% --------------------------
+% newtheoem
+% --------------------------
+
+% 日本語で定理, 命題, 証明などを番号付きで用いるためのコマンドです. 
+% If you want to use theorem environment in Japanece, 
+% you can use these code. 
+% Attention!
+% All theorem enivironment numbers depend on 
+% only section numbers.
+\newtheorem{Axiom}{公理}[section]
+\newtheorem{Definition}[Axiom]{定義}
+\newtheorem{Theorem}[Axiom]{定理}
+\newtheorem{Proposition}[Axiom]{命題}
+\newtheorem{Lemma}[Axiom]{補題}
+\newtheorem{Corollary}[Axiom]{系}
+\newtheorem{Example}[Axiom]{例}
+\newtheorem{Claim}[Axiom]{主張}
+\newtheorem{Property}[Axiom]{性質}
+\newtheorem{Attention}[Axiom]{注意}
+\newtheorem{Question}[Axiom]{問}
+\newtheorem{Problem}[Axiom]{問題}
+\newtheorem{Consideration}[Axiom]{考察}
+\newtheorem{Alert}[Axiom]{警告}
+\newtheorem{Fact}[Axiom]{事実}
+
+
+% 日本語で定理, 命題, 証明などを番号なしで用いるためのコマンドです. 
+% If you want to use theorem environment with no number in Japanese, You can use these code.
+\newtheorem*{Axiom*}{公理}
+\newtheorem*{Definition*}{定義}
+\newtheorem*{Theorem*}{定理}
+\newtheorem*{Proposition*}{命題}
+\newtheorem*{Lemma*}{補題}
+\newtheorem*{Example*}{例}
+\newtheorem*{Corollary*}{系}
+\newtheorem*{Claim*}{主張}
+\newtheorem*{Property*}{性質}
+\newtheorem*{Attention*}{注意}
+\newtheorem*{Question*}{問}
+\newtheorem*{Problem*}{問題}
+\newtheorem*{Consideration*}{考察}
+\newtheorem*{Alert*}{警告}
+\newtheorem*{Fact*}{事実}
+
+
+% 英語で定理, 命題, 証明などを番号付きで用いるためのコマンドです. 
+%　If you want to use theorem environment in English, You can use these code.
+%all theorem enivironment number depend on only section number.
+\newtheorem{Axiom+}{Axiom}[section]
+\newtheorem{Definition+}[Axiom+]{Definition}
+\newtheorem{Theorem+}[Axiom+]{Theorem}
+\newtheorem{Proposition+}[Axiom+]{Proposition}
+\newtheorem{Lemma+}[Axiom+]{Lemma}
+\newtheorem{Example+}[Axiom+]{Example}
+\newtheorem{Corollary+}[Axiom+]{Corollary}
+\newtheorem{Claim+}[Axiom+]{Claim}
+\newtheorem{Property+}[Axiom+]{Property}
+\newtheorem{Attention+}[Axiom+]{Attention}
+\newtheorem{Question+}[Axiom+]{Question}
+\newtheorem{Problem+}[Axiom+]{Problem}
+\newtheorem{Consideration+}[Axiom+]{Consideration}
+\newtheorem{Alert+}{Alert}
+\newtheorem{Fact+}[Axiom+]{Fact}
+\newtheorem{Remark+}[Axiom+]{Remark}
+
+% ----------------------------
+% commmand
+% ----------------------------
+% 執筆に便利なコマンド集です. 
+% コマンドを追加する場合は下のスペースへ. 
+
+% 集合の記号 (黒板文字)
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\KK}{\mathbb{K}}
+
+
+% 集合の記号 (太文字)
+\newcommand{\nn}{\mathbf{N}}
+\newcommand{\zz}{\mathbf{Z}}
+\newcommand{\qq}{\mathbf{Q}}
+\newcommand{\rr}{\mathbf{R}}
+\newcommand{\cc}{\mathbf{C}}
+\newcommand{\pp}{\mathbf{P}}
+\newcommand{\kk}{\mathbf{K}}
+
+% 特殊な写像の記号
+\newcommand{\ev}{\mathop{\mathrm{ev}}\nolimits} % 値写像
+\newcommand{\pr}{\mathop{\mathrm{pr}}\nolimits} % 射影
+
+% スクリプト体にするコマンド
+%   例えば　{\mcal C} のように用いる
+\newcommand{\mcal}{\mathcal}
+
+% 花文字にするコマンド 
+%   例えば　{\h C} のように用いる
+\newcommand{\h}{\mathscr}
+
+% ヒルベルト空間などの記号
+\newcommand{\F}{\mcal{F}}
+\newcommand{\X}{\mcal{X}}
+\newcommand{\Y}{\mcal{Y}}
+\newcommand{\Hil}{\mcal{H}}
+\newcommand{\RKHS}{\Hil_{k}}
+\newcommand{\Loss}{\mcal{L}_{D}}
+\newcommand{\MLsp}{(\X, \Y, D, \Hil, \Loss)}
+
+% 偏微分作用素の記号
+\newcommand{\p}{\partial}
+
+% 角カッコの記号 (内積は下にマクロがあります)
+\newcommand{\lan}{\langle}
+\newcommand{\ran}{\rangle}
+
+
+
+% 圏の記号など
+\newcommand{\Set}{{\bf Set}}
+\newcommand{\Vect}{{\bf Vect}}
+\newcommand{\FDVect}{{\bf FDVect}}
+\newcommand{\Ring}{{\bf Ring}}
+\newcommand{\Ab}{{\bf Ab}}
+\newcommand{\Mod}{\mathop{\mathrm{Mod}}\nolimits}
+\newcommand{\CGA}{{\bf CGA}}
+\newcommand{\GVect}{{\bf GVect}}
+\newcommand{\Lie}{{\bf Lie}}
+\newcommand{\dLie}{{\bf Liec}}
+
+
+
+% 射の集合など
+\newcommand{\Map}{\mathop{\mathrm{Map}}\nolimits}
+\newcommand{\Hom}{\mathop{\mathrm{Hom}}\nolimits}
+\newcommand{\End}{\mathop{\mathrm{End}}\nolimits}
+\newcommand{\Aut}{\mathop{\mathrm{Aut}}\nolimits}
+\newcommand{\Mor}{\mathop{\mathrm{Mor}}\nolimits}
+\newcommand{\Ker}{\mathop{\mathrm{Ker}}\nolimits}
+\newcommand{\im}{\mathop{\mathrm{Im}}\nolimits}
+
+
+
+% その他便利なコマンド
+\newcommand{\dip}{\displaystyle} % 本文中で数式モード
+\newcommand{\e}{\varepsilon} % イプシロン
+\newcommand{\dl}{\delta} % デルタ
+\newcommand{\pphi}{\varphi} % ファイ
+\newcommand{\ti}{\tilde} % チルダ
+\newcommand{\pal}{\parallel} % 平行
+\newcommand{\op}{{\rm op}} % 双対を取る記号
+\newcommand{\lcm}{\mathop{\mathrm{lcm}}\nolimits} % 最小公倍数の記号
+\newcommand{\Probsp}{(\Omega, \F, \P)} 
+\newcommand{\argmax}{\mathop{\rm arg~max}\limits}
+\newcommand{\argmin}{\mathop{\rm arg~min}\limits}
+
+
+
+
+
+% ================================
+% コマンドを追加する場合のスペース 
+\newcommand{\UU}{\mcal{U}}
+\newcommand{\OO}{\mcal{O}}
+\newcommand{\emp}{\varnothing}
+\newcommand{\ceq}{\coloneqq}
+\newcommand{\sbs}{\subset}
+\newcommand{\mapres}[2]{\left. #1 \right|_{#2}}
+\newcommand{\ded}{\hfill $\blacksquare$}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\isom}{\overset{\sim}{\longrightarrow}}
+\newcommand{\tTop}{\textsf{Top}}
+
+
+% 自前の定理環境
+%   https://mathlandscape.com/latex-amsthm/
+% を参考にした
+\newtheoremstyle{mystyle}%   % スタイル名
+    {5pt}%                   % 上部スペース
+    {5pt}%                   % 下部スペース
+    {}%              % 本文フォント
+    {}%                  % 1行目のインデント量
+    {\bfseries}%                      % 見出しフォント
+    {.}%                     % 見出し後の句読点
+    {12pt}%                     % 見出し後のスペース
+    {\thmname{#1}\thmnumber{ #2 }\thmnote{{\normalfont (#3)}}}% % 見出しの書式
+
+\theoremstyle{mystyle}
+\newtheorem{AXM}{公理}[section]
+\newtheorem{DFN}[Axiom]{定義}
+\newtheorem{THM}[Axiom]{定理}
+\newtheorem{PRP}[Axiom]{命題}
+\newtheorem{LMM}[Axiom]{補題}
+\newtheorem{CRL}[Axiom]{系}
+\newtheorem{EG}[Axiom]{例}
+
+%\newtheorem{}{Axiom}[]
+\numberwithin{equation}{section} % 式番号を「(3.5)」のように印刷
+
+\newcommand{\MM}{\mcal{M}}
+
+% =================================
+
+
+
+
+
+% ---------------------------
+% new definition macro
+% ---------------------------
+% 便利なマクロ集です
+
+% 内積のマクロ
+%   例えば \inner<\pphi | \psi> のように用いる
+\def\inner<#1>{\langle #1 \rangle}
+
+% ================================
+% マクロを追加する場合のスペース 
+
+%=================================
+
+
+
+
+
+% ----------------------------
+% documenet 
+% ----------------------------
+% 以下, 本文の執筆スペースです. 
+% Your main code must be written between 
+% begin document and end document.
+% ---------------------------
+
+
+\begin{document}
+
+\title{幾何学続論 (第15回)}
+\author{}
+\date{}
+
+\maketitle
+\begin{quote}
+「今回は前回の続きと，軽くお話をして終わりましょう．」
+\end{quote}
+\section*{前回}
+\begin{itemize}
+    \item $\ast \colon \bigwedge^{k}(T_p^{\ast}M)\to \bigwedge^{m-k}(T_p^{\ast}M)$; $\omega\mapsto{\ast}\omega$ 
+    \begin{align*}
+        \forall\eta\in\bigwedge^{k}(T_p^{\ast}M)\quad \eta\wedge\ast\omega = g_{p}^{k}(\eta,\omega)(\omega^{1}\wedge\cdots\wedge\omega^{m})
+    \end{align*}
+    \item $\delta\colon\Omega^{k}(M)\to\Omega^{k-1}(M)\quad \delta\overset{\text{def}}{=}(-1)^{m(k+1)+1}\ast d\ast$.
+    \item $\langle\ ,\ \rangle\colon\Omega^{k}(M)\times\Omega^{k-1}(M)\to\rr;\quad \inner<\omega,\eta>=\int_{M}\omega\wedge\eta$
+\end{itemize}
+\section*{今回}
+\begin{Definition*}
+    $\Delta\colon \Omega^{k}(M)\to\Omega^{k}(M)$:Lapracian を
+    \begin{align*}
+        \Delta = \delta\circ d + d\circ\delta
+    \end{align*}
+    で定める．
+
+    $\omega$: harmonic form $\overset{\text{def}}{\Leftrightarrow}\Delta\omega=0$.
+    
+    $\mathcal{H}^{k}(M)=\left\{\omega\in\Omega^{k}(M);\ \Delta\omega=0\right\}$.
+\end{Definition*}
+\begin{align*}
+    \inner<\Delta\omega,\omega> 
+    &= \inner<\delta\circ d\omega+d\circ\delta\omega,\omega>\\
+    &= \inner<\delta\circ d\omega,\omega>+\inner<d\circ\delta\omega,\omega>\\
+    &= \inner<d\omega,\delta\omega>+\inner<\delta\omega,d\omega>
+\end{align*}
+より
+\begin{align*}
+    \Delta\omega=0\Longleftrightarrow \delta\omega=0\text{かつ}d\omega=0
+\end{align*}
+が成り立つ．よって$\mcal{H}^{k}(M)=\Ker d\cap\Ker \delta$となる．
+
+$\omega\in\mcal{H}^{k}(M), d\eta\in\im d, \delta\mu\in\im\delta$とすれば，
+\begin{align*}
+    \inner<\omega,d\eta>=\inner<\delta\omega,\eta>=0,\\
+    \inner<\omega,\delta\mu>=\inner<d\omega,\mu>=0,\\
+    \inner<d\eta,\delta\mu>=\inner<d\circ d\eta,\mu>=0
+\end{align*}
+より
+\begin{align*}
+    \mcal{H}^{k}(M)\perp\im d, \mcal{H}^{k}(M)\perp\im \delta, \im d\perp\im\delta.
+\end{align*}
+
+「つまり，今の場合$\Omega^{k}$の中で，直和分解
+\begin{align*}
+    \Omega^{k}\supset\mcal{H}^{k}\oplus\im d^{k-1}\oplus\im\delta^{k+1}
+\end{align*}
+が成り立ってんねんな．」
+
+実は次の定理が成り立つ．
+
+\begin{Theorem*}[Hodge-de Rham-Kodaira]
+\begin{align*}
+    \Omega^{k}=\mcal{H}^{k}\oplus\im d^{k-1}\oplus\im\delta^{k+1}.
+\end{align*}
+この分解をHodge分解という．
+\end{Theorem*}
+\begin{quotation}
+    
+「俺は$\ldots\ldots$証明読んだことない(笑)
+聞いたことあるのは，ソボレフ空間の埋め込み定理とかを使った，解析的な証明．」
+
+\end{quotation}
+この定理の系として次が従う．
+\begin{Theorem*}[Hodge]
+    ${}^{\forall}[\omega]\in H_{DR}^k(M)\quad {}^{\exists!}\omega_{H}\in\Omega^{k}$.
+\end{Theorem*}
+
+\begin{proof}[pf]
+    $\omega=Z^{k}(M)$に対し，Hodge分解
+    \begin{align*}
+        \omega=\omega + d\eta + \delta\mu \quad (\omega\in\mcal{H}^{k}(M), \eta\in\Omega^{k-1}(M), \mu\in\Omega^{k+1}(M))
+    \end{align*}
+    を考える．
+    $\omega\in Z^{k}(M)$なので
+    \begin{align*}
+        d\omega = d\circ\delta\mu=0. 
+    \end{align*}
+    従って，
+    $\inner<d\circ\delta\mu,\mu>=\inner<\delta\mu,\delta\mu>=0$
+    より$\delta\mu=0$. \\
+    \begin{align*}
+        \therefore \omega = \omega_{H}+d\eta\quad\text{となり}\quad\omega_{H}\in[\omega].
+    \end{align*}
+\end{proof}
+
+\begin{quote}
+    「こんなもんでどうでしょう．あとは小話．」
+\end{quote}
+
+\section*{小話}
+
+「微分形式といえば，（俺はトポロジーの人間なので），特性類の理論がある．
+また，コホモロジーといったら，群のコホモロジーがあって，
+佐藤隆夫『群のコホモロジー』が最近出たが，他の和書はあまり無いと思う．
+俺が専門にしてるのは写像類群で，
+森田（茂之）先生のグループとか北大の秋田（利之）先生とかがやってる．
+あと河澄（響矢）先生とか．」
+
+「群から空間を作ることを考える．」
+
+$G$: grp. \\
+
+$X$: $K(G,1)$ sp. $\overset{\text{def}}{\Longleftrightarrow} \begin{cases}
+    (\mathrm{i})\ \pi_{1}(X)\cong G\\
+    (\mathrm{ii})\ \pi_{n}(X)= 0 \quad (n\geqq 2)
+\end{cases}$
+
+\begin{Problem*}
+    $X$はいつ存在するか？
+\end{Problem*}
+
+\begin{Fact*}
+    ${}^{\forall} G\quad {}^{\exists!} X $ up to homotopy.
+\end{Fact*}
+$X$を$G$のEilenberg-MacLane sp. と呼ぶ．
+このとき
+\begin{align*}
+    H_{\ast}(G)\coloneqq H_{\ast}(K(G,1))\\
+    H^{\ast}(G)\coloneqq H^{\ast}(K(G,1))
+\end{align*}
+とおき，群$G$の（コ）ホモロジーという．
+\begin{quote}
+    「$G$のEuler classも$K(G,1)$のそれで定める．」    
+\end{quote}
+
+\begin{Example*}
+    $K(\zz^{n},1)=\underbrace{S^{1}\times\cdots\times S^{1}}_{n}=T^{n}$,
+
+    $K(F_{n},1)=\bigvee_{k=1}^{n}S^1$.（$F_n$はrank $n$の自由群）
+
+    \begin{quote}
+        「所謂$n$弁ブーケ．Euler数は$1-n$.」
+    \end{quote}
+\end{Example*}
+
+写像類群を定義する．
+
+$\Sigma_{g}$: oriented closed surf. ($g>1$)
+に対し，
+\begin{align*}
+    \Mod(\Sigma_{g})\coloneqq\left\{f\colon\Sigma_{g}\to\Sigma_{g};\text{ori. pres. diffeo.}\right\}/\text{isotopy}
+\end{align*}
+を曲面$\Sigma_{g}$の写像類群という．
+
+「トポロジカルなsurfaceがあると，
+そこにどのくらい複素構造が入るか？というのが
+リーマンのモジュライ問題．複素構造の同値類は
+タイヒミュラー空間と呼ばれ，$6g-6$次元のballと同相になる．
+つまり$3g-3$の複素多様体になる．
+$\Mod(\Sigma_{g})$はタイヒミュラー空間に作用している
+ので$\Mod(\Sigma_{g})$をモジュライ空間の基本群とも呼ぶ．
+基本群を調べればモジュライ空間がよくわかることになるが，
+$\Mod(\Sigma_{g})$はバカデカい群．そのためよくわかってないことも多い．
+例えば忠実表現があるか？といったこと．モンスター群とも関係がある．」
+
+$\mcal{M}_{g} = \{\text{複素構造}\}$と書く．
+\begin{Fact*}
+    $H^{\ast}(\mcal{M}_{g};\qq)\cong H^{\ast}(\Mod(\Sigma_{g});\qq)$
+\end{Fact*}
+
+\begin{quote}
+    「この辺は特性類とかやると出てくる．」
+\end{quote}
+
+「こんなところで．今期の話で扱わなかったのは
+\begin{itemize}
+    \item ポアンカレ双対
+    \item リーマン幾何
+    \item 接続，曲率から定まるコホモロジー
+    \item リー微分，フロベニウスの定理
+\end{itemize}
+とか．」
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
